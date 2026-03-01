@@ -194,6 +194,12 @@
   "kraken-api-key": "",
   "kraken-verification-tier": "Starter", // Starter, Intermediate, Pro
 
+  // polymarket configuration
+  "polymarket-api-key": "",
+  "polymarket-api-secret": "",
+  "polymarket-private-key": "",
+  "polymarket-passphrase": "",
+
   // wolverine configuration
   "wolverine-host": "",
   "wolverine-port": "",
