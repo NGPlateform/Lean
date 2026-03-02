@@ -5,10 +5,11 @@
 ```
 Phase 1  核心基础设施       ████████████████████ 100%  (4/4)
 Phase 2  Brokerage 连接层   ████████████████████ 100%  (9/9)
-Phase 3  回测基础设施       █████████████░░░░░░░  65%  (2/3 — 缺历史数据)
+Phase 3  回测基础设施       ████████████████████ 100%  (3/3)
 Phase 4  做市策略           ████████████████████ 100%  (2/2)
 Phase 5  量化策略框架       ██████████████████░░  90%  (3.5/4 — 缺 SentimentAlpha)
 Dashboard 做市模拟系统       ████████████████████ 100%  (全部完成)
+Dashboard 数据下载工具       ████████████████████ 100%  (CLI + API 端点)
 测试                        █████████████░░░░░░░  60%  (单元测试有, 缺集成/回测测试)
 ```
 
@@ -52,7 +53,7 @@ Dashboard 做市模拟系统       ███████████████
 | # | 计划项 | 状态 | 说明 |
 |---|--------|------|------|
 | 3.1 | PolymarketDataDownloader | **DONE** | 实现 DownloadTradeData/FetchTrades/AggregateToBars |
-| 3.2 | 历史数据文件 | **MISSING** | `Data/crypto/polymarket/` 目录不存在，未实际下载数据 |
+| 3.2 | 历史数据文件 | **DONE** | 24 市场 48 tokens，7 天价格历史 (2/24–3/2)，218 CSV + 48 盘口快照，6,457 bars |
 | 3.3 | 自定义 FillModel | **DONE** | PolymarketFillModel: 价格钳位 [0.001, 0.999]、宽价差处理 |
 
 ### Phase 4: 做市策略
@@ -83,6 +84,9 @@ Dashboard 做市模拟系统       ███████████████
 | D.4 | DryRunEngine | **DONE** | 模拟撮合 + 被动成交模型 + 自动订阅 |
 | D.5 | Web UI (SignalR) | **DONE** | 实时仪表盘：行情/订单/持仓/PnL |
 | D.6 | LeanStubs 解耦 | **DONE** | 94 行桩代码实现 LEAN 独立编译 |
+| D.7 | DataDownloadService | **DONE** | 市场发现 (Gamma API) → 价格历史 (CLOB prices-history) → 盘口快照 (CLOB book) |
+| D.8 | 数据下载 API 端点 | **DONE** | `POST /api/data/download?days=N` + `GET /api/data/download/status` |
+| D.9 | CLI 下载模式 | **DONE** | `dotnet run -- --download-data --days 30`，无需启动 Web 服务器 |
 
 ### 测试
 
@@ -95,7 +99,7 @@ Dashboard 做市模拟系统       ███████████████
 | T.5 | EIP712SignerTests | **DONE** | 签名生成与验证 |
 | T.6 | Brokerage 集成测试 (REST API) | **MISSING** | 无真实 API 调用测试 |
 | T.7 | Brokerage 集成测试 (WebSocket) | **MISSING** | 无 WebSocket 连接/数据解析测试 |
-| T.8 | 回测验证 (历史数据) | **MISSING** | 无历史数据 → 无法回测 |
+| T.8 | 回测验证 (历史数据) | **MISSING** | 历史数据已有，但未运行策略回测验证 |
 | T.9 | Dashboard 测试 | **MISSING** | 无 Dashboard 项目的自动化测试 |
 | T.10 | 策略回测 P&L 验证 | **MISSING** | 无基于历史数据的策略盈亏验证 |
 
@@ -105,19 +109,16 @@ Dashboard 做市模拟系统       ███████████████
 
 ### P0 — 阻塞性缺失 (影响回测和生产验证)
 
-#### 1. 下载历史数据
+#### ~~1. 下载历史数据~~ ✅ 已完成
 
-**现状**: `PolymarketDataDownloader` 工具已实现，但从未执行，`Data/crypto/polymarket/` 目录不存在。
-
-**工作内容**:
-- 创建 `Data/crypto/polymarket/minute/` 目录结构
-- 运行 `PolymarketDataDownloader` 为主要市场下载 trade + quote 数据
-- 建议至少下载 10 个高流动性市场的 30 天历史数据
-- 验证生成的 CSV 文件格式符合 LEAN 标准
-
-**依赖**: 无，可立即执行
-
-**预估工作量**: 0.5 天
+**完成情况**: `Dashboard/Services/DataDownloadService.cs` 实现独立数据下载工具。
+- 使用 CLOB `prices-history` API 获取每 token 价格快照（~10 分钟间隔）
+- 使用 CLOB `book` API 获取 top-5 盘口快照
+- Gamma API 市场发现 + crypto 关键词过滤 + 体育排除规则
+- 支持 CLI 模式 (`--download-data --days N`) 和 API 端点 (`POST /api/data/download`)
+- **数据覆盖**: 24 crypto 市场、48 tokens、218 trade CSV、48 orderbook CSV、6,457 bars
+- **日期范围**: 2026-02-24 ~ 2026-03-02 (7 天)
+- **数据质量**: YES/NO 价格独立、无 dust trades、无体育类误匹配
 
 ---
 
@@ -156,7 +157,7 @@ Dashboard 做市模拟系统       ███████████████
   - CrossMarketCorrelationAlpha: 验证相关性检测
 - 生成 P&L 报告和 Sharpe/MaxDrawdown 统计
 
-**依赖**: P0-1 (历史数据)
+**依赖**: ~~P0-1 (历史数据)~~ 已解除 — 数据已下载
 
 **预估工作量**: 2 天
 
@@ -265,17 +266,17 @@ Dashboard 做市模拟系统       ███████████████
 
 ## 工作量汇总
 
-| 优先级 | 工作项 | 预估 |
-|--------|--------|------|
-| **P0** | 下载历史数据 | 0.5 天 |
-| **P0** | Brokerage 集成测试 | 2 天 |
-| **P1** | 策略回测验证 | 2 天 |
-| **P1** | SentimentAlpha | 3 天 (可降级) |
-| **P2** | 小资金实盘验证 | 1 天 |
-| **P2** | Dashboard 自动化测试 | 2 天 |
-| **P2** | 错误处理与重连 | 1.5 天 |
-| **P3** | 回测对比框架 | 2 天 |
-| **P3** | Dashboard 增强 | 3 天 |
-| **P3** | 批量 Symbol 注册 | 1 天 |
-| | **合计** | **~18 天** |
-| | P0 + P1 (核心) | **~7.5 天** |
+| 优先级 | 工作项 | 预估 | 状态 |
+|--------|--------|------|------|
+| ~~**P0**~~ | ~~下载历史数据~~ | ~~0.5 天~~ | ✅ 已完成 |
+| **P0** | Brokerage 集成测试 | 2 天 | 待做 |
+| **P1** | 策略回测验证 | 2 天 | 待做 (已解除数据依赖) |
+| **P1** | SentimentAlpha | 3 天 (可降级) | 待做 |
+| **P2** | 小资金实盘验证 | 1 天 | 待做 |
+| **P2** | Dashboard 自动化测试 | 2 天 | 待做 |
+| **P2** | 错误处理与重连 | 1.5 天 | 待做 |
+| **P3** | 回测对比框架 | 2 天 | 待做 |
+| **P3** | Dashboard 增强 | 3 天 | 待做 |
+| **P3** | 批量 Symbol 注册 | 1 天 | 待做 |
+| | **剩余合计** | **~17.5 天** | |
+| | P0 + P1 (核心剩余) | **~7 天** | |
