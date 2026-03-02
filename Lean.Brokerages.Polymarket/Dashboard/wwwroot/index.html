@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polymarket Trading Dashboard</title>
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <h1>Polymarket Trading Dashboard</h1>
+            <span id="dry-run-badge" class="dry-run-badge" style="display:none">DRY RUN</span>
+        </div>
+        <div class="header-right">
+            <div id="pnl-display" style="display:none">
+                <span class="pnl-label">Realized:</span>
+                <span id="pnl-realized" class="pnl-value">$0.00</span>
+                <span class="pnl-label">Unrealized:</span>
+                <span id="pnl-unrealized" class="pnl-value">$0.00</span>
+                <span class="pnl-label">Tick:</span>
+                <span id="tick-count" class="pnl-value">#0</span>
+            </div>
+            <div id="balance-display">
+                <span class="label">USDC:</span>
+                <span id="balance-value">--</span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="panel-row">
+            <!-- Market List -->
+            <section id="market-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Markets</h2>
+                    <div class="panel-header-actions">
+                        <button id="view-trending" class="view-btn active">Trending</button>
+                        <button id="view-events" class="view-btn">Events</button>
+                        <button id="refresh-markets" class="btn-icon" title="Refresh">&#x21bb;</button>
+                    </div>
+                </div>
+                <div id="market-search-box">
+                    <input type="text" id="market-search" placeholder="Search markets...">
+                </div>
+                <div id="market-list" class="scrollable">
+                    <div class="empty-state">Loading markets...</div>
+                </div>
+            </section>
+
+            <!-- Order Book -->
+            <section id="orderbook-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Order Book</h2>
+                    <span id="orderbook-token" class="tag"></span>
+                </div>
+                <div id="orderbook-container">
+                    <div class="orderbook-side">
+                        <div class="orderbook-label ask-label">ASKS</div>
+                        <div id="asks-list" class="orderbook-levels">
+                            <div class="empty-state">Select a market</div>
+                        </div>
+                    </div>
+                    <div id="spread-display"></div>
+                    <div class="orderbook-side">
+                        <div class="orderbook-label bid-label">BIDS</div>
+                        <div id="bids-list" class="orderbook-levels"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Order Entry -->
+            <section id="order-panel" class="panel">
+                <div class="panel-header">
+                    <h2>Place Order</h2>
+                </div>
+                <div id="order-form">
+                    <div class="side-buttons">
+                        <button id="btn-buy" class="btn side-btn active" data-side="BUY">BUY</button>
+                        <button id="btn-sell" class="btn side-btn" data-side="SELL">SELL</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="order-price">Price (0-1)</label>
+                        <input type="number" id="order-price" step="0.01" min="0.01" max="0.99" placeholder="0.50">
+                    </div>
+                    <div class="form-group">
+                        <label for="order-size">Size (USDC)</label>
+                        <input type="number" id="order-size" step="1" min="1" placeholder="10">
+                    </div>
+                    <div id="order-summary"></div>
+                    <button id="btn-submit-order" class="btn btn-primary" disabled>Submit Order</button>
+                    <div id="order-status"></div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tabs: Positions / Orders / Trades / Logs -->
+        <section id="bottom-panel" class="panel">
+            <div class="tab-bar">
+                <button class="tab active" data-tab="positions">Positions</button>
+                <button class="tab" data-tab="orders">Active Orders</button>
+                <button class="tab" data-tab="trades">Trade History</button>
+                <button class="tab" data-tab="logs" id="tab-btn-logs" style="display:none">Algorithm Logs</button>
+            </div>
+            <div id="tab-positions" class="tab-content active">
+                <table id="positions-table">
+                    <thead>
+                        <tr>
+                            <th>Asset ID</th>
+                            <th>Size</th>
+                            <th>Avg Price</th>
+                            <th>Cur Price</th>
+                            <th>Unrealized PnL</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="tab-orders" class="tab-content">
+                <table id="orders-table">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Side</th>
+                            <th>Price</th>
+                            <th>Size</th>
+                            <th>Matched</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="tab-trades" class="tab-content">
+                <table id="trades-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Side</th>
+                            <th>Price</th>
+                            <th>Size</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div id="tab-logs" class="tab-content">
+                <div id="logs-container" class="logs-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="toast-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

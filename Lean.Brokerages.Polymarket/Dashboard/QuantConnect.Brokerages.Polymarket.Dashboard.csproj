@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>QuantConnect.Brokerages.Polymarket.Dashboard</RootNamespace>
+    <AssemblyName>QuantConnect.Brokerages.Polymarket.Dashboard</AssemblyName>
+    <NoWarn>CA1062;CS0114;CS0108</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- Include Polymarket source files directly to avoid LEAN framework dependency -->
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket\Api\PolymarketApiClient.cs" Link="Polymarket\PolymarketApiClient.cs" />
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket\Api\PolymarketWebSocketClient.cs" Link="Polymarket\PolymarketWebSocketClient.cs" />
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket\Api\Models\PolymarketModels.cs" Link="Polymarket\PolymarketModels.cs" />
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket\Auth\PolymarketCredentials.cs" Link="Polymarket\PolymarketCredentials.cs" />
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket\Auth\EIP712Signer.cs" Link="Polymarket\EIP712Signer.cs" />
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket\PolymarketSymbolMapper.cs" Link="Polymarket\PolymarketSymbolMapper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Nethereum.Signer" Version="4.21.4" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.NewtonsoftJson" Version="7.0.0" />
+  </ItemGroup>
+</Project>
