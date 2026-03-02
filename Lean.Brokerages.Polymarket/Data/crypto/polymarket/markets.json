@@ -23,7 +23,7 @@
     "question": "Will the price of Bitcoin be above $74,000 on March 3?",
     "conditionId": "0xc82a78806c715f068adf03d68d1e0af3caff4a12821df1d70948c516ffabf297",
     "slug": "bitcoin-above-74k-on-march-3",
-    "volume": 885396.986413,
+    "volume": 885471.686471,
     "volume24h": 585615.388201999,
     "category": "",
     "tokens": [
@@ -43,7 +43,7 @@
     "question": "Bitcoin Up or Down - March 2, 4PM ET",
     "conditionId": "0x8eb94277bb7d5ddc733e4bb3322140efe0e65fb8b933cc1b1edba62fd3ad8790",
     "slug": "bitcoin-up-or-down-march-2-4pm-et",
-    "volume": 770843.231831,
+    "volume": 770854.791831,
     "volume24h": 576628.960772,
     "category": "",
     "tokens": [
@@ -63,7 +63,7 @@
     "question": "Will the price of Bitcoin be above $54,000 on March 3?",
     "conditionId": "0x8327120727f2b5546063991a1794f388bfac9725613c5cea44f8757880b5858a",
     "slug": "bitcoin-above-54k-on-march-3",
-    "volume": 689767.802123,
+    "volume": 691767.802123,
     "volume24h": 504695.479992,
     "category": "",
     "tokens": [
@@ -83,7 +83,7 @@
     "question": "Will Bitcoin dip to $65,000 in March?",
     "conditionId": "0x36912c9832f0fd104d734b579fb9b3a1b31bbdc946a67356723407e3bdc96dbc",
     "slug": "will-bitcoin-dip-to-65k-in-march-2026",
-    "volume": 570380.926435,
+    "volume": 570997.135584,
     "volume24h": 492867.041444,
     "category": "",
     "tokens": [
@@ -103,7 +103,7 @@
     "question": "Will the price of Bitcoin be above $70,000 on March 3?",
     "conditionId": "0x69c9eb198847e388fef3b0148e5ba7e9af7c1d54b44c3b1fe03be955bab95e09",
     "slug": "bitcoin-above-70k-on-march-3",
-    "volume": 487210.21131,
+    "volume": 487996.372612,
     "volume24h": 293915.345243,
     "category": "",
     "tokens": [
@@ -123,7 +123,7 @@
     "question": "Will the price of Ethereum be above $2,400 on March 3?",
     "conditionId": "0x27fa0734353dcb8ab95d999ffb260cdeb88a541a9d42f6cab6c09bc179640d59",
     "slug": "ethereum-above-2400-on-march-3",
-    "volume": 328121.995669,
+    "volume": 334849.505669,
     "volume24h": 273688.111417,
     "category": "",
     "tokens": [
@@ -163,7 +163,7 @@
     "question": "Will the price of Bitcoin be above $72,000 on March 3?",
     "conditionId": "0xbadb5e0736417a4aa4ba6d2fd0403a5962a49d0b0c02945f09f16a5b09eb2208",
     "slug": "bitcoin-above-72k-on-march-3",
-    "volume": 433446.05514,
+    "volume": 437268.840574,
     "volume24h": 242509.667451,
     "category": "",
     "tokens": [
@@ -203,7 +203,7 @@
     "question": "Will the price of Bitcoin be above $68,000 on March 3?",
     "conditionId": "0x67ca2de5a2617c3b376464f0b381cf82d1b506b5cca3060e435c1948aafe6a30",
     "slug": "bitcoin-above-68k-on-march-3",
-    "volume": 425534.657411,
+    "volume": 425679.281286,
     "volume24h": 218880.867681,
     "category": "",
     "tokens": [
@@ -223,7 +223,7 @@
     "question": "Will Bitcoin reach $75,000 in March?",
     "conditionId": "0xd32f73b7d90cd18287e48b11ff855bee97543ad87ab38ef3fffde06504e5c2bd",
     "slug": "will-bitcoin-reach-75k-in-march-2026",
-    "volume": 286274.241669,
+    "volume": 286297.241669,
     "volume24h": 211215.902591,
     "category": "",
     "tokens": [
@@ -243,7 +243,7 @@
     "question": "Will the price of Bitcoin be above $58,000 on March 3?",
     "conditionId": "0x43182ec41128a454bb9a6ca23c16699f5d525fd84b641c707b0d17722dd8112e",
     "slug": "bitcoin-above-58k-on-march-3",
-    "volume": 365938.020352,
+    "volume": 366456.898352,
     "volume24h": 206614.260269,
     "category": "",
     "tokens": [
@@ -263,7 +263,7 @@
     "question": "Will Ethereum reach $4,000 in March?",
     "conditionId": "0xa7a9755e95e3809cd57814a2e32bcae9c752f5403a5eef12c6cc509ea10b1c9e",
     "slug": "will-ethereum-reach-4000-in-march-2026",
-    "volume": 224996.171927,
+    "volume": 227716.171927,
     "volume24h": 204160.004215,
     "category": "",
     "tokens": [
@@ -283,7 +283,7 @@
     "question": "Will Bitcoin reach $85,000 in March?",
     "conditionId": "0x844c6215079483f67667b86e4111b6acc24d17094b5eaaaa2e021268585e1d5e",
     "slug": "will-bitcoin-reach-85k-in-march-2026",
-    "volume": 376086.98796,
+    "volume": 376152.98796,
     "volume24h": 191896.78662,
     "category": "",
     "tokens": [
@@ -303,7 +303,7 @@
     "question": "Will the price of Bitcoin be above $64,000 on March 3?",
     "conditionId": "0xe30f6b357991e60cb5ef55a735472b244e75140b112781e62a5a56cf45b2b798",
     "slug": "bitcoin-above-64k-on-march-3",
-    "volume": 338209.609581,
+    "volume": 341789.319581,
     "volume24h": 181594.730914,
     "category": "",
     "tokens": [
@@ -323,7 +323,7 @@
     "question": "Will the price of Bitcoin be above $66,000 on March 3?",
     "conditionId": "0x08e2a7ebfa86a53528840535e5836a96ec102cf41c54abf7bd833b6c96ff8800",
     "slug": "bitcoin-above-66k-on-march-3",
-    "volume": 338253.258729,
+    "volume": 338406.006089,
     "volume24h": 181190.303568,
     "category": "",
     "tokens": [
@@ -383,7 +383,7 @@
     "question": "Will Bitcoin dip to $50,000 in March?",
     "conditionId": "0x7b63040ad654500cc30bfde62c864ca1c247621b9bc89cb4416e9f9ee01e7d6e",
     "slug": "will-bitcoin-dip-to-50k-in-march-2026",
-    "volume": 261778.287199,
+    "volume": 261780.048061,
     "volume24h": 155933.670048,
     "category": "",
     "tokens": [
@@ -403,7 +403,7 @@
     "question": "Will the price of Bitcoin be above $60,000 on March 3?",
     "conditionId": "0x8ab9b741b6b6c61f785b444758aa0661b656af3a351f0a0b7de883d57310f149",
     "slug": "bitcoin-above-60k-on-march-3",
-    "volume": 327282.248029,
+    "volume": 327876.528029,
     "volume24h": 150813.249763,
     "category": "",
     "tokens": [
@@ -423,7 +423,7 @@
     "question": "Will Bitcoin reach $110,000 in March?",
     "conditionId": "0x5beb360b7a59e4eee90c31834a5bda13514bb74d2419df8ca41c49e26d9aa90c",
     "slug": "will-bitcoin-reach-110k-in-march-2026",
-    "volume": 187946.223794,
+    "volume": 188046.923794,
     "volume24h": 136146.387718,
     "category": "",
     "tokens": [
@@ -443,7 +443,7 @@
     "question": "Will Bitcoin reach $90,000 in March?",
     "conditionId": "0xee4feb22e065060b9af73c53887c83bbbfc5246d98ec38e190bf127fadcf456c",
     "slug": "will-bitcoin-reach-90k-in-march-2026",
-    "volume": 258763.005391,
+    "volume": 259150.405391,
     "volume24h": 127214.481967,
     "category": "",
     "tokens": [
@@ -463,7 +463,7 @@
     "question": "Will the price of Bitcoin be above $56,000 on March 3?",
     "conditionId": "0xdaeee7a566e4b38db25c3cb8132029b90dfaa1487d3f384c7c3517fdb6c32161",
     "slug": "bitcoin-above-56k-on-march-3",
-    "volume": 438948.093046,
+    "volume": 441288.593046,
     "volume24h": 126061.852252,
     "category": "",
     "tokens": [
