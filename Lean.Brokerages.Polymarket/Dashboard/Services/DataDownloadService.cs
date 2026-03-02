@@ -19,14 +19,22 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
 
         private const string GammaApi = "https://gamma-api.polymarket.com";
         private const string ClobApi = "https://clob.polymarket.com";
-        private const string DataApi = "https://data-api.polymarket.com";
 
+        // Crypto keywords for market filtering.
+        // "token" and "avalanche" excluded — too many false positives (sports teams, generic usage).
         private static readonly string[] CryptoKeywords = new[]
         {
             "bitcoin", "btc", "ethereum", "eth", "solana", "sol",
-            "crypto", "defi", "nft", "altcoin", "blockchain", "token",
+            "crypto", "defi", "nft", "altcoin", "blockchain",
             "dogecoin", "doge", "xrp", "ripple", "cardano", "ada",
-            "polygon", "matic", "avalanche", "avax"
+            "polygon", "matic", "avax", "chainlink", "link"
+        };
+
+        // Exclude markets whose question matches these patterns (sports false positives)
+        private static readonly string[] ExcludePatterns = new[]
+        {
+            "stanley cup", "nhl", "nba", "nfl", "mlb", "fifa", "world cup",
+            "masters tournament", "grand slam", "super bowl"
         };
 
         public DataDownloadService(ILogger<DataDownloadService> logger, string dataRoot = null)
@@ -120,6 +128,13 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             var qLower = question.ToLowerInvariant();
             var cLower = category.ToLowerInvariant();
 
+            // Reject if it matches a sports exclusion pattern
+            foreach (var pattern in ExcludePatterns)
+            {
+                if (qLower.Contains(pattern))
+                    return false;
+            }
+
             foreach (var keyword in CryptoKeywords)
             {
                 if (qLower.Contains(keyword) || cLower.Contains(keyword))
@@ -128,22 +143,27 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             return false;
         }
 
-        // ====== Trade History Download ======
+        // ====== Price History Download ======
+        //
+        // Uses CLOB API prices-history endpoint which returns per-token price
+        // snapshots (~10min intervals at fidelity=1). This is the only public
+        // endpoint that returns per-token data — data-api.polymarket.com/trades
+        // ignores the asset_id parameter and returns a global trade feed.
 
         public async Task<int> DownloadTradeHistoryAsync(string tokenId, string ticker, DateTime start, DateTime end)
         {
-            _logger.LogInformation("Downloading trades for {Ticker} ({Start:yyyy-MM-dd} to {End:yyyy-MM-dd})",
+            _logger.LogInformation("Downloading prices for {Ticker} ({Start:yyyy-MM-dd} to {End:yyyy-MM-dd})",
                 ticker, start, end);
 
-            var trades = await FetchTradesAsync(tokenId, start, end);
-            if (trades.Count == 0)
+            var points = await FetchPriceHistoryAsync(tokenId, start, end);
+            if (points.Count == 0)
             {
-                _logger.LogInformation("  No trades found for {Ticker}", ticker);
+                _logger.LogInformation("  No price data for {Ticker}", ticker);
                 return 0;
             }
 
-            // Aggregate to minute bars
-            var bars = AggregateToBars(trades);
+            // Group price points into 10-minute OHLCV bars
+            var bars = AggregateToBars(points);
             var totalBars = 0;
 
             foreach (var dateGroup in bars.GroupBy(b => b.Time.Date))
@@ -170,77 +190,72 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             return totalBars;
         }
 
-        private async Task<List<RawTrade>> FetchTradesAsync(string tokenId, DateTime start, DateTime end)
+        /// <summary>
+        /// Fetches price history from CLOB API prices-history endpoint.
+        /// Returns per-token price snapshots at ~10 minute intervals.
+        /// </summary>
+        private async Task<List<PricePoint>> FetchPriceHistoryAsync(string tokenId, DateTime start, DateTime end)
         {
-            var trades = new List<RawTrade>();
-            // data-api.polymarket.com caps at offset+limit <= 3500
-            var maxOffset = 3000;
-            var pageSize = 500;
+            var url = $"{ClobApi}/prices-history?market={tokenId}&interval=max&fidelity=1";
             var startEpoch = new DateTimeOffset(start).ToUnixTimeSeconds();
+            var endEpoch = new DateTimeOffset(end).ToUnixTimeSeconds();
 
-            for (var offset = 0; offset <= maxOffset; offset += pageSize)
+            try
             {
-                var url = $"{DataApi}/trades?asset_id={tokenId}&limit={pageSize}&offset={offset}";
+                var response = await _http.GetStringAsync(url);
+                var json = JObject.Parse(response);
+                var history = json["history"] as JArray;
 
-                try
+                if (history == null || history.Count == 0)
+                    return new List<PricePoint>();
+
+                var points = new List<PricePoint>();
+                foreach (var item in history)
                 {
-                    var response = await _http.GetStringAsync(url);
-                    var batch = JsonConvert.DeserializeObject<List<RawTrade>>(response);
+                    var t = item["t"]?.Value<long>() ?? 0;
+                    var p = item["p"]?.Value<decimal>() ?? 0;
 
-                    if (batch == null || batch.Count == 0)
-                        break;
+                    if (t < startEpoch || t > endEpoch) continue;
+                    if (p <= 0) continue;
 
-                    foreach (var t in batch)
+                    points.Add(new PricePoint
                     {
-                        t.Time = DateTimeOffset.FromUnixTimeSeconds(t.TimestampEpoch).UtcDateTime;
-                    }
-
-                    var filtered = batch.Where(t => t.Time >= start && t.Time <= end).ToList();
-                    trades.AddRange(filtered);
-
-                    // Past our date range — stop
-                    if (batch.Any(t => t.TimestampEpoch < startEpoch))
-                        break;
-
-                    // Less than full page means no more data
-                    if (batch.Count < pageSize)
-                        break;
-                }
-                catch (HttpRequestException ex) when (ex.Message.Contains("400"))
-                {
-                    // API offset cap reached — stop pagination silently
-                    break;
-                }
-                catch (Exception ex)
-                {
-                    _logger.LogWarning(ex, "Error fetching trades page for {TokenId} at offset {Offset}", tokenId, offset);
-                    break;
+                        Time = DateTimeOffset.FromUnixTimeSeconds(t).UtcDateTime,
+                        Price = p
+                    });
                 }
 
-                await Task.Delay(100);
+                return points;
             }
-
-            return trades;
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Error fetching price history for {TokenId}", tokenId);
+                return new List<PricePoint>();
+            }
         }
 
-        private static List<OhlcvBar> AggregateToBars(List<RawTrade> trades)
+        /// <summary>
+        /// Aggregates price snapshots into 10-minute OHLCV bars.
+        /// prices-history returns ~1 point per 10 minutes, so we group by 10-minute windows.
+        /// </summary>
+        private static List<OhlcvBar> AggregateToBars(List<PricePoint> points)
         {
-            var period = TimeSpan.FromMinutes(1);
+            var period = TimeSpan.FromMinutes(10);
 
-            return trades
-                .GroupBy(t => new DateTime(t.Time.Ticks / period.Ticks * period.Ticks, DateTimeKind.Utc))
+            return points
+                .GroupBy(p => new DateTime(p.Time.Ticks / period.Ticks * period.Ticks, DateTimeKind.Utc))
                 .OrderBy(g => g.Key)
                 .Select(group =>
                 {
-                    var sorted = group.OrderBy(t => t.Time).ToList();
+                    var sorted = group.OrderBy(p => p.Time).ToList();
                     return new OhlcvBar
                     {
                         Time = group.Key,
                         Open = sorted.First().Price,
-                        High = sorted.Max(t => t.Price),
-                        Low = sorted.Min(t => t.Price),
+                        High = sorted.Max(p => p.Price),
+                        Low = sorted.Min(p => p.Price),
                         Close = sorted.Last().Price,
-                        Volume = sorted.Sum(t => t.Size)
+                        Volume = 0  // prices-history does not provide volume
                     };
                 })
                 .ToList();
@@ -435,22 +450,10 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
 
         // ====== Models ======
 
-        private class RawTrade
+        private class PricePoint
         {
-            [JsonProperty("price")]
-            public decimal Price { get; set; }
-
-            [JsonProperty("size")]
-            public decimal Size { get; set; }
-
-            [JsonProperty("timestamp")]
-            public long TimestampEpoch { get; set; }
-
-            [JsonProperty("side")]
-            public string Side { get; set; }
-
-            [JsonIgnore]
             public DateTime Time { get; set; }
+            public decimal Price { get; set; }
         }
 
         private class OhlcvBar
