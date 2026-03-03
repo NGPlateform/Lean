@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services;
+using QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest;
 
 namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
 {
@@ -17,10 +18,14 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
         private readonly DryRunSettings _dryRunSettings;
         private readonly DryRunEngine _dryRunEngine;
         private readonly SentimentService _sentimentService;
+        private readonly BacktestRunner _backtestRunner;
         private readonly ILogger<TradingController> _logger;
 
         private static DataDownloadResult _lastDownloadResult;
         private static bool _downloadRunning;
+
+        private static BacktestComparisonResult _lastBacktestResult;
+        private static bool _backtestRunning;
 
         private bool IsDryRunMode => _dryRunSettings?.Enabled == true && _dryRunEngine != null;
 
@@ -31,7 +36,8 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             DryRunSettings dryRunSettings,
             ILogger<TradingController> logger,
             DryRunEngine dryRunEngine = null,
-            SentimentService sentimentService = null)
+            SentimentService sentimentService = null,
+            BacktestRunner backtestRunner = null)
         {
             _tradingService = tradingService;
             _marketDataService = marketDataService;
@@ -39,6 +45,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             _dryRunSettings = dryRunSettings;
             _dryRunEngine = dryRunEngine;
             _sentimentService = sentimentService;
+            _backtestRunner = backtestRunner;
             _logger = logger;
         }
 
@@ -331,6 +338,57 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
 
             if (_lastDownloadResult != null)
                 return Ok(new { status = "completed", result = _lastDownloadResult });
+
+            return Ok(new { status = "idle" });
+        }
+
+        // === Backtest endpoints ===
+
+        [HttpPost("backtest")]
+        public IActionResult RunBacktest([FromBody] BacktestRequest request)
+        {
+            if (_backtestRunning)
+                return Ok(new { status = "running", message = "Backtest already in progress" });
+
+            var runner = _backtestRunner ?? new BacktestRunner(_logger);
+            var requestDays = request?.Days ?? 30;
+            var initialBalance = request?.InitialBalance ?? 10000m;
+
+            _backtestRunning = true;
+            _lastBacktestResult = null;
+
+            _ = System.Threading.Tasks.Task.Run(() =>
+            {
+                try
+                {
+                    _lastBacktestResult = runner.RunComparison(requestDays, initialBalance);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Backtest failed");
+                    _lastBacktestResult = new BacktestComparisonResult
+                    {
+                        RunDate = DateTime.UtcNow,
+                        Results = new List<BacktestResult>()
+                    };
+                }
+                finally
+                {
+                    _backtestRunning = false;
+                }
+            });
+
+            return Ok(new { status = "started", days = requestDays, initialBalance, message = "Backtest started" });
+        }
+
+        [HttpGet("backtest/results")]
+        public IActionResult GetBacktestResults()
+        {
+            if (_backtestRunning)
+                return Ok(new { status = "running" });
+
+            if (_lastBacktestResult != null)
+                return Ok(new { status = "completed", result = _lastBacktestResult });
 
             return Ok(new { status = "idle" });
         }

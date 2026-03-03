@@ -8,11 +8,13 @@ using QuantConnect.Brokerages.Polymarket;
 using QuantConnect.Brokerages.Polymarket.Auth;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Hubs;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services;
+using QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Strategies;
 
 // Check for CLI modes
 var downloadMode = args.Contains("--download-data");
 var downloadBtcMode = args.Contains("--download-btc");
+var backtestMode = args.Contains("--backtest");
 var days = 30;
 for (int i = 0; i < args.Length - 1; i++)
 {
@@ -68,6 +70,59 @@ if (downloadMode)
         Console.WriteLine($"Error:              {result.Error}");
 
     return;
+}
+
+if (backtestMode)
+{
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<BacktestRunner>();
+
+    Console.WriteLine($"=== Backtest Comparison ({days} days) ===");
+    Console.WriteLine();
+
+    var runner = new BacktestRunner(logger);
+    var result = runner.RunComparison(days);
+
+    Console.WriteLine();
+    PrintBacktestResults(result);
+    return;
+}
+
+static void PrintBacktestResults(BacktestComparisonResult result)
+{
+    Console.WriteLine($"=== Backtest Results ===");
+    Console.WriteLine($"Data: {result.DataStartDate:yyyy-MM-dd} to {result.DataEndDate:yyyy-MM-dd} | " +
+        $"Tokens: {result.TotalTokens} | Bars: {result.TotalBars} | " +
+        $"Elapsed: {result.TotalElapsedMs / 1000:F1}s");
+    Console.WriteLine();
+
+    // Header
+    Console.WriteLine("{0,-16}| {1,-22}| {2,10} | {3,7} | {4,10} | {5,8} | {6,6}",
+        "Strategy", "Params", "PnL", "Sharpe", "MaxDD", "WinRate", "Fills");
+    Console.WriteLine(new string('-', 90));
+
+    foreach (var r in result.Results)
+    {
+        var paramStr = string.Join(" ", r.Parameters.Select(p =>
+        {
+            var key = p.Key.Length > 2 ? p.Key.Substring(0, 2).ToUpper() : p.Key.ToUpper();
+            return $"{key}={p.Value}";
+        }));
+        if (paramStr.Length > 20) paramStr = paramStr.Substring(0, 20);
+
+        var m = r.Metrics;
+        Console.WriteLine("{0,-16}| {1,-22}| {2,10} | {3,7:F2} | {4,10} | {5,7:F1}% | {6,6}",
+            r.StrategyName,
+            paramStr,
+            m.TotalPnl >= 0 ? $"+${m.TotalPnl:F2}" : $"-${Math.Abs(m.TotalPnl):F2}",
+            m.SharpeRatio,
+            $"-${m.MaxDrawdown:F2}",
+            m.WinRate,
+            m.FillCount);
+    }
+
+    Console.WriteLine(new string('-', 90));
+    Console.WriteLine($"Total elapsed: {result.TotalElapsedMs / 1000:F1}s");
 }
 
 // Normal web server mode

@@ -12,7 +12,8 @@ Dashboard 做市模拟系统       ███████████████
 Dashboard 数据下载工具       ████████████████████ 100%  (CLI + API 端点)
 BTC 相关性分析 & 随动策略    ████████████████████ 100%  (BTC 数据下载 + 相关性监控 + BtcFollowMM 策略)
 外部情绪集成                 ████████████████████ 100%  (Fear&Greed Index + Binance 资金费率 → SentimentService)
-测试                        ████████████████████  95%  (189 Dashboard tests, 90 brokerage tests)
+多策略回测对比框架           ████████████████████ 100%  (4策略×3参数 网格回测 + Sharpe/MaxDD/WinRate 指标)
+测试                        ████████████████████  95%  (216 Dashboard tests, 90 brokerage tests)
 ```
 
 ---
@@ -103,7 +104,20 @@ BTC 相关性分析 & 随动策略    ██████████████
 | B.7 | SentimentService | **DONE** | `BackgroundService` 双定时器轮询：Fear & Greed Index (每30分钟) + Binance BTCUSDT 资金费率 (每60秒)。暴露 `GetSentimentSpreadMultiplier()` [0.8,1.5] 和 `GetSentimentDirectionalBias()` [-1,1] 反向情绪信号 |
 | B.8 | BtcFollowMM 情绪集成 | **DONE** | 三参数构造函数 + `EnableSentiment` 参数 + 乘法覆盖层：极端情绪/高费率→加宽 spread，反向偏移→方向性 size 调整 |
 | B.9 | `/api/sentiment` 端点 | **DONE** | 返回 FGI 值/分类、资金费率/信号、复合乘数/方向偏移 |
-| B.10 | 情绪测试 | **DONE** | 51 个新测试 (SentimentServiceTests 25 + BtcFollowMMStrategy 情绪集成 7 + FGI 分类 19)，总计 189 个 Dashboard 测试全部通过 |
+| B.10 | 情绪测试 | **DONE** | 51 个新测试 (SentimentServiceTests 25 + BtcFollowMMStrategy 情绪集成 7 + FGI 分类 19) |
+
+### 多策略回测对比框架 (P3 增量)
+
+| # | 组件 | 状态 | 说明 |
+|---|------|------|------|
+| R.1 | BacktestModels | **DONE** | HistoricalBar, BacktestResult, BacktestComparisonResult, BacktestMetricsSummary 数据模型 |
+| R.2 | HistoricalDataLoader | **DONE** | CSV 解析 (minute bars + BTC bars)、合成 OrderBook (2 层 bid/ask)、时间线构建、CryptoMarketInfo → DashboardMarket 转换 |
+| R.3 | BacktestEngine | **DONE** | 单策略回放引擎：确定性成交模型 (taker/maker)、volume 限制 (depth×0.1)、订单老化 (6 tick=60min)、position/PnL 跟踪 (复用 SimulatedOrder/Trade/Position) |
+| R.4 | BacktestRunner | **DONE** | 多策略编排：4策略×3参数=12组网格搜索、数据一次加载复用、BtcFollowMM 用 NullLogger + 中性情绪默认值 |
+| R.5 | BacktestMetrics | **DONE** | Sharpe (10min 年化 √52596)、MaxDD (peak tracking)、WinRate (FIFO round-trip 配对)、ProfitFactor、FillRate |
+| R.6 | CLI 模式 | **DONE** | `--backtest --days N` ASCII 表格输出 (Strategy/Params/PnL/Sharpe/MaxDD/WinRate/Fills) |
+| R.7 | API 端点 | **DONE** | `POST /api/backtest` 后台启动 + `GET /api/backtest/results` 状态查询 |
+| R.8 | 测试 | **DONE** | 27 个新测试 (CSV 解析 3 + 合成 OrderBook 3 + 确定性成交 4 + Metrics 5 + Engine 集成 3 + Runner 2 + 数据加载 3 + 边界 4)，总计 216 个 Dashboard 测试全部通过 |
 
 ### 测试
 
@@ -118,7 +132,7 @@ BTC 相关性分析 & 随动策略    ██████████████
 | T.7 | PolymarketWebSocketTests | **DONE** | 12 个测试 — 订阅创建 (market/user)、消息解析 (book/price_change/trade/order/invalid/null/empty/unknown) |
 | T.8 | PolymarketBrokerageIntegrationTests | **DONE** | 16 个测试 — PlaceOrder/CancelOrder/UpdateOrder 全链路、GetOpenOrders/Holdings/CashBalance 转换、WebSocket order update (live/matched/partial/canceled) |
 | T.9 | PolymarketStrategyValidationTests | **DONE** | 37 个测试 — Kelly PCM (7: flat/low-conf/up/down/half-vs-full/max-clamp/multi)、Risk Model (3: defaults/custom/settlement)、Alpha Models (6: arb/meanrev/corr 初始化+自定义)、Market Maker (8: price-clamp/skew/levels/sizes/arb-overpriced/underpriced/normal)、Data Quality (10: dir/json/48-tokens/pairs/csv-format/ohlc/dust/dates/bars/yes-no-independence) |
-| T.10 | Dashboard 测试 | **DONE** | 189 个测试 — MarketMakingStrategy (20)、MeanReversionStrategy (17)、SpreadCaptureStrategy (15)、DryRunModels (14)、ApiClientRetryTests (8)、OrderBookStalenessTests (3)、BtcPriceServiceTests (16)、BtcFollowMMStrategyTests (42, 含 TTE 7 + Asymmetry 5 + Sentiment 7)、CorrelationMonitorTests (10)、SentimentServiceTests (44, 含分类 19 + 信号 7 + 状态 4 + 乘数 6 + 偏移 5 + HTTP 4) |
+| T.10 | Dashboard 测试 | **DONE** | 216 个测试 — MarketMakingStrategy (20)、MeanReversionStrategy (17)、SpreadCaptureStrategy (15)、DryRunModels (14)、ApiClientRetryTests (8)、OrderBookStalenessTests (3)、BtcPriceServiceTests (16)、BtcFollowMMStrategyTests (42, 含 TTE 7 + Asymmetry 5 + Sentiment 7)、CorrelationMonitorTests (10)、SentimentServiceTests (44, 含分类 19 + 信号 7 + 状态 4 + 乘数 6 + 偏移 5 + HTTP 4)、BacktestTests (27) |
 | T.11 | 策略回测 P&L 验证 | **MISSING** | 需部署 .NET 10 SDK 运行完整 LEAN 引擎回测 |
 
 ---
@@ -224,12 +238,17 @@ BTC 相关性分析 & 随动策略    ██████████████
 
 ### P3 — 增强功能 (可选)
 
-#### 8. 多策略回测对比框架
+#### ~~8. 多策略回测对比框架~~ ✅ 已完成
 
-**工作内容**:
-- 搭建批量回测脚本，并行运行 MM/MeanReversion/SpreadCapture
-- 统一输出 P&L、Sharpe、MaxDrawdown、Fill Rate 等指标
-- 参数扫描: HalfSpread、SkewFactor、OrderSize 的网格搜索
+**完成情况**: `Dashboard/Services/Backtest/` — 5 个新文件实现完整回测对比框架。
+- **BacktestModels.cs**: HistoricalBar, BacktestResult, BacktestComparisonResult, BacktestMetricsSummary
+- **HistoricalDataLoader.cs**: CSV 解析 + 合成 2 层 OrderBook + 时间线构建 (10min 窗口分组)
+- **BacktestEngine.cs**: 确定性成交模型 (taker/maker/volume 限制/订单老化)
+- **BacktestRunner.cs**: 4 策略 × 3 参数 = 12 组网格搜索，数据一次加载复用
+- **BacktestMetrics.cs**: Sharpe/MaxDD/WinRate/ProfitFactor/FillRate
+- **CLI**: `dotnet run -- --backtest --days 7` → ASCII 对比表
+- **API**: `POST /api/backtest` + `GET /api/backtest/results`
+- **测试**: 27 个新测试，总计 216 个 Dashboard 测试全部通过
 
 ---
 
@@ -265,7 +284,7 @@ BTC 相关性分析 & 随动策略    ██████████████
 | **P2** | 小资金实盘验证 | 1 天 | 待做 |
 | ~~**P2**~~ | ~~Dashboard 自动化测试~~ | ~~2 天~~ | ✅ 已完成 (66 tests, net7.0, all pass) |
 | ~~**P2**~~ | ~~错误处理与重连~~ | ~~1.5 天~~ | ✅ 已完成 (REST重试+WS心跳+订单簿过期+异常审计+11 tests) |
-| **P3** | 回测对比框架 | 2 天 | 待做 |
+| ~~**P3**~~ | ~~回测对比框架~~ | ~~2 天~~ | ✅ 已完成 (5 文件, 27 tests, CLI + API) |
 | **P3** | Dashboard 增强 | 3 天 | 待做 |
 | **P3** | 批量 Symbol 注册 | 1 天 | 待做 |
 | | **剩余合计** | **~10 天** | |
