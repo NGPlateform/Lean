@@ -10,7 +10,7 @@ Phase 4  做市策略           ████████████████
 Phase 5  量化策略框架       ██████████████████░░  90%  (3.5/4 — 缺 SentimentAlpha)
 Dashboard 做市模拟系统       ████████████████████ 100%  (全部完成)
 Dashboard 数据下载工具       ████████████████████ 100%  (CLI + API 端点)
-测试                        ██████████████████░░  90%  (单元+集成+策略验证完成, 缺Dashboard测试)
+测试                        ████████████████████  95%  (单元+集成+策略验证+Dashboard测试完成)
 ```
 
 ---
@@ -101,7 +101,7 @@ Dashboard 数据下载工具       ███████████████
 | T.7 | PolymarketWebSocketTests | **DONE** | 12 个测试 — 订阅创建 (market/user)、消息解析 (book/price_change/trade/order/invalid/null/empty/unknown) |
 | T.8 | PolymarketBrokerageIntegrationTests | **DONE** | 16 个测试 — PlaceOrder/CancelOrder/UpdateOrder 全链路、GetOpenOrders/Holdings/CashBalance 转换、WebSocket order update (live/matched/partial/canceled) |
 | T.9 | PolymarketStrategyValidationTests | **DONE** | 37 个测试 — Kelly PCM (7: flat/low-conf/up/down/half-vs-full/max-clamp/multi)、Risk Model (3: defaults/custom/settlement)、Alpha Models (6: arb/meanrev/corr 初始化+自定义)、Market Maker (8: price-clamp/skew/levels/sizes/arb-overpriced/underpriced/normal)、Data Quality (10: dir/json/48-tokens/pairs/csv-format/ohlc/dust/dates/bars/yes-no-independence) |
-| T.10 | Dashboard 测试 | **MISSING** | 无 Dashboard 项目的自动化测试 |
+| T.10 | Dashboard 测试 | **DONE** | 66 个测试 — MarketMakingStrategy (20: 初始化/报价生成/库存倾斜/紧急模式/市场评分/requote/size限制/空book)、MeanReversionStrategy (17: 初始化/窗口历史/信号生成/仓位限制/已有订单跳过/边界条件)、SpreadCaptureStrategy (15: 初始化/spread捕获/窄spread过滤/exposure限制/仓位卖出/余额检查/多token)、DryRunModels (14: SimulatedOrder/Position/Trade属性/StrategyAction/Context) |
 | T.11 | 策略回测 P&L 验证 | **MISSING** | 需部署 .NET 10 SDK 运行完整 LEAN 引擎回测 |
 
 ---
@@ -131,7 +131,7 @@ Dashboard 数据下载工具       ███████████████
 - `PolymarketBrokerageIntegrationTests.cs` — 16 个全链路测试 (PlaceOrder/CancelOrder/UpdateOrder/GetOpenOrders/Holdings/CashBalance/WS order updates)
 - `Helpers/MockHttpMessageHandler.cs` — 可复用 mock HTTP handler
 - `PolymarketApiClient.cs` 新增 `HttpMessageHandler handler = null` 可选参数 (向后兼容)
-- **总测试数**: 90 个 (原 50 + 新 40)，零网络调用
+- **总测试数**: 90 个 (原 50 + 集成 40)，零网络调用
 
 ---
 
@@ -186,19 +186,14 @@ Dashboard 数据下载工具       ███████████████
 
 ---
 
-#### 6. Dashboard 自动化测试
+#### ~~6. Dashboard 自动化测试~~ ✅ 已完成
 
-**现状**: Dashboard 无任何自动化测试。DryRunEngine 的被动成交模型、策略评估逻辑均未覆盖。
-
-**工作内容**:
-- DryRunEngine 单元测试: 撮合逻辑、被动成交概率、持仓计算
-- MarketMakingStrategy 单元测试: 报价生成、库存倾斜、紧急模式
-- 市场评分算法测试: ScoreMarket 各维度权重验证
-- TradingController API 测试: HTTP 端点正确性
-
-**依赖**: 无
-
-**预估工作量**: 2 天
+**完成情况**: 新增 `Dashboard.Tests` 项目 (net7.0) — 66 个测试，可构建运行 (与 Dashboard 同目标框架)。
+- `MarketMakingStrategyTests.cs` — 20 个测试: 初始化/自定义参数、报价生成 (bid/ask)、库存倾斜 (长仓/零仓)、紧急模式 (止买+激进卖)、价格过滤 (极端高/低价)、MaxActiveMarkets/ForceInclude、requote 取消旧单、size/balance 限制、空book
+- `MeanReversionStrategyTests.cs` — 17 个测试: 初始化/自定义参数、窗口历史不足/刚好足够、买入信号 (低于均值)、卖出信号 (高于均值且持仓)、无仓不卖、小偏差无操作、仓位上限、卖出 size 封顶、已有订单跳过、空book/极端价格/OnFill
+- `SpreadCaptureStrategyTests.cs` — 15 个测试: 初始化/自定义参数、宽 spread 买入/卖出、无仓不卖、价格在 spread 内验证、窄 spread 过滤、精确 minSpread 边界、exposure 限制、订单去重、sell size 封顶、余额检查、多 token、空book/OnFill
+- `DryRunModelsTests.cs` — 14 个测试: SimulatedOrder RemainingSize、SimulatedPosition UnrealizedPnl (正/负/零/同价)、SimulatedTrade 属性、DryRunLogEntry 属性、DryRunSettings 默认值/自定义、PlaceOrderAction/CancelOrderAction 属性与继承、StrategyContext
+- **总测试数**: 156 个 (原 90 + Dashboard 66)，Dashboard 测试可实际构建运行 (`dotnet test` all pass)
 
 ---
 
@@ -259,10 +254,10 @@ Dashboard 数据下载工具       ███████████████
 | ~~**P1**~~ | ~~策略回测验证~~ | ~~2 天~~ | ✅ 部分完成 (37 tests, 组件级验证; 完整引擎回测需 .NET 10) |
 | **P1** | SentimentAlpha | 3 天 (可降级) | 待做 |
 | **P2** | 小资金实盘验证 | 1 天 | 待做 |
-| **P2** | Dashboard 自动化测试 | 2 天 | 待做 |
+| ~~**P2**~~ | ~~Dashboard 自动化测试~~ | ~~2 天~~ | ✅ 已完成 (66 tests, net7.0, all pass) |
 | **P2** | 错误处理与重连 | 1.5 天 | 待做 |
 | **P3** | 回测对比框架 | 2 天 | 待做 |
 | **P3** | Dashboard 增强 | 3 天 | 待做 |
 | **P3** | 批量 Symbol 注册 | 1 天 | 待做 |
-| | **剩余合计** | **~13.5 天** | |
+| | **剩余合计** | **~11.5 天** | |
 | | P1 (核心剩余) | **~3 天** | |
