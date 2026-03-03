@@ -128,9 +128,12 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             await BroadcastState();
         }
 
+        private readonly ConcurrentDictionary<string, DateTime> _staleWarningTimes = new();
+
         private Dictionary<string, PolymarketOrderBook> GetAllCachedOrderBooks()
         {
             var books = new Dictionary<string, PolymarketOrderBook>();
+            var staleThreshold = TimeSpan.FromSeconds(_settings.OrderBookStaleThresholdSeconds);
             _tradingService.EnsureMarketsLoaded();
             var markets = _tradingService.GetMarkets();
             foreach (var market in markets)
@@ -139,8 +142,25 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                 {
                     if (string.IsNullOrEmpty(token.TokenId)) continue;
                     var book = _marketDataService.GetCachedOrderBook(token.TokenId);
-                    if (book != null)
-                        books[token.TokenId] = book;
+                    if (book == null) continue;
+
+                    var lastUpdated = _marketDataService.GetOrderBookLastUpdated(token.TokenId);
+                    if (lastUpdated.HasValue && DateTime.UtcNow - lastUpdated.Value > staleThreshold)
+                    {
+                        // Throttle warnings to once per ~60s per token
+                        var now = DateTime.UtcNow;
+                        if (!_staleWarningTimes.TryGetValue(token.TokenId, out var lastWarning) ||
+                            now - lastWarning > TimeSpan.FromSeconds(60))
+                        {
+                            _staleWarningTimes[token.TokenId] = now;
+                            var age = (int)(now - lastUpdated.Value).TotalSeconds;
+                            _logger.LogWarning("Skipping stale order book for {TokenId} (age: {Age}s, threshold: {Threshold}s)",
+                                ShortId(token.TokenId), age, _settings.OrderBookStaleThresholdSeconds);
+                        }
+                        continue;
+                    }
+
+                    books[token.TokenId] = book;
                 }
             }
             return books;
@@ -291,7 +311,8 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                     $"FILL: {order.Side} {fillSize:F2} of {ShortId(order.TokenId)} @ {fillPrice:F4}" +
                     $" | Balance: ${_balance:F2}");
 
-                try { _strategy.OnFill(trade); } catch { }
+                try { _strategy.OnFill(trade); }
+                catch (Exception ex) { _logger.LogDebug(ex, "Strategy.OnFill error"); }
             }
         }
 
@@ -553,7 +574,10 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                                 seeded++;
                             }
                         }
-                        catch { }
+                        catch (Exception ex)
+                        {
+                            _logger.LogDebug(ex, "Failed to seed order book for {TokenId}", ShortId(tokenId));
+                        }
                     }
 
                     Log("Engine", "Info", $"Auto-subscribed to {tokenIds.Count} tokens from top {topMarkets.Count} markets (seeded {seeded} order books)");

@@ -77,6 +77,9 @@ namespace QuantConnect.Brokerages.Polymarket
                 apiKey,
                 apiSecret);
 
+            // Sync order state after WebSocket reconnects
+            webSocket.Open += (_, _) => OnWebSocketReconnected();
+
             var subscriptionManager = new EventBasedDataQueueHandlerSubscriptionManager();
             subscriptionManager.SubscribeImpl += (symbols, _) => Subscribe(symbols);
             subscriptionManager.UnsubscribeImpl += (symbols, _) => Unsubscribe(symbols);
@@ -267,6 +270,47 @@ namespace QuantConnect.Brokerages.Polymarket
         #endregion
 
         #region WebSocket Handling
+
+        /// <summary>
+        /// Called when the WebSocket reconnects. Syncs order state with the exchange
+        /// and clears stale order book data so fresh snapshots are received.
+        /// </summary>
+        private void OnWebSocketReconnected()
+        {
+            try
+            {
+                // Clear order books to force fresh snapshots from WebSocket
+                _orderBooks.Clear();
+
+                if (_orderIdMap.IsEmpty) return;
+
+                // Check which orders still exist on the exchange
+                var liveOrders = _apiClient.GetOpenOrders();
+                var liveIds = new HashSet<string>(liveOrders.Select(o => o.Id));
+
+                foreach (var kvp in _orderIdMap)
+                {
+                    if (liveIds.Contains(kvp.Key)) continue;
+
+                    // Order no longer exists on exchange — emit canceled
+                    if (int.TryParse(kvp.Value, out var leanOrderId) &&
+                        CachedOrderIDs.TryGetValue(leanOrderId, out var order))
+                    {
+                        OnOrderEvent(new OrderEvent(order, DateTime.UtcNow, OrderFee.Zero)
+                        {
+                            Status = OrderStatus.Canceled
+                        });
+                        Log.Trace($"PolymarketBrokerage.OnWebSocketReconnected(): Order {kvp.Key} no longer live, emitting Canceled");
+                    }
+
+                    _orderIdMap.TryRemove(kvp.Key, out _);
+                }
+            }
+            catch (Exception e)
+            {
+                Log.Error(e, "PolymarketBrokerage.OnWebSocketReconnected()");
+            }
+        }
 
         /// <summary>
         /// Handles incoming WebSocket messages

@@ -21,12 +21,34 @@ namespace QuantConnect.Brokerages.Polymarket.Tests.Helpers
     public class MockHttpMessageHandler : HttpMessageHandler
     {
         private readonly List<(string UrlContains, HttpResponseMessage Response)> _responses = new();
+        private readonly Queue<HttpResponseMessage> _enqueuedResponses = new();
         private HttpResponseMessage _defaultResponse;
 
         /// <summary>
         /// All requests sent through this handler, for inspection/assertion
         /// </summary>
         public List<HttpRequestMessage> SentRequests { get; } = new();
+
+        /// <summary>
+        /// Enqueues a response to be returned in FIFO order, regardless of URL.
+        /// Enqueued responses take priority over URL-matched and default responses.
+        /// </summary>
+        public void EnqueueResponse(string jsonBody, HttpStatusCode code = HttpStatusCode.OK,
+            IEnumerable<KeyValuePair<string, string>> headers = null)
+        {
+            var response = new HttpResponseMessage(code)
+            {
+                Content = new StringContent(jsonBody, Encoding.UTF8, "application/json")
+            };
+            if (headers != null)
+            {
+                foreach (var h in headers)
+                {
+                    response.Headers.TryAddWithoutValidation(h.Key, h.Value);
+                }
+            }
+            _enqueuedResponses.Enqueue(response);
+        }
 
         /// <summary>
         /// Registers a canned response for any URL containing the given substring
@@ -54,6 +76,12 @@ namespace QuantConnect.Brokerages.Polymarket.Tests.Helpers
             HttpRequestMessage request, CancellationToken cancellationToken)
         {
             SentRequests.Add(request);
+
+            // Enqueued responses take priority (FIFO)
+            if (_enqueuedResponses.Count > 0)
+            {
+                return Task.FromResult(_enqueuedResponses.Dequeue());
+            }
 
             var url = request.RequestUri?.ToString() ?? string.Empty;
             var match = _responses.FirstOrDefault(r => url.Contains(r.UrlContains));

@@ -30,10 +30,14 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         // In-memory order book snapshots keyed by token ID
         private readonly ConcurrentDictionary<string, PolymarketOrderBook> _orderBooks = new();
 
+        // Tracks when each order book was last updated
+        private readonly ConcurrentDictionary<string, DateTime> _orderBookLastUpdated = new();
+
         // Token IDs currently subscribed to
         private readonly ConcurrentDictionary<string, byte> _subscribedTokens = new();
 
         private ClientWebSocket _marketWs;
+        private DateTime _lastWsMessageTime;
 
         public MarketDataService(
             IHubContext<TradingHub> hubContext,
@@ -63,7 +67,18 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         public void SeedOrderBook(string tokenId, PolymarketOrderBook book)
         {
             if (book != null)
+            {
                 _orderBooks[tokenId] = book;
+                _orderBookLastUpdated[tokenId] = DateTime.UtcNow;
+            }
+        }
+
+        /// <summary>
+        /// Gets the last time the order book for a token was updated, or null if unknown
+        /// </summary>
+        public DateTime? GetOrderBookLastUpdated(string tokenId)
+        {
+            return _orderBookLastUpdated.TryGetValue(tokenId, out var ts) ? ts : null;
         }
 
         /// <summary>
@@ -127,30 +142,56 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                 await _marketWs.SendAsync(new ArraySegment<byte>(bytes), WebSocketMessageType.Text, true, ct);
             }
 
+            _lastWsMessageTime = DateTime.UtcNow;
+
+            // Start heartbeat watchdog — aborts WebSocket if no message for 30s
+            using var watchdogCts = CancellationTokenSource.CreateLinkedTokenSource(ct);
+            var watchdogTask = Task.Run(async () =>
+            {
+                while (!watchdogCts.Token.IsCancellationRequested)
+                {
+                    await Task.Delay(5000, watchdogCts.Token);
+                    if (DateTime.UtcNow - _lastWsMessageTime > TimeSpan.FromSeconds(30))
+                    {
+                        _logger.LogWarning("WebSocket heartbeat timeout (no message for 30s), aborting connection");
+                        _marketWs.Abort();
+                        break;
+                    }
+                }
+            }, watchdogCts.Token);
+
             var buffer = new byte[8192];
             var messageBuffer = new StringBuilder();
 
-            while (_marketWs.State == WebSocketState.Open && !ct.IsCancellationRequested)
+            try
             {
-                var result = await _marketWs.ReceiveAsync(new ArraySegment<byte>(buffer), ct);
-
-                if (result.MessageType == WebSocketMessageType.Close)
+                while (_marketWs.State == WebSocketState.Open && !ct.IsCancellationRequested)
                 {
-                    _logger.LogWarning("WebSocket closed by server");
-                    break;
+                    var result = await _marketWs.ReceiveAsync(new ArraySegment<byte>(buffer), ct);
+                    _lastWsMessageTime = DateTime.UtcNow;
+
+                    if (result.MessageType == WebSocketMessageType.Close)
+                    {
+                        _logger.LogWarning("WebSocket closed by server");
+                        break;
+                    }
+
+                    messageBuffer.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
+
+                    if (!result.EndOfMessage) continue;
+
+                    var raw = messageBuffer.ToString();
+                    messageBuffer.Clear();
+
+                    await ProcessMessageAsync(raw);
                 }
-
-                messageBuffer.Append(Encoding.UTF8.GetString(buffer, 0, result.Count));
-
-                if (!result.EndOfMessage) continue;
-
-                var raw = messageBuffer.ToString();
-                messageBuffer.Clear();
-
-                await ProcessMessageAsync(raw);
             }
-
-            _marketWs.Dispose();
+            finally
+            {
+                watchdogCts.Cancel();
+                try { await watchdogTask; } catch (OperationCanceledException) { }
+                _marketWs.Dispose();
+            }
         }
 
         private async Task ProcessMessageAsync(string raw)
@@ -208,8 +249,9 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                         book = _tradingService.GetOrderBook(tokenId);
                         _orderBooks[tokenId] = book;
                     }
-                    catch
+                    catch (Exception ex)
                     {
+                        _logger.LogWarning(ex, "Failed to fetch order book snapshot for {TokenId}", tokenId);
                         return;
                     }
                 }
@@ -227,6 +269,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                 }
 
                 _orderBooks[tokenId] = book;
+                _orderBookLastUpdated[tokenId] = DateTime.UtcNow;
             }
 
             await _hubContext.Clients.All.SendAsync("OrderBookUpdate", new

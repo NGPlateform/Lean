@@ -13,4 +13,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Dashboard\QuantConnect.Brokerages.Polymarket.Dashboard.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\QuantConnect.Brokerages.Polymarket.Tests\Helpers\MockHttpMessageHandler.cs" Link="Helpers\MockHttpMessageHandler.cs" />
+  </ItemGroup>
 </Project>

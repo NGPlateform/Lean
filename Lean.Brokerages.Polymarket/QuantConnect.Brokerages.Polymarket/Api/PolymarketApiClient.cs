@@ -7,11 +7,13 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Numerics;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading;
 using Newtonsoft.Json;
 using QuantConnect.Orders;
 using QuantConnect.Brokerages.Polymarket.Api.Models;
@@ -30,6 +32,9 @@ namespace QuantConnect.Brokerages.Polymarket.Api
         private readonly EIP712Signer _signer;
         private readonly string _baseUrl;
 
+        private const int MaxRetries = 3;
+        private static readonly int[] RetryDelaysMs = { 1000, 2000, 4000 };
+
         /// <summary>
         /// Creates a new Polymarket API client
         /// </summary>
@@ -39,6 +44,7 @@ namespace QuantConnect.Brokerages.Polymarket.Api
             _baseUrl = baseUrl.TrimEnd('/');
             _httpClient = handler != null ? new HttpClient(handler) : new HttpClient();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _httpClient.Timeout = TimeSpan.FromSeconds(30);
 
             if (!string.IsNullOrWhiteSpace(credentials.PrivateKey))
             {
@@ -198,42 +204,82 @@ namespace QuantConnect.Brokerages.Polymarket.Api
         private string Get(string path)
         {
             var url = $"{_baseUrl}{path}";
-            var response = _httpClient.GetAsync(url).Result;
-            response.EnsureSuccessStatusCode();
-            return response.Content.ReadAsStringAsync().Result;
+            return ExecuteWithRetry(() => new HttpRequestMessage(HttpMethod.Get, url));
         }
 
         private string AuthenticatedGet(string path)
         {
             var url = $"{_baseUrl}{path}";
-            var request = new HttpRequestMessage(HttpMethod.Get, url);
-            AddAuthHeaders(request, "GET", path);
-            var response = _httpClient.SendAsync(request).Result;
-            response.EnsureSuccessStatusCode();
-            return response.Content.ReadAsStringAsync().Result;
+            return ExecuteWithRetry(() =>
+            {
+                var request = new HttpRequestMessage(HttpMethod.Get, url);
+                AddAuthHeaders(request, "GET", path);
+                return request;
+            });
         }
 
         private string AuthenticatedPost(string path, string body)
         {
             var url = $"{_baseUrl}{path}";
-            var request = new HttpRequestMessage(HttpMethod.Post, url)
+            return ExecuteWithRetry(() =>
             {
-                Content = new StringContent(body, Encoding.UTF8, "application/json")
-            };
-            AddAuthHeaders(request, "POST", path, body);
-            var response = _httpClient.SendAsync(request).Result;
-            response.EnsureSuccessStatusCode();
-            return response.Content.ReadAsStringAsync().Result;
+                var request = new HttpRequestMessage(HttpMethod.Post, url)
+                {
+                    Content = new StringContent(body, Encoding.UTF8, "application/json")
+                };
+                AddAuthHeaders(request, "POST", path, body);
+                return request;
+            }, isIdempotent: false);
         }
 
         private string AuthenticatedDelete(string path)
         {
             var url = $"{_baseUrl}{path}";
-            var request = new HttpRequestMessage(HttpMethod.Delete, url);
-            AddAuthHeaders(request, "DELETE", path);
-            var response = _httpClient.SendAsync(request).Result;
+            return ExecuteWithRetry(() =>
+            {
+                var request = new HttpRequestMessage(HttpMethod.Delete, url);
+                AddAuthHeaders(request, "DELETE", path);
+                return request;
+            });
+        }
+
+        private string ExecuteWithRetry(Func<HttpRequestMessage> requestFactory, bool isIdempotent = true)
+        {
+            HttpResponseMessage response = null;
+            for (var attempt = 0; attempt <= MaxRetries; attempt++)
+            {
+                var request = requestFactory();
+                response = _httpClient.SendAsync(request).Result;
+
+                if (response.IsSuccessStatusCode)
+                {
+                    return response.Content.ReadAsStringAsync().Result;
+                }
+
+                var statusCode = (int)response.StatusCode;
+
+                // Don't retry client errors (4xx) except 429
+                var isRetryable = statusCode == 429 || statusCode >= 500;
+                if (!isRetryable || !isIdempotent || attempt == MaxRetries)
+                {
+                    break;
+                }
+
+                // Determine delay: respect Retry-After header for 429, otherwise exponential backoff
+                var delayMs = RetryDelaysMs[Math.Min(attempt, RetryDelaysMs.Length - 1)];
+                if (statusCode == 429 && response.Headers.RetryAfter?.Delta != null)
+                {
+                    var retryAfterMs = (int)Math.Min(response.Headers.RetryAfter.Delta.Value.TotalMilliseconds, 30000);
+                    delayMs = Math.Max(delayMs, retryAfterMs);
+                }
+
+                Log.Trace($"PolymarketApiClient: HTTP {statusCode}, retrying in {delayMs}ms (attempt {attempt + 1}/{MaxRetries})");
+                Thread.Sleep(delayMs);
+            }
+
+            // Exhausted retries or non-retryable error
             response.EnsureSuccessStatusCode();
-            return response.Content.ReadAsStringAsync().Result;
+            return null; // unreachable - EnsureSuccessStatusCode throws
         }
 
         private void AddAuthHeaders(HttpRequestMessage request, string method, string path, string body = "")
