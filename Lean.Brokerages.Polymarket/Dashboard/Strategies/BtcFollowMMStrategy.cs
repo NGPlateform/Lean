@@ -20,6 +20,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
 
         private readonly BtcPriceService _btcPriceService;
         private readonly CorrelationMonitor _correlationMonitor;
+        private readonly SentimentService _sentimentService;
 
         // === MM Configuration (same as MarketMakingStrategy) ===
         private decimal _orderSize = 25m;
@@ -46,6 +47,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
         private decimal _momentumSizeReduction = 0.5m;    // Reduce unfavorable side size
         private decimal _minCorrelation = 0.3m;           // Minimum |correlation| to apply BTC signal
         private decimal _downMoveMultiplierScale = 0.5m;  // BTC down-moves get reduced multiplier (asymmetry)
+        private bool _enableSentiment = true;               // Enable sentiment overlay when service available
 
         // State
         private int _tickCount;
@@ -62,9 +64,15 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
         private static readonly Regex StrikeRegex = new(@"\$([\d,]+(?:\.\d+)?)(k|K)?", RegexOptions.Compiled);
 
         public BtcFollowMMStrategy(BtcPriceService btcPriceService, CorrelationMonitor correlationMonitor)
+            : this(btcPriceService, correlationMonitor, sentimentService: null)
+        {
+        }
+
+        public BtcFollowMMStrategy(BtcPriceService btcPriceService, CorrelationMonitor correlationMonitor, SentimentService sentimentService)
         {
             _btcPriceService = btcPriceService;
             _correlationMonitor = correlationMonitor;
+            _sentimentService = sentimentService;
         }
 
         public void Initialize(Dictionary<string, string> parameters)
@@ -96,6 +104,8 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
                 _minCorrelation = mcv;
             if (parameters.TryGetValue("DownMoveMultiplierScale", out var dm) && decimal.TryParse(dm, out var dmv))
                 _downMoveMultiplierScale = dmv;
+            if (parameters.TryGetValue("EnableSentiment", out var es) && bool.TryParse(es, out var esv))
+                _enableSentiment = esv;
         }
 
         public List<StrategyAction> Evaluate(StrategyContext context)
@@ -211,6 +221,32 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
             else
             {
                 adjustment.Reason = $"BTC neutral | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} tte={tteMultiplier:F2} sig={signalStrength:F4}";
+            }
+
+            // Sentiment overlay: multiplicative combination
+            if (_enableSentiment && _sentimentService != null && _sentimentService.IsReady)
+            {
+                var sentimentMultiplier = _sentimentService.GetSentimentSpreadMultiplier();
+                var sentimentBias = _sentimentService.GetSentimentDirectionalBias();
+
+                adjustment.BidSpreadMultiplier *= sentimentMultiplier;
+                adjustment.AskSpreadMultiplier *= sentimentMultiplier;
+
+                // Directional bias: positive = bullish contrarian
+                if (sentimentBias > 0)
+                {
+                    // Bullish bias: widen ask more (reluctant to sell), increase bid size
+                    adjustment.AskSpreadMultiplier *= 1.0m + sentimentBias * 0.3m;
+                    adjustment.BidSizeMultiplier *= 1.0m + sentimentBias * 0.2m;
+                }
+                else if (sentimentBias < 0)
+                {
+                    // Bearish bias: widen bid more (reluctant to buy), increase ask size
+                    adjustment.BidSpreadMultiplier *= 1.0m + Math.Abs(sentimentBias) * 0.3m;
+                    adjustment.AskSizeMultiplier *= 1.0m + Math.Abs(sentimentBias) * 0.2m;
+                }
+
+                adjustment.Reason += $" | sent={sentimentMultiplier:F2} bias={sentimentBias:F2} fgi={_sentimentService.FearGreedIndex} fr={_sentimentService.FundingRate:F6}";
             }
 
             return adjustment;

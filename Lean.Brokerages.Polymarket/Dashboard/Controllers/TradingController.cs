@@ -16,6 +16,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
         private readonly DataDownloadService _dataDownloadService;
         private readonly DryRunSettings _dryRunSettings;
         private readonly DryRunEngine _dryRunEngine;
+        private readonly SentimentService _sentimentService;
         private readonly ILogger<TradingController> _logger;
 
         private static DataDownloadResult _lastDownloadResult;
@@ -29,13 +30,15 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             DataDownloadService dataDownloadService,
             DryRunSettings dryRunSettings,
             ILogger<TradingController> logger,
-            DryRunEngine dryRunEngine = null)
+            DryRunEngine dryRunEngine = null,
+            SentimentService sentimentService = null)
         {
             _tradingService = tradingService;
             _marketDataService = marketDataService;
             _dataDownloadService = dataDownloadService;
             _dryRunSettings = dryRunSettings;
             _dryRunEngine = dryRunEngine;
+            _sentimentService = sentimentService;
             _logger = logger;
         }
 
@@ -256,6 +259,36 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
                 return Ok(new List<object>());
 
             return Ok(_dryRunEngine.GetLogs(limit));
+        }
+
+        // === Sentiment endpoint ===
+
+        [HttpGet("sentiment")]
+        public IActionResult GetSentiment()
+        {
+            if (_sentimentService == null)
+                return Ok(new { available = false, message = "SentimentService not registered" });
+
+            return Ok(new
+            {
+                available = true,
+                isReady = _sentimentService.IsReady,
+                fearGreed = new
+                {
+                    value = _sentimentService.FearGreedIndex,
+                    classification = _sentimentService.FearGreedClassification
+                },
+                fundingRate = new
+                {
+                    rate = _sentimentService.FundingRate,
+                    signal = _sentimentService.FundingRateSignal
+                },
+                composite = new
+                {
+                    spreadMultiplier = _sentimentService.GetSentimentSpreadMultiplier(),
+                    directionalBias = _sentimentService.GetSentimentDirectionalBias()
+                }
+            });
         }
 
         // === Data Download endpoint ===

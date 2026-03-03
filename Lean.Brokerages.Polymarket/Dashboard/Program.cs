@@ -103,6 +103,10 @@ builder.Services.AddSingleton<BtcPriceService>();
 builder.Services.AddHostedService(sp => sp.GetRequiredService<BtcPriceService>());
 builder.Services.AddSingleton<CorrelationMonitor>();
 
+// Register sentiment service (Fear & Greed + Binance funding rate)
+builder.Services.AddSingleton<SentimentService>();
+builder.Services.AddHostedService(sp => sp.GetRequiredService<SentimentService>());
+
 // DryRun configuration
 var dryRunSettings = new DryRunSettings
 {
@@ -129,7 +133,8 @@ if (dryRunSettings.Enabled)
         {
             var strategy = new BtcFollowMMStrategy(
                 sp.GetRequiredService<BtcPriceService>(),
-                sp.GetRequiredService<CorrelationMonitor>());
+                sp.GetRequiredService<CorrelationMonitor>(),
+                sp.GetRequiredService<SentimentService>());
             strategy.Initialize(dryRunSettings.StrategyParameters);
             return strategy;
         });

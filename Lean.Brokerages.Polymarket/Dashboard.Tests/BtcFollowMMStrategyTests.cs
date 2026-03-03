@@ -672,6 +672,183 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Tests
 
         #endregion
 
+        #region Sentiment Integration Tests
+
+        [Test]
+        public void CalculateBtcSignal_NoSentiment_WhenServiceNull()
+        {
+            // Default 2-param constructor → no sentiment service
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor);
+            strategy.Initialize(new Dictionary<string, string>());
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var signal = strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+            // Should not contain sentiment info in reason
+            Assert.That(signal.Reason, Does.Not.Contain("sent="));
+        }
+
+        [Test]
+        public void CalculateBtcSignal_NoSentiment_WhenDisabled()
+        {
+            var sentimentService = new SentimentService(
+                Microsoft.Extensions.Logging.Abstractions.NullLogger<SentimentService>.Instance);
+            sentimentService.InjectFearGreed(10);
+            sentimentService.InjectFundingRate(0.0005m);
+
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor, sentimentService);
+            strategy.Initialize(new Dictionary<string, string> { { "EnableSentiment", "false" } });
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var signal = strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+            Assert.That(signal.Reason, Does.Not.Contain("sent="));
+        }
+
+        [Test]
+        public void CalculateBtcSignal_WithSentiment_AppendsReasonInfo()
+        {
+            var sentimentService = new SentimentService(
+                Microsoft.Extensions.Logging.Abstractions.NullLogger<SentimentService>.Instance);
+            sentimentService.InjectFearGreed(50);
+            sentimentService.InjectFundingRate(0.0001m);
+
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor, sentimentService);
+            strategy.Initialize(new Dictionary<string, string>());
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                var signal = strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+                Assert.That(signal.Reason, Does.Contain("sent="));
+                Assert.That(signal.Reason, Does.Contain("bias="));
+                Assert.That(signal.Reason, Does.Contain("fgi="));
+                Assert.That(signal.Reason, Does.Contain("fr="));
+            }
+        }
+
+        [Test]
+        public void CalculateBtcSignal_ExtremeFear_WidensSpreadWithBullishBias()
+        {
+            var sentimentService = new SentimentService(
+                Microsoft.Extensions.Logging.Abstractions.NullLogger<SentimentService>.Instance);
+            sentimentService.InjectFearGreed(5); // Extreme Fear
+            sentimentService.InjectFundingRate(0.0001m);
+
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor, sentimentService);
+            strategy.Initialize(new Dictionary<string, string>());
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                var signal = strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+                // Extreme fear → spread multiplier > 1.0, bullish bias → ask widen extra
+                Assert.Greater(signal.AskSpreadMultiplier, 1.0m, "Extreme fear should widen ask");
+            }
+        }
+
+        [Test]
+        public void CalculateBtcSignal_ExtremeGreed_WidensSpreadWithBearishBias()
+        {
+            var sentimentService = new SentimentService(
+                Microsoft.Extensions.Logging.Abstractions.NullLogger<SentimentService>.Instance);
+            sentimentService.InjectFearGreed(95); // Extreme Greed
+            sentimentService.InjectFundingRate(0.0001m);
+
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor, sentimentService);
+            strategy.Initialize(new Dictionary<string, string>());
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                var signal = strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+                // Extreme greed → spread multiplier > 1.0, bearish bias → bid widen extra
+                Assert.Greater(signal.AskSpreadMultiplier, 1.0m, "Extreme greed should widen spread");
+            }
+        }
+
+        [Test]
+        public void CalculateBtcSignal_HighFundingRate_WidensSpread()
+        {
+            var sentimentService = new SentimentService(
+                Microsoft.Extensions.Logging.Abstractions.NullLogger<SentimentService>.Instance);
+            sentimentService.InjectFearGreed(50); // Neutral FGI
+            sentimentService.InjectFundingRate(0.001m); // Very high positive
+
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor, sentimentService);
+            strategy.Initialize(new Dictionary<string, string>());
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                var signal = strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+                // High funding rate → spread multiplier > 1.0
+                Assert.Greater(signal.AskSpreadMultiplier, 1.0m, "High funding rate should widen spread");
+            }
+        }
+
+        [Test]
+        public void CalculateBtcSignal_NegativeFundingRate_BullishBias()
+        {
+            var sentimentService = new SentimentService(
+                Microsoft.Extensions.Logging.Abstractions.NullLogger<SentimentService>.Instance);
+            sentimentService.InjectFearGreed(50); // Neutral FGI
+            sentimentService.InjectFundingRate(-0.0005m); // Negative → shorts overcrowded
+
+            var strategy = new BtcFollowMMStrategy(_btcService, _correlationMonitor, sentimentService);
+            strategy.Initialize(new Dictionary<string, string>());
+
+            var bias = sentimentService.GetSentimentDirectionalBias();
+            // Negative funding rate → contrarian bullish → positive bias
+            Assert.Greater(bias, 0.0m, "Negative funding rate should produce bullish contrarian bias");
+        }
+
+        #endregion
+
         #region Size/Balance Limit Tests
 
         [Test]
