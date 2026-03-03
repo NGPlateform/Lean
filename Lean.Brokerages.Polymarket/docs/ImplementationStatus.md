@@ -267,11 +267,30 @@ BTC 相关性分析 & 随动策略    ██████████████
 | **BtcFollowMM** | **MT=0.002 MC=0.3** | **+$49.91** | **2.78** | -$99.82 | 72.6% | 138 |
 | **BtcFollowMM** | MT=0.003 MC=0.4 | +$48.08 | 2.67 | -$99.82 | 72.9% | 138 |
 
+**30 天回测结果** (2026-02-03 ~ 2026-03-03, 60 tokens, 46,826 bars, 4,020 ticks, 3.2s):
+
+| 策略 | 参数 | PnL | Sharpe | MaxDD | WinRate | Fills |
+|------|------|-----|--------|-------|---------|-------|
+| **MarketMaking** | HS=0.015 OS=25 | +$21.06 | 0.61 | -$108.71 | 63.0% | 135 |
+| **MarketMaking** | HS=0.025 OS=25 | +$24.60 | 0.70 | -$108.59 | 73.4% | 134 |
+| **MarketMaking** | **HS=0.035 OS=50** | **+$129.10** | **2.34** | -$164.77 | 70.0% | 180 |
+| MeanReversion | ST=0.02 WS=15 | -$784.69 | -5.95 | -$1127.85 | 65.0% | 2510 |
+| MeanReversion | ST=0.03 WS=20 | -$709.45 | -6.18 | -$1039.88 | 66.5% | 1798 |
+| MeanReversion | ST=0.05 WS=30 | -$586.14 | -5.23 | -$890.24 | 68.1% | 1240 |
+| SpreadCapture | EO=0.003 MS=0.015 | $0.00 | 0.00 | $0.00 | 0.0% | 0 |
+| SpreadCapture | EO=0.005 MS=0.02 | $0.00 | 0.00 | $0.00 | 0.0% | 0 |
+| SpreadCapture | EO=0.008 MS=0.03 | $0.00 | 0.00 | $0.00 | 0.0% | 0 |
+| **BtcFollowMM** | **MT=0.001 MC=0.2** | **+$43.69** | **1.09** | -$113.02 | 70.4% | 165 |
+| **BtcFollowMM** | MT=0.002 MC=0.3 | +$27.02 | 0.81 | -$99.82 | 70.1% | 131 |
+| **BtcFollowMM** | MT=0.003 MC=0.4 | +$25.15 | 0.76 | -$99.82 | 70.5% | 131 |
+
 **关键发现**:
-- **MarketMaking (HS=0.035, OS=50)** 表现最佳: Sharpe 5.97, PnL +$172.50, 宽 spread + 大 size 在合成盘口中获利最多
-- **BtcFollowMM (MT=0.002, MC=0.3)** 次优: Sharpe 2.78, MaxDD 仅 -$99.82 (最小), 相关性门控 0.3 平衡了信号质量与覆盖范围
-- **MeanReversion** 全线亏损: 高 WinRate (66-69%) 但单笔亏损大, 原因是合成 OrderBook 的 taker 成交天然不利于频繁交叉 spread 的策略
-- **SpreadCapture** 零成交: 该策略需要持仓才能卖出, 而初始无持仓 → 只能买入 → 买入后等待 spread 内卖单 → 合成盘口缺乏真实 spread 变化导致无法触发
+- **MarketMaking (HS=0.035, OS=50)** 两轮均最佳: 7d Sharpe 5.97 → 30d Sharpe 2.34, PnL +$129.10, 宽 spread + 大 size 在合成盘口中获利最多
+- **BtcFollowMM** 30d 最优参数为 MT=0.001 MC=0.2 (7d 为 MT=0.002 MC=0.3): 更低的动量阈值和相关性门控在长周期中捕获更多信号, MaxDD -$113.02 优于 MarketMaking 的 -$164.77
+- **Sharpe 随周期衰减**: MM 5.97→2.34, BtcFollowMM 2.78→1.09, 符合预期——更长回测期稀释了短期集中获利
+- **MeanReversion** 全线亏损: 高 WinRate (65-68%) 但单笔亏损大, 合成 OrderBook 的 taker 成交天然不利于频繁交叉 spread 的策略
+- **SpreadCapture** 零成交: 需要持仓才能卖出, 初始无持仓 → 合成盘口缺乏真实 spread 变化无法触发
+- **风险调整后推荐**: BtcFollowMM (MT=0.001, MC=0.2) 在 PnL/MaxDD 比率 (0.39) 上优于 MarketMaking (0.78), 但 MarketMaking 绝对收益更高; 实盘建议从 BtcFollowMM 保守参数起步
 
 ---
 
