@@ -20,8 +20,9 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
                 return;
             }
 
-            _dataRoot = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "Data");
-            // If running from project root, try relative path
+            // AppContext.BaseDirectory = Dashboard/bin/Debug/net7.0/
+            // Go up 4 levels to reach repo root, then into Data/
+            _dataRoot = Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "Data");
             if (!Directory.Exists(Path.Combine(_dataRoot, "crypto")))
             {
                 _dataRoot = Path.Combine(Directory.GetCurrentDirectory(), "Data");
