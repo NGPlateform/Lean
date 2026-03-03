@@ -11,6 +11,10 @@
         <div class="header-left">
             <h1>Polymarket Trading Dashboard</h1>
             <span id="dry-run-badge" class="dry-run-badge" style="display:none">DRY RUN</span>
+            <div id="strategy-selector" style="display:none">
+                <select id="strategy-dropdown"></select>
+                <label class="reset-label"><input type="checkbox" id="strategy-reset" checked> Reset</label>
+            </div>
         </div>
         <div class="header-right">
             <div id="pnl-display" style="display:none">
@@ -94,13 +98,29 @@
             </section>
         </div>
 
-        <!-- Tabs: Positions / Orders / Trades / Logs -->
+        <!-- Equity Chart (DryRun only) -->
+        <section id="chart-panel" class="panel" style="display:none">
+            <div class="panel-header">
+                <h2>Equity Curve</h2>
+                <div class="chart-toggle">
+                    <button id="chart-live" class="view-btn active">Live</button>
+                    <button id="chart-backtest" class="view-btn">Backtest</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="equity-chart"></canvas>
+            </div>
+        </section>
+
+        <!-- Tabs: Positions / Orders / Trades / Logs / Params / Scores -->
         <section id="bottom-panel" class="panel">
             <div class="tab-bar">
                 <button class="tab active" data-tab="positions">Positions</button>
                 <button class="tab" data-tab="orders">Active Orders</button>
                 <button class="tab" data-tab="trades">Trade History</button>
                 <button class="tab" data-tab="logs" id="tab-btn-logs" style="display:none">Algorithm Logs</button>
+                <button class="tab" data-tab="params" id="tab-btn-params" style="display:none">Strategy Params</button>
+                <button class="tab" data-tab="scores" id="tab-btn-scores" style="display:none">Market Scores</button>
             </div>
             <div id="tab-positions" class="tab-content active">
                 <table id="positions-table">
@@ -149,12 +169,24 @@
             <div id="tab-logs" class="tab-content">
                 <div id="logs-container" class="logs-container"></div>
             </div>
+            <div id="tab-params" class="tab-content">
+                <div id="params-container" class="params-container">
+                    <div class="empty-state">Loading parameters...</div>
+                </div>
+            </div>
+            <div id="tab-scores" class="tab-content">
+                <div id="scores-container" class="scores-container">
+                    <div class="empty-state">Loading market scores...</div>
+                </div>
+            </div>
         </section>
     </main>
 
     <div id="toast-container"></div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/8.0.0/signalr.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <script src="/js/dashboard.js"></script>
 </body>
 </html>

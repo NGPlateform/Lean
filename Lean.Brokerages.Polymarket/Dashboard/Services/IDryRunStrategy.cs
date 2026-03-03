@@ -11,6 +11,9 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         void Initialize(Dictionary<string, string> parameters);
         List<StrategyAction> Evaluate(StrategyContext context);
         void OnFill(SimulatedTrade trade);
+
+        Dictionary<string, string> GetParameters() => new();
+        List<MarketScore> GetMarketScores(StrategyContext context) => new();
     }
 
     public class StrategyContext
@@ -42,5 +45,15 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
     public class CancelOrderAction : StrategyAction
     {
         public string OrderId { get; set; }
+    }
+
+    public class MarketScore
+    {
+        public string TokenId { get; set; }
+        public string Question { get; set; }
+        public decimal Score { get; set; }
+        public bool IsSelected { get; set; }
+        public bool HasPosition { get; set; }
+        public Dictionary<string, decimal> ScoreComponents { get; set; } = new();
     }
 }

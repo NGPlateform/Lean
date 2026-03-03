@@ -97,6 +97,72 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
 
         public void OnFill(SimulatedTrade trade) { }
 
+        public Dictionary<string, string> GetParameters()
+        {
+            return new Dictionary<string, string>
+            {
+                ["OrderSize"] = _orderSize.ToString(),
+                ["HalfSpread"] = _halfSpread.ToString(),
+                ["SkewFactor"] = _skewFactor.ToString(),
+                ["MaxPositionPerToken"] = _maxPositionPerToken.ToString(),
+                ["MaxTotalExposure"] = _maxTotalExposure.ToString(),
+                ["MaxActiveMarkets"] = _maxActiveMarkets.ToString(),
+                ["RequoteIntervalTicks"] = _requoteIntervalTicks.ToString()
+            };
+        }
+
+        public List<MarketScore> GetMarketScores(StrategyContext context)
+        {
+            var scores = new List<MarketScore>();
+            foreach (var kvp in context.OrderBooks)
+            {
+                var tokenId = kvp.Key;
+                var book = kvp.Value;
+                var score = ScoreMarket(book);
+
+                string question = null;
+                if (context.Markets != null)
+                {
+                    foreach (var m in context.Markets)
+                    {
+                        if (m.Tokens != null)
+                        {
+                            foreach (var t in m.Tokens)
+                            {
+                                if (t.TokenId == tokenId) { question = m.Question; break; }
+                            }
+                        }
+                        if (question != null) break;
+                    }
+                }
+
+                context.Positions.TryGetValue(tokenId, out var pos);
+
+                var bestBid = GetBestPrice(book.Bids, ascending: false);
+                var bestAsk = GetBestPrice(book.Asks, ascending: true);
+                var components = new Dictionary<string, decimal>();
+                if (bestBid.HasValue && bestAsk.HasValue)
+                {
+                    var mid = (bestBid.Value + bestAsk.Value) / 2m;
+                    var spread = bestAsk.Value - bestBid.Value;
+                    components["SpreadQuality"] = spread < MaxMarketSpread ? 1m - Math.Min(1m, spread / MaxMarketSpread) : 0m;
+                    components["Liquidity"] = Math.Min(1m, (GetTotalDepth(book.Bids) + GetTotalDepth(book.Asks)) / 1000m);
+                    components["Centrality"] = 1m - Math.Abs(mid - 0.5m) * 2m;
+                }
+
+                scores.Add(new MarketScore
+                {
+                    TokenId = tokenId,
+                    Question = question,
+                    Score = score,
+                    IsSelected = _selectedTokens.Contains(tokenId),
+                    HasPosition = pos != null && pos.Size > 0,
+                    ScoreComponents = components
+                });
+            }
+            return scores.OrderByDescending(s => s.Score).ToList();
+        }
+
         private List<StrategyAction> ProcessToken(string tokenId, PolymarketOrderBook book,
             decimal midPrice, StrategyContext context, decimal totalExposure)
         {

@@ -8,7 +8,12 @@ const state = {
     connection: null,
     hasCredentials: false,
     dryRunMode: false,
-    view: 'trending' // 'trending' | 'events'
+    view: 'trending', // 'trending' | 'events'
+    // Chart state
+    equityChart: null,
+    equityData: [],
+    backtestCurves: null,
+    chartMode: 'live' // 'live' | 'backtest'
 };
 
 // === API ===
@@ -66,6 +71,10 @@ async function checkStatus() {
             document.getElementById('dry-run-badge').style.display = 'inline-block';
             document.getElementById('pnl-display').style.display = 'flex';
             document.getElementById('tab-btn-logs').style.display = '';
+            document.getElementById('tab-btn-params').style.display = '';
+            document.getElementById('tab-btn-scores').style.display = '';
+            document.getElementById('chart-panel').style.display = '';
+            document.getElementById('strategy-selector').style.display = 'flex';
             showToast(s.message, 'info');
         } else if (!s.hasCredentials) {
             const el = document.getElementById('balance-value');
@@ -411,6 +420,238 @@ function appendLog(l) {
     }
 }
 
+// === Strategy Parameters (DryRun) ===
+async function loadParameters() {
+    if (!state.dryRunMode) return;
+    const container = document.getElementById('params-container');
+    try {
+        const params = await api('/strategy/parameters');
+        if (!params || Object.keys(params).length === 0) {
+            container.innerHTML = '<div class="empty-state">No parameters available</div>';
+            return;
+        }
+        let html = '<div class="params-form">';
+        for (const [key, value] of Object.entries(params)) {
+            html += `<div class="param-row">
+                <label class="param-label">${esc(key)}</label>
+                <input class="param-input" type="text" data-key="${esc(key)}" value="${esc(value)}">
+            </div>`;
+        }
+        html += '<button id="btn-apply-params" class="btn btn-primary">Apply</button></div>';
+        container.innerHTML = html;
+        document.getElementById('btn-apply-params').addEventListener('click', applyParameters);
+    } catch { container.innerHTML = '<div class="empty-state">Failed to load parameters</div>'; }
+}
+
+async function applyParameters() {
+    const inputs = document.querySelectorAll('.param-input');
+    const params = {};
+    inputs.forEach(input => { params[input.dataset.key] = input.value; });
+    try {
+        await api('/strategy/parameters', { method: 'PUT', body: JSON.stringify(params) });
+        showToast('Parameters updated', 'success');
+    } catch (e) { showToast('Failed: ' + e.message, 'error'); }
+}
+
+// === Market Scores (DryRun) ===
+async function loadMarketScores() {
+    if (!state.dryRunMode) return;
+    const container = document.getElementById('scores-container');
+    try {
+        const scores = await api('/strategy/market-scores');
+        if (!scores?.length) {
+            container.innerHTML = '<div class="empty-state">No market scores available</div>';
+            return;
+        }
+        const maxScore = Math.max(...scores.map(s => s.score), 0.01);
+        container.innerHTML = scores.map(s => {
+            const pct = (s.score / maxScore * 100).toFixed(1);
+            const selectedCls = s.isSelected ? 'score-selected' : '';
+            const posIcon = s.hasPosition ? '<span class="pos-dot" title="Has position"></span>' : '';
+            const question = s.question ? esc(s.question).substring(0, 50) : shortId(s.tokenId);
+            return `<div class="score-row ${selectedCls}">
+                <div class="score-info">
+                    ${posIcon}
+                    <span class="score-question" title="${esc(s.tokenId)}">${question}</span>
+                </div>
+                <div class="score-bar-wrap">
+                    <div class="score-bar" style="width:${pct}%"></div>
+                    <span class="score-value">${s.score.toFixed(3)}</span>
+                </div>
+            </div>`;
+        }).join('');
+    } catch { container.innerHTML = '<div class="empty-state">Failed to load scores</div>'; }
+}
+
+// === Equity Chart ===
+function initEquityChart() {
+    const ctx = document.getElementById('equity-chart');
+    if (!ctx || typeof Chart === 'undefined') return;
+    state.equityChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: 'Equity',
+                data: [],
+                borderColor: '#58a6ff',
+                backgroundColor: 'rgba(88, 166, 255, 0.1)',
+                fill: true,
+                tension: 0.3,
+                pointRadius: 0,
+                borderWidth: 2
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: { intersect: false, mode: 'index' },
+            plugins: {
+                legend: { display: false },
+                tooltip: {
+                    callbacks: {
+                        label: ctx => `$${ctx.parsed.y.toFixed(2)}`
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    type: 'time',
+                    time: { unit: 'minute', displayFormats: { minute: 'HH:mm' } },
+                    grid: { color: 'rgba(48,54,61,0.5)' },
+                    ticks: { color: '#8b949e', maxTicksLimit: 8 }
+                },
+                y: {
+                    grid: { color: 'rgba(48,54,61,0.5)' },
+                    ticks: { color: '#8b949e', callback: v => '$' + v.toFixed(0) }
+                }
+            }
+        }
+    });
+}
+
+function updateEquityChart(point) {
+    if (!state.equityChart || state.chartMode !== 'live') return;
+    const ds = state.equityChart.data.datasets[0];
+    ds.data.push({ x: new Date(point.time || Date.now()), y: point.equity });
+    // Cap at 500 points
+    if (ds.data.length > 500) ds.data.shift();
+    state.equityChart.update('none');
+}
+
+async function loadEquityCurve() {
+    if (!state.dryRunMode) return;
+    try {
+        const data = await api('/equity-curve');
+        if (!data?.length || !state.equityChart) return;
+        const ds = state.equityChart.data.datasets[0];
+        ds.data = data.map(p => ({ x: new Date(p.time), y: p.equity }));
+        // Cap at 500
+        if (ds.data.length > 500) ds.data = ds.data.slice(-500);
+        state.equityChart.update();
+    } catch {}
+}
+
+async function loadBacktestCurves() {
+    try {
+        const result = await api('/backtest/equity-curves');
+        if (result.status !== 'completed' || !result.curves) {
+            showToast('No backtest data available. Run a backtest first.', 'info');
+            return;
+        }
+        state.backtestCurves = result.curves;
+        showBacktestCurves();
+    } catch { showToast('Failed to load backtest curves', 'error'); }
+}
+
+const chartColors = ['#58a6ff', '#3fb950', '#f85149', '#d29922', '#bc8cff', '#f778ba'];
+
+function showBacktestCurves() {
+    if (!state.equityChart || !state.backtestCurves) return;
+    state.equityChart.data.datasets = state.backtestCurves.map((c, i) => ({
+        label: c.strategy,
+        data: (c.points || []).map(p => ({ x: new Date(p.time), y: p.equity })),
+        borderColor: chartColors[i % chartColors.length],
+        backgroundColor: 'transparent',
+        fill: false,
+        tension: 0.3,
+        pointRadius: 0,
+        borderWidth: 2
+    }));
+    state.equityChart.options.plugins.legend.display = true;
+    state.equityChart.update();
+}
+
+function showLiveCurve() {
+    if (!state.equityChart) return;
+    state.equityChart.data.datasets = [{
+        label: 'Equity',
+        data: [],
+        borderColor: '#58a6ff',
+        backgroundColor: 'rgba(88, 166, 255, 0.1)',
+        fill: true,
+        tension: 0.3,
+        pointRadius: 0,
+        borderWidth: 2
+    }];
+    state.equityChart.options.plugins.legend.display = false;
+    state.equityChart.update();
+    loadEquityCurve();
+}
+
+function setupChartToggle() {
+    document.getElementById('chart-live')?.addEventListener('click', () => {
+        state.chartMode = 'live';
+        document.getElementById('chart-live').classList.add('active');
+        document.getElementById('chart-backtest').classList.remove('active');
+        showLiveCurve();
+    });
+    document.getElementById('chart-backtest')?.addEventListener('click', () => {
+        state.chartMode = 'backtest';
+        document.getElementById('chart-backtest').classList.add('active');
+        document.getElementById('chart-live').classList.remove('active');
+        loadBacktestCurves();
+    });
+}
+
+// === Strategy Switching ===
+async function loadStrategy() {
+    if (!state.dryRunMode) return;
+    try {
+        const data = await api('/strategy');
+        const dropdown = document.getElementById('strategy-dropdown');
+        if (!dropdown) return;
+        dropdown.innerHTML = (data.available || []).map(s =>
+            `<option value="${s}" ${s === data.current ? 'selected' : ''}>${s}</option>`
+        ).join('');
+    } catch {}
+}
+
+async function switchStrategy(name, resetState) {
+    try {
+        const result = await api('/strategy', {
+            method: 'PUT',
+            body: JSON.stringify({ strategy: name, resetState })
+        });
+        if (result.success) {
+            showToast(`Switched to ${result.strategy}` + (resetState ? ' (reset)' : ''), 'success');
+            if (resetState && state.equityChart && state.chartMode === 'live') {
+                state.equityChart.data.datasets[0].data = [];
+                state.equityChart.update();
+            }
+            loadParameters();
+        }
+    } catch (e) { showToast('Switch failed: ' + e.message, 'error'); }
+}
+
+function setupStrategySelector() {
+    const dropdown = document.getElementById('strategy-dropdown');
+    if (!dropdown) return;
+    dropdown.addEventListener('change', () => {
+        const reset = document.getElementById('strategy-reset')?.checked ?? true;
+        switchStrategy(dropdown.value, reset);
+    });
+}
+
 // === Order Placement ===
 function updateOrderSummary() {
     const price = parseFloat(document.getElementById('order-price').value);
@@ -470,6 +711,11 @@ async function connectSignalR() {
                 unrealEl.className = 'pnl-value ' + (uPnl >= 0 ? 'pnl-positive' : 'pnl-negative');
             }
             if (tickEl) tickEl.textContent = `#${d.tickCount || 0}`;
+
+            // Update equity chart with live data
+            if (d.totalEquity != null) {
+                updateEquityChart({ time: new Date(), equity: d.totalEquity });
+            }
         });
 
         conn.on('DryRunLog', l => {
@@ -497,6 +743,8 @@ function setupTabs() {
                 case 'orders': loadOrders(); break;
                 case 'trades': loadTrades(); break;
                 case 'logs': loadLogs(); break;
+                case 'params': loadParameters(); break;
+                case 'scores': loadMarketScores(); break;
             }
         });
     });
@@ -539,9 +787,22 @@ function setupEvents() {
 async function init() {
     setupTabs();
     setupEvents();
+    setupChartToggle();
+    setupStrategySelector();
     await checkStatus();
     updateOrderSummary();
+
+    if (state.dryRunMode) {
+        initEquityChart();
+    }
+
     await Promise.all([loadMarkets(), loadEvents(), loadBalance(), loadPositions(), connectSignalR()]);
+
+    if (state.dryRunMode) {
+        loadStrategy();
+        loadEquityCurve();
+    }
+
     // Polling: only poll balance in non-dryrun mode
     if (state.hasCredentials && !state.dryRunMode) setInterval(loadBalance, 30000);
 }

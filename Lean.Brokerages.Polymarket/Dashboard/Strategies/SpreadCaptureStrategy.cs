@@ -100,6 +100,47 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
 
         public void OnFill(SimulatedTrade trade) { }
 
+        public Dictionary<string, string> GetParameters()
+        {
+            return new Dictionary<string, string>
+            {
+                ["OrderSize"] = _orderSize.ToString(),
+                ["EdgeOffset"] = _edgeOffset.ToString(),
+                ["MaxExposure"] = _maxExposure.ToString(),
+                ["MinSpread"] = _minSpread.ToString()
+            };
+        }
+
+        public List<MarketScore> GetMarketScores(StrategyContext context)
+        {
+            var scores = new List<MarketScore>();
+            foreach (var kvp in context.OrderBooks)
+            {
+                var tokenId = kvp.Key;
+                string question = null;
+                if (context.Markets != null)
+                {
+                    foreach (var m in context.Markets)
+                    {
+                        if (m.Tokens != null)
+                            foreach (var t in m.Tokens)
+                                if (t.TokenId == tokenId) { question = m.Question; break; }
+                        if (question != null) break;
+                    }
+                }
+                context.Positions.TryGetValue(tokenId, out var pos);
+                scores.Add(new MarketScore
+                {
+                    TokenId = tokenId,
+                    Question = question,
+                    Score = 1.0m,
+                    IsSelected = true,
+                    HasPosition = pos != null && pos.Size > 0
+                });
+            }
+            return scores;
+        }
+
         private static decimal? GetBestPrice(List<PolymarketOrderBookLevel> levels, bool ascending)
         {
             if (levels == null || levels.Count == 0) return null;

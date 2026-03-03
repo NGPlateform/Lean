@@ -15,7 +15,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
     public class DryRunEngine : BackgroundService
     {
         private readonly DryRunSettings _settings;
-        private readonly IDryRunStrategy _strategy;
+        private IDryRunStrategy _strategy;
         private readonly TradingService _tradingService;
         private readonly MarketDataService _marketDataService;
         private readonly IHubContext<TradingHub> _hubContext;
@@ -30,7 +30,10 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         private readonly ConcurrentDictionary<string, SimulatedOrder> _openOrders = new();
         private readonly List<SimulatedTrade> _trades = new();
         private readonly List<DryRunLogEntry> _logs = new();
+        private readonly List<EquityPoint> _equityCurve = new();
         private readonly object _lock = new();
+
+        public static readonly string[] AvailableStrategies = { "MarketMaking", "MeanReversion", "SpreadCapture", "BtcFollowMM" };
 
         private int _lastAutoSubscribeTick;
         private const int AutoSubscribeRefreshIntervalTicks = 60;
@@ -408,12 +411,22 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         private async Task BroadcastState()
         {
             var unrealizedPnl = _positions.Values.Where(p => p.Size > 0).Sum(p => p.UnrealizedPnl);
+            var totalEquity = _balance + unrealizedPnl;
+
+            // Track equity curve
+            lock (_lock)
+            {
+                _equityCurve.Add(new EquityPoint { Time = DateTime.UtcNow, Equity = totalEquity });
+                if (_equityCurve.Count > 2000)
+                    _equityCurve.RemoveRange(0, _equityCurve.Count - 2000);
+            }
 
             await _hubContext.Clients.All.SendAsync("DryRunUpdate", new
             {
                 balance = _balance,
                 realizedPnl = _realizedPnl,
                 unrealizedPnl,
+                totalEquity,
                 tickCount = _tickCount,
                 openOrders = _openOrders.Count,
                 positions = _positions.Values.Count(p => p.Size > 0),
@@ -532,6 +545,62 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
 
         public string StrategyName => _strategy.Name;
 
+        public List<EquityPoint> GetEquityCurve()
+        {
+            lock (_lock)
+            {
+                return new List<EquityPoint>(_equityCurve);
+            }
+        }
+
+        public void SwitchStrategy(IDryRunStrategy newStrategy, bool resetState)
+        {
+            lock (_lock)
+            {
+                if (resetState)
+                {
+                    _balance = _settings.InitialBalance;
+                    _realizedPnl = 0;
+                    _positions.Clear();
+                    _openOrders.Clear();
+                    _trades.Clear();
+                    _equityCurve.Clear();
+                    _tickCount = 0;
+                    _orderCounter = 0;
+                }
+
+                _strategy = newStrategy;
+                _strategy.Initialize(_settings.StrategyParameters);
+                Log("Engine", "Info", $"Strategy switched to {newStrategy.Name}" + (resetState ? " (state reset)" : ""));
+            }
+        }
+
+        public Dictionary<string, string> GetStrategyParameters()
+        {
+            return _strategy.GetParameters();
+        }
+
+        public void UpdateStrategyParameters(Dictionary<string, string> parameters)
+        {
+            lock (_lock)
+            {
+                var current = _strategy.GetParameters();
+                foreach (var kvp in parameters)
+                {
+                    current[kvp.Key] = kvp.Value;
+                }
+                _strategy.Initialize(current);
+                Log("Engine", "Info", $"Strategy parameters updated: {string.Join(", ", parameters.Select(p => $"{p.Key}={p.Value}"))}");
+            }
+        }
+
+        public List<MarketScore> GetMarketScores()
+        {
+            var orderBooks = GetAllCachedOrderBooks();
+            var context = BuildContext(orderBooks);
+            return _strategy.GetMarketScores(context);
+        }
+
         // === Auto-Subscribe ===
 
         private async Task AutoSubscribeTopMarkets()
@@ -638,5 +707,11 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             if (string.IsNullOrEmpty(id) || id.Length < 12) return id ?? "";
             return id.Substring(0, 6) + "..." + id.Substring(id.Length - 4);
         }
+    }
+
+    public class EquityPoint
+    {
+        public DateTime Time { get; set; }
+        public decimal Equity { get; set; }
     }
 }

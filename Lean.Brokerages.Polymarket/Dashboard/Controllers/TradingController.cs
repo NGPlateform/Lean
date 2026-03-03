@@ -19,6 +19,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
         private readonly DryRunEngine _dryRunEngine;
         private readonly SentimentService _sentimentService;
         private readonly BacktestRunner _backtestRunner;
+        private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<TradingController> _logger;
 
         private static DataDownloadResult _lastDownloadResult;
@@ -35,6 +36,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             DataDownloadService dataDownloadService,
             DryRunSettings dryRunSettings,
             ILogger<TradingController> logger,
+            IServiceProvider serviceProvider = null,
             DryRunEngine dryRunEngine = null,
             SentimentService sentimentService = null,
             BacktestRunner backtestRunner = null)
@@ -46,6 +48,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             _dryRunEngine = dryRunEngine;
             _sentimentService = sentimentService;
             _backtestRunner = backtestRunner;
+            _serviceProvider = serviceProvider;
             _logger = logger;
         }
 
@@ -268,6 +271,148 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             return Ok(_dryRunEngine.GetLogs(limit));
         }
 
+        // === Equity Curve endpoints ===
+
+        [HttpGet("equity-curve")]
+        public IActionResult GetEquityCurve()
+        {
+            if (!IsDryRunMode)
+                return Ok(new List<object>());
+
+            var curve = _dryRunEngine.GetEquityCurve();
+            return Ok(curve.Select(p => new { time = p.Time, equity = p.Equity }));
+        }
+
+        [HttpGet("backtest/equity-curves")]
+        public IActionResult GetBacktestEquityCurves()
+        {
+            if (_backtestRunning)
+                return Ok(new { status = "running" });
+
+            if (_lastBacktestResult == null)
+                return Ok(new { status = "idle" });
+
+            var curves = _lastBacktestResult.Results.Select(r => new
+            {
+                strategy = r.StrategyName,
+                points = r.EquityCurve.Select(p => new { time = p.Time, equity = p.Equity })
+            });
+
+            return Ok(new { status = "completed", curves });
+        }
+
+        // === Strategy Management endpoints ===
+
+        [HttpGet("strategy")]
+        public IActionResult GetStrategy()
+        {
+            if (!IsDryRunMode)
+                return Ok(new { current = (string)null, available = DryRunEngine.AvailableStrategies });
+
+            return Ok(new
+            {
+                current = _dryRunEngine.StrategyName,
+                available = DryRunEngine.AvailableStrategies
+            });
+        }
+
+        [HttpPut("strategy")]
+        public IActionResult SwitchStrategy([FromBody] SwitchStrategyRequest request)
+        {
+            if (!IsDryRunMode)
+                return BadRequest(new { error = "Strategy switching requires DryRun mode" });
+
+            if (string.IsNullOrEmpty(request?.Strategy))
+                return BadRequest(new { error = "Strategy name required" });
+
+            if (!DryRunEngine.AvailableStrategies.Contains(request.Strategy, StringComparer.OrdinalIgnoreCase))
+                return BadRequest(new { error = $"Unknown strategy: {request.Strategy}" });
+
+            try
+            {
+                var strategy = CreateStrategy(request.Strategy);
+                if (strategy == null)
+                    return StatusCode(500, new { error = $"Failed to create strategy: {request.Strategy}" });
+
+                _dryRunEngine.SwitchStrategy(strategy, request.ResetState);
+                return Ok(new { success = true, strategy = strategy.Name, resetState = request.ResetState });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to switch strategy to {Strategy}", request.Strategy);
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        [HttpGet("strategy/parameters")]
+        public IActionResult GetStrategyParameters()
+        {
+            if (!IsDryRunMode)
+                return Ok(new Dictionary<string, string>());
+
+            return Ok(_dryRunEngine.GetStrategyParameters());
+        }
+
+        [HttpPut("strategy/parameters")]
+        public IActionResult UpdateStrategyParameters([FromBody] Dictionary<string, string> parameters)
+        {
+            if (!IsDryRunMode)
+                return BadRequest(new { error = "Parameter updates require DryRun mode" });
+
+            if (parameters == null || parameters.Count == 0)
+                return BadRequest(new { error = "No parameters provided" });
+
+            try
+            {
+                _dryRunEngine.UpdateStrategyParameters(parameters);
+                return Ok(new { success = true, updated = parameters.Keys.ToList() });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to update strategy parameters");
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        [HttpGet("strategy/market-scores")]
+        public IActionResult GetMarketScores()
+        {
+            if (!IsDryRunMode)
+                return Ok(new List<object>());
+
+            try
+            {
+                return Ok(_dryRunEngine.GetMarketScores());
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to get market scores");
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+        private IDryRunStrategy CreateStrategy(string name)
+        {
+            switch (name.ToLowerInvariant())
+            {
+                case "marketmaking":
+                    return new Strategies.MarketMakingStrategy();
+                case "meanreversion":
+                    return new Strategies.MeanReversionStrategy();
+                case "spreadcapture":
+                    return new Strategies.SpreadCaptureStrategy();
+                case "btcfollowmm":
+                    var btcService = _serviceProvider?.GetService(typeof(BtcPriceService)) as BtcPriceService;
+                    var corrMonitor = _serviceProvider?.GetService(typeof(CorrelationMonitor)) as CorrelationMonitor;
+                    var sentService = _serviceProvider?.GetService(typeof(SentimentService)) as SentimentService;
+                    if (btcService == null || corrMonitor == null)
+                        return null;
+                    return new Strategies.BtcFollowMMStrategy(btcService, corrMonitor, sentService);
+                default:
+                    return null;
+            }
+        }
+
         // === Sentiment endpoint ===
 
         [HttpGet("sentiment")]
@@ -405,5 +550,11 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
     public class PriceRequest
     {
         public List<string> TokenIds { get; set; }
+    }
+
+    public class SwitchStrategyRequest
+    {
+        public string Strategy { get; set; }
+        public bool ResetState { get; set; }
     }
 }
