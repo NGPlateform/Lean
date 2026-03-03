@@ -20,5 +20,6 @@
     <ProjectReference Include="..\QuantConnect.Brokerages.Polymarket\QuantConnect.Brokerages.Polymarket.csproj" />
     <ProjectReference Include="..\..\Common\QuantConnect.csproj" />
     <ProjectReference Include="..\..\Brokerages\QuantConnect.Brokerages.csproj" />
+    <ProjectReference Include="..\..\Algorithm\QuantConnect.Algorithm.csproj" />
   </ItemGroup>
 </Project>

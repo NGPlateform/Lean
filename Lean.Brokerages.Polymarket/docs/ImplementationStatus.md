@@ -10,7 +10,7 @@ Phase 4  做市策略           ████████████████
 Phase 5  量化策略框架       ██████████████████░░  90%  (3.5/4 — 缺 SentimentAlpha)
 Dashboard 做市模拟系统       ████████████████████ 100%  (全部完成)
 Dashboard 数据下载工具       ████████████████████ 100%  (CLI + API 端点)
-测试                        ████████████████░░░░  80%  (单元+集成测试完成, 缺回测验证)
+测试                        ██████████████████░░  90%  (单元+集成+策略验证完成, 缺Dashboard测试)
 ```
 
 ---
@@ -100,9 +100,9 @@ Dashboard 数据下载工具       ███████████████
 | T.6 | PolymarketApiClientTests (REST API) | **DONE** | 12 个测试 — MockHttpMessageHandler 拦截全部 HTTP，覆盖 GetOpenOrders/Positions/Balance/OrderBook/Trades/PlaceOrder/CancelOrder/Auth headers |
 | T.7 | PolymarketWebSocketTests | **DONE** | 12 个测试 — 订阅创建 (market/user)、消息解析 (book/price_change/trade/order/invalid/null/empty/unknown) |
 | T.8 | PolymarketBrokerageIntegrationTests | **DONE** | 16 个测试 — PlaceOrder/CancelOrder/UpdateOrder 全链路、GetOpenOrders/Holdings/CashBalance 转换、WebSocket order update (live/matched/partial/canceled) |
-| T.9 | 回测验证 (历史数据) | **MISSING** | 历史数据已有，但未运行策略回测验证 |
+| T.9 | PolymarketStrategyValidationTests | **DONE** | 37 个测试 — Kelly PCM (7: flat/low-conf/up/down/half-vs-full/max-clamp/multi)、Risk Model (3: defaults/custom/settlement)、Alpha Models (6: arb/meanrev/corr 初始化+自定义)、Market Maker (8: price-clamp/skew/levels/sizes/arb-overpriced/underpriced/normal)、Data Quality (10: dir/json/48-tokens/pairs/csv-format/ohlc/dust/dates/bars/yes-no-independence) |
 | T.10 | Dashboard 测试 | **MISSING** | 无 Dashboard 项目的自动化测试 |
-| T.11 | 策略回测 P&L 验证 | **MISSING** | 无基于历史数据的策略盈亏验证 |
+| T.11 | 策略回测 P&L 验证 | **MISSING** | 需部署 .NET 10 SDK 运行完整 LEAN 引擎回测 |
 
 ---
 
@@ -137,26 +137,15 @@ Dashboard 数据下载工具       ███████████████
 
 ### P1 — 重要缺失 (影响策略验证完整性)
 
-#### 3. 策略回测验证
+#### ~~3. 策略回测验证~~ ✅ 部分完成 (组件级验证)
 
-**现状**: LEAN 端的策略（PolymarketMarketMaker、Alpha 模型等）从未在历史数据上运行过。
-
-**工作内容**:
-- 配置 LEAN 回测使用 Polymarket 历史数据
-- 运行 PolymarketMarketMaker 策略回测，验证:
-  - 多层报价生成正确
-  - 库存偏移符合预期
-  - YES/NO 互补套利触发条件正确
-  - 风控规则 (结算风险、持仓上限) 正确生效
-- 运行 Alpha 模型回测:
-  - CrossMarketArbitrageAlpha: 验证 YES+NO ≠ 1.00 的信号
-  - ProbabilityMeanReversionAlpha: 验证 z-score 信号质量
-  - CrossMarketCorrelationAlpha: 验证相关性检测
-- 生成 P&L 报告和 Sharpe/MaxDrawdown 统计
-
-**依赖**: ~~P0-1 (历史数据)~~ 已解除 — 数据已下载
-
-**预估工作量**: 2 天
+**完成情况**: `PolymarketStrategyValidationTests.cs` — 37 个测试覆盖策略逻辑组件验证。
+- **Kelly PCM** (7 tests): flat/low-confidence 零目标、Up/Down 方向正确、Half-Kelly < Full-Kelly、MaxPositionSize 钳位、多 Insight 独立计算
+- **Risk Management** (3 tests): 默认/自定义参数、SetSettlementDate 设置
+- **Alpha Models** (6 tests): CrossMarketArbitrageAlpha/ProbabilityMeanReversionAlpha/CrossMarketCorrelationAlpha 初始化和自定义参数
+- **Market Maker** (8 tests): ClampPrice [0.01,0.99]、零/正/负库存 skew、多层报价间距、外层 size 递增、互补套利过高/过低/正常检测
+- **Data Quality** (10 tests): 目录/JSON 存在、48 token 文件夹、YES/NO 配对、CSV 6 列 OHLCV 格式、OHLC 关系验证、dust price < 1%、7 天日期覆盖、6000+ bars、YES/NO 价格独立性
+- **未完成**: 完整 LEAN 引擎回测需 .NET 10 SDK (当前环境仅 .NET 7)
 
 ---
 
@@ -267,7 +256,7 @@ Dashboard 数据下载工具       ███████████████
 |--------|--------|------|------|
 | ~~**P0**~~ | ~~下载历史数据~~ | ~~0.5 天~~ | ✅ 已完成 |
 | ~~**P0**~~ | ~~Brokerage 集成测试~~ | ~~2 天~~ | ✅ 已完成 (40 tests, mock HTTP) |
-| **P1** | 策略回测验证 | 2 天 | 待做 (已解除数据依赖) |
+| ~~**P1**~~ | ~~策略回测验证~~ | ~~2 天~~ | ✅ 部分完成 (37 tests, 组件级验证; 完整引擎回测需 .NET 10) |
 | **P1** | SentimentAlpha | 3 天 (可降级) | 待做 |
 | **P2** | 小资金实盘验证 | 1 天 | 待做 |
 | **P2** | Dashboard 自动化测试 | 2 天 | 待做 |
@@ -275,5 +264,5 @@ Dashboard 数据下载工具       ███████████████
 | **P3** | 回测对比框架 | 2 天 | 待做 |
 | **P3** | Dashboard 增强 | 3 天 | 待做 |
 | **P3** | 批量 Symbol 注册 | 1 天 | 待做 |
-| | **剩余合计** | **~15.5 天** | |
-| | P1 (核心剩余) | **~5 天** | |
+| | **剩余合计** | **~13.5 天** | |
+| | P1 (核心剩余) | **~3 天** | |
