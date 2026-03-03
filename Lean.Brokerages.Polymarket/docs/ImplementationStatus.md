@@ -10,7 +10,7 @@ Phase 4  做市策略           ████████████████
 Phase 5  量化策略框架       ██████████████████░░  90%  (3.5/4 — 缺 SentimentAlpha)
 Dashboard 做市模拟系统       ████████████████████ 100%  (全部完成)
 Dashboard 数据下载工具       ████████████████████ 100%  (CLI + API 端点)
-测试                        █████████████░░░░░░░  60%  (单元测试有, 缺集成/回测测试)
+测试                        ████████████████░░░░  80%  (单元+集成测试完成, 缺回测验证)
 ```
 
 ---
@@ -92,16 +92,17 @@ Dashboard 数据下载工具       ███████████████
 
 | # | 测试项 | 状态 | 说明 |
 |---|--------|------|------|
-| T.1 | PolymarketSymbolMapperTests | **DONE** | 5 个测试用例 |
-| T.2 | PolymarketBrokerageModelTests | **DONE** | 7+ 个测试用例 (订单验证、价格范围) |
-| T.3 | PolymarketFeeModelTests | **DONE** | 费率计算测试 |
-| T.4 | PolymarketOrderPropertiesTests | **DONE** | 订单属性测试 |
-| T.5 | EIP712SignerTests | **DONE** | 签名生成与验证 |
-| T.6 | Brokerage 集成测试 (REST API) | **MISSING** | 无真实 API 调用测试 |
-| T.7 | Brokerage 集成测试 (WebSocket) | **MISSING** | 无 WebSocket 连接/数据解析测试 |
-| T.8 | 回测验证 (历史数据) | **MISSING** | 历史数据已有，但未运行策略回测验证 |
-| T.9 | Dashboard 测试 | **MISSING** | 无 Dashboard 项目的自动化测试 |
-| T.10 | 策略回测 P&L 验证 | **MISSING** | 无基于历史数据的策略盈亏验证 |
+| T.1 | PolymarketSymbolMapperTests | **DONE** | 16 个测试用例 |
+| T.2 | PolymarketBrokerageModelTests | **DONE** | 14 个测试用例 (订单验证、价格范围) |
+| T.3 | PolymarketFeeModelTests | **DONE** | 4 个费率计算测试 |
+| T.4 | PolymarketOrderPropertiesTests | **DONE** | 5 个订单属性测试 |
+| T.5 | EIP712SignerTests | **DONE** | 11 个签名生成与验证测试 |
+| T.6 | PolymarketApiClientTests (REST API) | **DONE** | 12 个测试 — MockHttpMessageHandler 拦截全部 HTTP，覆盖 GetOpenOrders/Positions/Balance/OrderBook/Trades/PlaceOrder/CancelOrder/Auth headers |
+| T.7 | PolymarketWebSocketTests | **DONE** | 12 个测试 — 订阅创建 (market/user)、消息解析 (book/price_change/trade/order/invalid/null/empty/unknown) |
+| T.8 | PolymarketBrokerageIntegrationTests | **DONE** | 16 个测试 — PlaceOrder/CancelOrder/UpdateOrder 全链路、GetOpenOrders/Holdings/CashBalance 转换、WebSocket order update (live/matched/partial/canceled) |
+| T.9 | 回测验证 (历史数据) | **MISSING** | 历史数据已有，但未运行策略回测验证 |
+| T.10 | Dashboard 测试 | **MISSING** | 无 Dashboard 项目的自动化测试 |
+| T.11 | 策略回测 P&L 验证 | **MISSING** | 无基于历史数据的策略盈亏验证 |
 
 ---
 
@@ -122,19 +123,15 @@ Dashboard 数据下载工具       ███████████████
 
 ---
 
-#### 2. Brokerage 集成测试
+#### ~~2. Brokerage 集成测试~~ ✅ 已完成
 
-**现状**: 现有 5 套单元测试覆盖了 SymbolMapper、BrokerageModel、FeeModel、OrderProperties、EIP712Signer，但没有任何涉及真实 API 调用或 WebSocket 连接的集成测试。
-
-**工作内容**:
-- REST API 集成测试: 连接测试、GetBalance、GetOpenOrders、GetPositions
-- WebSocket 集成测试: 连接、订阅、消息解析、重连
-- 订单全链路测试: PlaceOrder → 查询 → CancelOrder (纸交易/测试网)
-- 建议使用 mock server 或 Polymarket testnet（如有）
-
-**依赖**: API 凭证配置
-
-**预估工作量**: 2 天
+**完成情况**: 新增 3 个集成测试文件 (40 个测试)，使用 MockHttpMessageHandler 拦截全部 HTTP。
+- `PolymarketApiClientTests.cs` — 12 个 REST API 测试 (订单/余额/持仓/订单簿/交易/下单/撤单/认证头)
+- `PolymarketWebSocketTests.cs` — 12 个 WebSocket 测试 (订阅创建/消息解析/边界条件)
+- `PolymarketBrokerageIntegrationTests.cs` — 16 个全链路测试 (PlaceOrder/CancelOrder/UpdateOrder/GetOpenOrders/Holdings/CashBalance/WS order updates)
+- `Helpers/MockHttpMessageHandler.cs` — 可复用 mock HTTP handler
+- `PolymarketApiClient.cs` 新增 `HttpMessageHandler handler = null` 可选参数 (向后兼容)
+- **总测试数**: 90 个 (原 50 + 新 40)，零网络调用
 
 ---
 
@@ -269,7 +266,7 @@ Dashboard 数据下载工具       ███████████████
 | 优先级 | 工作项 | 预估 | 状态 |
 |--------|--------|------|------|
 | ~~**P0**~~ | ~~下载历史数据~~ | ~~0.5 天~~ | ✅ 已完成 |
-| **P0** | Brokerage 集成测试 | 2 天 | 待做 |
+| ~~**P0**~~ | ~~Brokerage 集成测试~~ | ~~2 天~~ | ✅ 已完成 (40 tests, mock HTTP) |
 | **P1** | 策略回测验证 | 2 天 | 待做 (已解除数据依赖) |
 | **P1** | SentimentAlpha | 3 天 (可降级) | 待做 |
 | **P2** | 小资金实盘验证 | 1 天 | 待做 |
@@ -278,5 +275,5 @@ Dashboard 数据下载工具       ███████████████
 | **P3** | 回测对比框架 | 2 天 | 待做 |
 | **P3** | Dashboard 增强 | 3 天 | 待做 |
 | **P3** | 批量 Symbol 注册 | 1 天 | 待做 |
-| | **剩余合计** | **~17.5 天** | |
-| | P0 + P1 (核心剩余) | **~7 天** | |
+| | **剩余合计** | **~15.5 天** | |
+| | P1 (核心剩余) | **~5 天** | |
