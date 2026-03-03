@@ -261,6 +261,121 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                 .ToList();
         }
 
+        // ====== BTC Reference Data (Binance) ======
+
+        private const string BinanceApi = "https://api.binance.com";
+
+        /// <summary>
+        /// Downloads BTC/USDT 5-minute klines from Binance, aggregates to 10-minute bars,
+        /// and saves to data/reference/btc-usd/ in the same CSV format as Polymarket data.
+        /// </summary>
+        public async Task<int> DownloadBtcKlinesAsync(int days = 7)
+        {
+            _logger.LogInformation("Downloading BTC/USDT klines from Binance ({Days} days)...", days);
+
+            var end = DateTime.UtcNow;
+            var start = end.AddDays(-days);
+            var allKlines = new List<BinanceKline>();
+
+            // Paginate: 1000 × 5min = ~3.47 days per request
+            var cursor = new DateTimeOffset(start).ToUnixTimeMilliseconds();
+            var endMs = new DateTimeOffset(end).ToUnixTimeMilliseconds();
+
+            while (cursor < endMs)
+            {
+                var url = $"{BinanceApi}/api/v3/klines?symbol=BTCUSDT&interval=5m&startTime={cursor}&endTime={endMs}&limit=1000";
+                try
+                {
+                    var json = await _http.GetStringAsync(url);
+                    var arr = JArray.Parse(json);
+                    if (arr.Count == 0) break;
+
+                    foreach (var item in arr)
+                    {
+                        var kline = new BinanceKline
+                        {
+                            OpenTime = DateTimeOffset.FromUnixTimeMilliseconds(item[0].Value<long>()).UtcDateTime,
+                            Open = decimal.Parse(item[1].ToString(), CultureInfo.InvariantCulture),
+                            High = decimal.Parse(item[2].ToString(), CultureInfo.InvariantCulture),
+                            Low = decimal.Parse(item[3].ToString(), CultureInfo.InvariantCulture),
+                            Close = decimal.Parse(item[4].ToString(), CultureInfo.InvariantCulture),
+                            Volume = decimal.Parse(item[5].ToString(), CultureInfo.InvariantCulture)
+                        };
+                        allKlines.Add(kline);
+                    }
+
+                    // Advance cursor past the last kline's open time
+                    var lastOpenMs = arr.Last[0].Value<long>();
+                    cursor = lastOpenMs + 5 * 60 * 1000; // next 5-min interval
+
+                    _logger.LogInformation("  Fetched {Count} klines (up to {Time:yyyy-MM-dd HH:mm})",
+                        arr.Count, DateTimeOffset.FromUnixTimeMilliseconds(lastOpenMs).UtcDateTime);
+
+                    await Task.Delay(200); // rate limit
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Error fetching BTC klines at cursor={Cursor}", cursor);
+                    break;
+                }
+            }
+
+            if (allKlines.Count == 0)
+            {
+                _logger.LogWarning("No BTC klines downloaded");
+                return 0;
+            }
+
+            // Aggregate 5-min klines into 10-min bars
+            var bars = AggregateBtcKlinesToBars(allKlines);
+            var totalBars = 0;
+
+            foreach (var dateGroup in bars.GroupBy(b => b.Time.Date))
+            {
+                var date = dateGroup.Key;
+                var outputDir = Path.Combine(_dataRoot, "reference", "btc-usd");
+                Directory.CreateDirectory(outputDir);
+
+                var outputFile = Path.Combine(outputDir, $"{date:yyyyMMdd}_trade.csv");
+                using var writer = new StreamWriter(outputFile);
+
+                foreach (var bar in dateGroup.OrderBy(b => b.Time))
+                {
+                    var msFromMidnight = (long)(bar.Time - bar.Time.Date).TotalMilliseconds;
+                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                        "{0},{1},{2},{3},{4},{5}",
+                        msFromMidnight, bar.Open, bar.High, bar.Low, bar.Close, bar.Volume));
+                    totalBars++;
+                }
+            }
+
+            _logger.LogInformation("Wrote {Bars} BTC 10-min bars ({Days} days)", totalBars, days);
+            return totalBars;
+        }
+
+        private static List<OhlcvBar> AggregateBtcKlinesToBars(List<BinanceKline> klines)
+        {
+            var period = TimeSpan.FromMinutes(10);
+
+            return klines
+                .GroupBy(k => new DateTime(k.OpenTime.Ticks / period.Ticks * period.Ticks, DateTimeKind.Utc))
+                .OrderBy(g => g.Key)
+                .Select(group =>
+                {
+                    var sorted = group.OrderBy(k => k.OpenTime).ToList();
+                    return new OhlcvBar
+                    {
+                        Time = group.Key,
+                        Open = sorted.First().Open,
+                        High = sorted.Max(k => k.High),
+                        Low = sorted.Min(k => k.Low),
+                        Close = sorted.Last().Close,
+                        Volume = sorted.Sum(k => k.Volume)
+                    };
+                })
+                .ToList();
+        }
+
         // ====== Order Book Snapshot ======
 
         public async Task CaptureOrderBookSnapshotAsync(string tokenId, string ticker)
@@ -411,6 +526,19 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                 result.Error = ex.Message;
             }
 
+                // Step 4: Download BTC reference data
+                try
+                {
+                    var btcBars = await DownloadBtcKlinesAsync(days);
+                    result.BtcBars = btcBars;
+                    _logger.LogInformation("BTC reference data: {Bars} bars", btcBars);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Failed to download BTC reference data");
+                    result.Errors++;
+                }
+
             sw.Stop();
             result.ElapsedSeconds = (int)sw.Elapsed.TotalSeconds;
 
@@ -471,6 +599,16 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             public decimal Price { get; set; }
             public decimal Size { get; set; }
         }
+
+        private class BinanceKline
+        {
+            public DateTime OpenTime { get; set; }
+            public decimal Open { get; set; }
+            public decimal High { get; set; }
+            public decimal Low { get; set; }
+            public decimal Close { get; set; }
+            public decimal Volume { get; set; }
+        }
     }
 
     public class CryptoMarketInfo
@@ -516,6 +654,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         public int TokensWithData { get; set; }
         public int TotalBars { get; set; }
         public int OrderBookSnapshots { get; set; }
+        public int BtcBars { get; set; }
         public int Errors { get; set; }
         public int ElapsedSeconds { get; set; }
         public string Error { get; set; }

@@ -10,13 +10,34 @@ using QuantConnect.Brokerages.Polymarket.Dashboard.Hubs;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Strategies;
 
-// Check for --download-data CLI mode
+// Check for CLI modes
 var downloadMode = args.Contains("--download-data");
+var downloadBtcMode = args.Contains("--download-btc");
 var days = 30;
 for (int i = 0; i < args.Length - 1; i++)
 {
     if (args[i] == "--days" && int.TryParse(args[i + 1], out var d))
         days = d;
+}
+
+if (downloadBtcMode && !downloadMode)
+{
+    // BTC-only download mode
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<DataDownloadService>();
+
+    Console.WriteLine($"=== BTC/USDT Reference Data Downloader (Binance) ===");
+    Console.WriteLine($"Downloading {days} days of 5-min klines...");
+    Console.WriteLine();
+
+    using var downloader = new DataDownloadService(logger);
+    var btcBars = await downloader.DownloadBtcKlinesAsync(days);
+
+    Console.WriteLine();
+    Console.WriteLine($"=== Download Complete ===");
+    Console.WriteLine($"BTC 10-min bars:    {btcBars}");
+
+    return;
 }
 
 if (downloadMode)
@@ -38,6 +59,7 @@ if (downloadMode)
     Console.WriteLine($"Tokens processed:   {result.TokensProcessed}");
     Console.WriteLine($"Tokens with data:   {result.TokensWithData}");
     Console.WriteLine($"Total minute bars:  {result.TotalBars}");
+    Console.WriteLine($"BTC 10-min bars:    {result.BtcBars}");
     Console.WriteLine($"Order book snaps:   {result.OrderBookSnapshots}");
     Console.WriteLine($"Errors:             {result.Errors}");
     Console.WriteLine($"Elapsed:            {result.ElapsedSeconds}s");
@@ -76,6 +98,11 @@ builder.Services.AddSingleton<DataDownloadService>();
 builder.Services.AddSingleton<MarketDataService>();
 builder.Services.AddHostedService(sp => sp.GetRequiredService<MarketDataService>());
 
+// Register BTC price service and correlation monitor
+builder.Services.AddSingleton<BtcPriceService>();
+builder.Services.AddHostedService(sp => sp.GetRequiredService<BtcPriceService>());
+builder.Services.AddSingleton<CorrelationMonitor>();
+
 // DryRun configuration
 var dryRunSettings = new DryRunSettings
 {
@@ -94,13 +121,29 @@ builder.Services.AddSingleton(dryRunSettings);
 if (dryRunSettings.Enabled)
 {
     // Register strategy based on config
-    IDryRunStrategy strategy = dryRunSettings.StrategyName?.ToLower() switch
+    // Note: BtcFollowMM needs DI services, resolved after build
+    var strategyName = dryRunSettings.StrategyName?.ToLower();
+    if (strategyName == "btcfollowmm" || strategyName == "btcmm")
     {
-        "spreadcapture" => new SpreadCaptureStrategy(),
-        "marketmaking" or "mm" => new MarketMakingStrategy(),
-        _ => new MeanReversionStrategy()
-    };
-    builder.Services.AddSingleton(strategy);
+        builder.Services.AddSingleton<IDryRunStrategy>(sp =>
+        {
+            var strategy = new BtcFollowMMStrategy(
+                sp.GetRequiredService<BtcPriceService>(),
+                sp.GetRequiredService<CorrelationMonitor>());
+            strategy.Initialize(dryRunSettings.StrategyParameters);
+            return strategy;
+        });
+    }
+    else
+    {
+        IDryRunStrategy strategy = strategyName switch
+        {
+            "spreadcapture" => new SpreadCaptureStrategy(),
+            "marketmaking" or "mm" => new MarketMakingStrategy(),
+            _ => new MeanReversionStrategy()
+        };
+        builder.Services.AddSingleton(strategy);
+    }
 
     // Register DryRunEngine as both singleton and hosted service
     builder.Services.AddSingleton<DryRunEngine>();

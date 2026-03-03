@@ -10,7 +10,8 @@ Phase 4  做市策略           ████████████████
 Phase 5  量化策略框架       ██████████████████░░  90%  (3.5/4 — 缺 SentimentAlpha)
 Dashboard 做市模拟系统       ████████████████████ 100%  (全部完成)
 Dashboard 数据下载工具       ████████████████████ 100%  (CLI + API 端点)
-测试                        ████████████████████  95%  (单元+集成+策略验证+Dashboard测试+错误处理测试完成)
+BTC 相关性分析 & 随动策略    ████████████████████ 100%  (BTC 数据下载 + 相关性监控 + BtcFollowMM 策略)
+测试                        ████████████████████  95%  (126 Dashboard tests, 90 brokerage tests)
 ```
 
 ---
@@ -88,6 +89,17 @@ Dashboard 数据下载工具       ███████████████
 | D.8 | 数据下载 API 端点 | **DONE** | `POST /api/data/download?days=N` + `GET /api/data/download/status` |
 | D.9 | CLI 下载模式 | **DONE** | `dotnet run -- --download-data --days 30`，无需启动 Web 服务器 |
 
+### BTC 相关性分析与随动策略 (计划外增量)
+
+| # | 组件 | 状态 | 说明 |
+|---|------|------|------|
+| B.1 | BTC 数据下载 (Binance) | **DONE** | `DownloadBtcKlinesAsync()`: 5min K 线分页下载，聚合为 10min bars，存储 `data/reference/btc-usd/`。`--download-btc` CLI flag + 集成入 `DownloadAllAsync()` |
+| B.2 | BtcPriceService | **DONE** | `BackgroundService` 每 10s 轮询 Binance ticker，60 点滑动窗口，暴露 `CurrentPrice`/`GetReturn()`/`Momentum` (短期 vs 长期 EMA) |
+| B.3 | CorrelationMonitor | **DONE** | 实时 BTC↔token 相关性计算：20 点滑动窗口 Pearson 相关系数，`GetCorrelation(tokenId)` 供策略查询 |
+| B.4 | BtcFollowMMStrategy | **DONE** | 完整 MM 逻辑 + BTC 信号层：动量阈值、spread 放大、size 缩减、strike 感知 delta、相关性门控 (\|r\| < 0.3 回退普通 MM) |
+| B.5 | Python 相关性分析 Notebook | **DONE** | `notebooks/btc_polymarket_correlation.ipynb`: CCF 分析、delta 敏感度、rolling correlation、scatter plots |
+| B.6 | 测试 | **DONE** | 49 个新测试 (BtcPriceServiceTests 16 + BtcFollowMMStrategyTests 23 + CorrelationMonitorTests 10)，总计 126 个 Dashboard 测试全部通过 |
+
 ### 测试
 
 | # | 测试项 | 状态 | 说明 |
@@ -101,7 +113,7 @@ Dashboard 数据下载工具       ███████████████
 | T.7 | PolymarketWebSocketTests | **DONE** | 12 个测试 — 订阅创建 (market/user)、消息解析 (book/price_change/trade/order/invalid/null/empty/unknown) |
 | T.8 | PolymarketBrokerageIntegrationTests | **DONE** | 16 个测试 — PlaceOrder/CancelOrder/UpdateOrder 全链路、GetOpenOrders/Holdings/CashBalance 转换、WebSocket order update (live/matched/partial/canceled) |
 | T.9 | PolymarketStrategyValidationTests | **DONE** | 37 个测试 — Kelly PCM (7: flat/low-conf/up/down/half-vs-full/max-clamp/multi)、Risk Model (3: defaults/custom/settlement)、Alpha Models (6: arb/meanrev/corr 初始化+自定义)、Market Maker (8: price-clamp/skew/levels/sizes/arb-overpriced/underpriced/normal)、Data Quality (10: dir/json/48-tokens/pairs/csv-format/ohlc/dust/dates/bars/yes-no-independence) |
-| T.10 | Dashboard 测试 | **DONE** | 77 个测试 — MarketMakingStrategy (20)、MeanReversionStrategy (17)、SpreadCaptureStrategy (15)、DryRunModels (14)、ApiClientRetryTests (8: 429/500重试/最大重试/耗尽抛异常/POST不重试/DELETE重试/400不重试/认证头重生成)、OrderBookStalenessTests (3: SeedOrderBook时间戳/未知token返回null/默认阈值60s) |
+| T.10 | Dashboard 测试 | **DONE** | 126 个测试 — MarketMakingStrategy (20)、MeanReversionStrategy (17)、SpreadCaptureStrategy (15)、DryRunModels (14)、ApiClientRetryTests (8)、OrderBookStalenessTests (3)、BtcPriceServiceTests (16)、BtcFollowMMStrategyTests (23)、CorrelationMonitorTests (10) |
 | T.11 | 策略回测 P&L 验证 | **MISSING** | 需部署 .NET 10 SDK 运行完整 LEAN 引擎回测 |
 
 ---
