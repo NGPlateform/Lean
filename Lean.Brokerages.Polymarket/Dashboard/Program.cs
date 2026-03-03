@@ -1,12 +1,19 @@
 using System;
+using System.IO;
 using System.Linq;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.DataProtection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using QuantConnect.Brokerages.Polymarket;
 using QuantConnect.Brokerages.Polymarket.Auth;
+using QuantConnect.Brokerages.Polymarket.Dashboard.Auth;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Hubs;
+using QuantConnect.Brokerages.Polymarket.Dashboard.Models;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Strategies;
@@ -149,6 +156,76 @@ builder.Services.AddSingleton(symbolMapper);
 builder.Services.AddSingleton<TradingService>();
 builder.Services.AddSingleton<DataDownloadService>();
 
+// === Auth (Phase 1) ===
+var authSettings = new AuthSettings
+{
+    JwtSecret = config["Auth:JwtSecret"] ?? "ChangeThisToASecureRandomStringAtLeast32CharsLong!",
+    TokenExpiryHours = int.TryParse(config["Auth:TokenExpiryHours"], out var teh) ? teh : 24
+};
+foreach (var addr in config.GetSection("Auth:WhitelistedAddresses").GetChildren())
+{
+    if (!string.IsNullOrWhiteSpace(addr.Value))
+        authSettings.WhitelistedAddresses.Add(addr.Value);
+}
+builder.Services.AddSingleton(authSettings);
+builder.Services.AddSingleton<NonceStore>();
+builder.Services.AddSingleton<SignatureVerifier>();
+builder.Services.AddSingleton<JwtTokenService>();
+
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidIssuer = "polymarket-dashboard",
+            ValidateAudience = true,
+            ValidAudience = "polymarket-dashboard",
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(authSettings.JwtSecret))
+        };
+        // SignalR JWT via query string
+        options.Events = new JwtBearerEvents
+        {
+            OnMessageReceived = context =>
+            {
+                var accessToken = context.Request.Query["access_token"];
+                var path = context.HttpContext.Request.Path;
+                if (!string.IsNullOrEmpty(accessToken) && path.StartsWithSegments("/hub"))
+                {
+                    context.Token = accessToken;
+                }
+                return System.Threading.Tasks.Task.CompletedTask;
+            }
+        };
+    });
+builder.Services.AddAuthorization();
+
+// === Data Protection (Phase 2) ===
+var keysDir = Path.Combine(AppContext.BaseDirectory, "keys");
+Directory.CreateDirectory(keysDir);
+builder.Services.AddDataProtection()
+    .PersistKeysToFileSystem(new DirectoryInfo(keysDir))
+    .SetApplicationName("PolymarketDashboard");
+
+// === Settings Service (Phase 2) ===
+builder.Services.AddSingleton<SettingsService>();
+
+// === Risk Management (Phase 3) ===
+var riskSettings = new RiskSettings();
+if (decimal.TryParse(config["Risk:DailySpendingLimit"], out var dsl)) riskSettings.DailySpendingLimit = dsl;
+if (decimal.TryParse(config["Risk:TotalExposureLimit"], out var tel)) riskSettings.TotalExposureLimit = tel;
+if (decimal.TryParse(config["Risk:PerMarketPositionLimit"], out var pmpl)) riskSettings.PerMarketPositionLimit = pmpl;
+if (decimal.TryParse(config["Risk:PerTradePositionLimit"], out var ptpl)) riskSettings.PerTradePositionLimit = ptpl;
+if (decimal.TryParse(config["Risk:DailyLossLimit"], out var dll)) riskSettings.DailyLossLimit = dll;
+if (decimal.TryParse(config["Risk:MaxDrawdownLimit"], out var mddl)) riskSettings.MaxDrawdownLimit = mddl;
+builder.Services.AddSingleton(riskSettings);
+builder.Services.AddSingleton<RiskManager>();
+
+// === Wallet Service (Phase 4) ===
+builder.Services.AddSingleton<WalletService>();
+
 // Register MarketDataService as both singleton and hosted service so it can be injected
 builder.Services.AddSingleton<MarketDataService>();
 builder.Services.AddHostedService(sp => sp.GetRequiredService<MarketDataService>());
@@ -214,6 +291,8 @@ var app = builder.Build();
 
 app.UseDefaultFiles();
 app.UseStaticFiles();
+app.UseAuthentication();
+app.UseAuthorization();
 app.MapControllers();
 app.MapHub<TradingHub>("/hub/trading");
 

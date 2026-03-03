@@ -1,4 +1,5 @@
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.SignalR;
 using Microsoft.Extensions.Logging;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services;
@@ -8,6 +9,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Hubs
     /// <summary>
     /// SignalR hub for real-time trading data (order book updates, trades, order status changes)
     /// </summary>
+    [Authorize]
     public class TradingHub : Hub
     {
         private readonly MarketDataService _marketDataService;

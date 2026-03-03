@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using QuantConnect.Brokerages.Polymarket.Dashboard.Models;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services;
 using QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest;
 
 namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api")]
     public class TradingController : ControllerBase
     {
@@ -19,6 +22,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
         private readonly DryRunEngine _dryRunEngine;
         private readonly SentimentService _sentimentService;
         private readonly BacktestRunner _backtestRunner;
+        private readonly RiskManager _riskManager;
         private readonly IServiceProvider _serviceProvider;
         private readonly ILogger<TradingController> _logger;
 
@@ -35,6 +39,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             MarketDataService marketDataService,
             DataDownloadService dataDownloadService,
             DryRunSettings dryRunSettings,
+            RiskManager riskManager,
             ILogger<TradingController> logger,
             IServiceProvider serviceProvider = null,
             DryRunEngine dryRunEngine = null,
@@ -46,12 +51,14 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             _dataDownloadService = dataDownloadService;
             _dryRunSettings = dryRunSettings;
             _dryRunEngine = dryRunEngine;
+            _riskManager = riskManager;
             _sentimentService = sentimentService;
             _backtestRunner = backtestRunner;
             _serviceProvider = serviceProvider;
             _logger = logger;
         }
 
+        [AllowAnonymous]
         [HttpGet("status")]
         public IActionResult GetStatus()
         {
@@ -70,6 +77,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
 
         // === Market Data endpoints — always use real data ===
 
+        [AllowAnonymous]
         [HttpGet("markets")]
         public IActionResult GetMarkets([FromQuery] string q = null)
         {
@@ -88,6 +96,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("events")]
         public IActionResult GetEvents()
         {
@@ -118,6 +127,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("orderbook/{tokenId}")]
         public IActionResult GetOrderBook(string tokenId)
         {
@@ -217,13 +227,21 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Controllers
                 if (request.Price < 0.01m || request.Price > 0.99m)
                     return BadRequest(new { error = "Price must be between 0.01 and 0.99" });
 
+                // Risk check
+                var riskCheck = _riskManager.ValidateOrder(request.TokenId, request.Price, request.Size, request.Side);
+                if (!riskCheck.Allowed)
+                    return BadRequest(new { error = riskCheck.Reason, riskViolation = true });
+
                 if (IsDryRunMode)
                 {
                     var result = _dryRunEngine.PlaceOrder(request.TokenId, request.Price, request.Size, request.Side);
+                    _riskManager.RecordOrderPlaced(request.TokenId, request.Price * request.Size);
                     return Ok(result);
                 }
 
-                return Ok(_tradingService.PlaceOrder(request.TokenId, request.Price, request.Size, request.Side));
+                var liveResult = _tradingService.PlaceOrder(request.TokenId, request.Price, request.Size, request.Side);
+                _riskManager.RecordOrderPlaced(request.TokenId, request.Price * request.Size);
+                return Ok(liveResult);
             }
             catch (Exception ex)
             {

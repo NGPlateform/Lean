@@ -18,10 +18,16 @@ const state = {
 
 // === API ===
 async function api(path, options = {}) {
+    const headers = { 'Content-Type': 'application/json', ...authHeaders() };
     const res = await fetch(`/api${path}`, {
-        headers: { 'Content-Type': 'application/json' },
-        ...options
+        headers,
+        ...options,
+        headers: { ...headers, ...(options.headers || {}) }
     });
+    if (res.status === 401) {
+        logout();
+        throw new Error('Session expired. Please login again.');
+    }
     if (!res.ok) {
         const err = await res.json().catch(() => ({ error: res.statusText }));
         throw new Error(err.error || 'Request failed');
@@ -689,7 +695,12 @@ async function cancelOrder(orderId) {
 // === SignalR ===
 async function connectSignalR() {
     try {
-        const conn = new signalR.HubConnectionBuilder().withUrl('/hub/trading').withAutomaticReconnect().build();
+        const conn = new signalR.HubConnectionBuilder()
+            .withUrl('/hub/trading', {
+                accessTokenFactory: () => getToken()
+            })
+            .withAutomaticReconnect()
+            .build();
         conn.on('OrderBookUpdate', d => { if (d.tokenId === state.selectedTokenId && d.book) renderOrderBook(d.book); });
         conn.on('TradeUpdate', t => { if (t?.price) showToast(`Trade: ${t.side} ${t.size} @ ${t.price}`, 'info'); });
 
@@ -783,8 +794,65 @@ function setupEvents() {
     });
 }
 
+// === Main Navigation / View Switching ===
+function showView(viewName) {
+    document.querySelectorAll('.view-panel').forEach(el => el.style.display = 'none');
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+    const panel = document.getElementById('view-' + viewName);
+    if (panel) panel.style.display = '';
+
+    const btn = document.querySelector(`.nav-btn[data-view="${viewName}"]`);
+    if (btn) btn.classList.add('active');
+
+    // Load data for the view
+    if (viewName === 'settings') loadSettingsPage();
+    if (viewName === 'wallet') loadWalletPage();
+}
+
+// === Risk Status Panel ===
+async function loadRiskStatus() {
+    const container = document.getElementById('risk-bars');
+    if (!container) return;
+    try {
+        const status = await api('/risk/status');
+        const bars = [
+            { label: 'Daily Spending', current: status.dailySpending, limit: status.dailySpendingLimit },
+            { label: 'Total Exposure', current: status.totalExposure, limit: status.totalExposureLimit },
+            { label: 'Daily P&L Loss', current: -status.dailyPnl, limit: status.dailyLossLimit },
+            { label: 'Drawdown', current: status.maxDrawdown, limit: status.maxDrawdownLimit }
+        ];
+        container.innerHTML = bars.map(b => {
+            const pct = b.limit > 0 ? Math.min((b.current / b.limit) * 100, 100) : 0;
+            const cls = pct >= 90 ? 'risk-critical' : pct >= 70 ? 'risk-warning' : 'risk-ok';
+            return `<div class="risk-bar-row">
+                <div class="risk-bar-label">${b.label}</div>
+                <div class="risk-bar-track">
+                    <div class="risk-bar-fill ${cls}" style="width:${pct.toFixed(1)}%"></div>
+                </div>
+                <div class="risk-bar-text">$${b.current.toFixed(0)} / $${b.limit.toFixed(0)}</div>
+            </div>`;
+        }).join('');
+
+        // Show alerts
+        if (status.alerts && status.alerts.length > 0) {
+            container.innerHTML += status.alerts.map(a =>
+                `<div class="risk-alert risk-alert-${a.level}">${esc(a.message)}</div>`
+            ).join('');
+        }
+    } catch { container.innerHTML = '<div class="empty-state" style="padding:8px">--</div>'; }
+}
+
 // === Init ===
 async function init() {
+    // Auth gate
+    setupWeb3Listeners();
+    if (!isAuthenticated()) {
+        showLoginScreen();
+        return;
+    }
+    showDashboard();
+
     setupTabs();
     setupEvents();
     setupChartToggle();
@@ -796,15 +864,16 @@ async function init() {
         initEquityChart();
     }
 
-    await Promise.all([loadMarkets(), loadEvents(), loadBalance(), loadPositions(), connectSignalR()]);
+    await Promise.all([loadMarkets(), loadEvents(), loadBalance(), loadPositions(), connectSignalR(), loadRiskStatus()]);
 
     if (state.dryRunMode) {
         loadStrategy();
         loadEquityCurve();
     }
 
-    // Polling: only poll balance in non-dryrun mode
+    // Polling: balance and risk status
     if (state.hasCredentials && !state.dryRunMode) setInterval(loadBalance, 30000);
+    setInterval(loadRiskStatus, 15000);
 }
 
 document.addEventListener('DOMContentLoaded', init);
