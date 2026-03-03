@@ -11,12 +11,12 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
     /// Market making strategy enhanced with BTC price momentum signals.
     /// Copies all MM logic from MarketMakingStrategy and adds a BTC signal layer
     /// that adjusts spreads and sizes based on BTC momentum, strike-aware delta,
-    /// and real-time BTC↔token correlation.
+    /// real-time BTC↔token correlation, TTE-aware scaling, and up/down asymmetry.
     /// </summary>
     public class BtcFollowMMStrategy : IDryRunStrategy
     {
         public string Name => "BtcFollowMM";
-        public string Description => "BTC-aware market making: adjusts quotes based on BTC momentum, strike delta, and correlation";
+        public string Description => "BTC-aware market making: adjusts quotes based on BTC momentum, strike delta, correlation, TTE, and asymmetry";
 
         private readonly BtcPriceService _btcPriceService;
         private readonly CorrelationMonitor _correlationMonitor;
@@ -42,9 +42,10 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
 
         // === BTC Signal Configuration ===
         private decimal _momentumThreshold = 0.002m;     // 0.2% BTC momentum threshold
-        private decimal _momentumSpreadMultiplier = 2.0m; // Widen unfavorable side spread
+        private decimal _baseMomentumSpreadMultiplier = 2.0m; // Base spread multiplier (scaled by TTE)
         private decimal _momentumSizeReduction = 0.5m;    // Reduce unfavorable side size
         private decimal _minCorrelation = 0.3m;           // Minimum |correlation| to apply BTC signal
+        private decimal _downMoveMultiplierScale = 0.5m;  // BTC down-moves get reduced multiplier (asymmetry)
 
         // State
         private int _tickCount;
@@ -53,6 +54,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
         private readonly HashSet<string> _selectedTokens = new();
         private readonly Dictionary<string, int> _lastQuoteTick = new();
         private readonly Dictionary<string, decimal?> _strikeCache = new();
+        private readonly Dictionary<string, DateTime?> _expiryCache = new();
         private const int VolatilityWindow = 20;
         private const int MarketSelectionIntervalTicks = 12;
 
@@ -87,11 +89,13 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
             if (parameters.TryGetValue("MomentumThreshold", out var mt) && decimal.TryParse(mt, out var mtv))
                 _momentumThreshold = mtv;
             if (parameters.TryGetValue("MomentumSpreadMultiplier", out var msm) && decimal.TryParse(msm, out var msmv))
-                _momentumSpreadMultiplier = msmv;
+                _baseMomentumSpreadMultiplier = msmv;
             if (parameters.TryGetValue("MomentumSizeReduction", out var msr) && decimal.TryParse(msr, out var msrv))
                 _momentumSizeReduction = msrv;
             if (parameters.TryGetValue("MinCorrelation", out var mc) && decimal.TryParse(mc, out var mcv))
                 _minCorrelation = mcv;
+            if (parameters.TryGetValue("DownMoveMultiplierScale", out var dm) && decimal.TryParse(dm, out var dmv))
+                _downMoveMultiplierScale = dmv;
         }
 
         public List<StrategyAction> Evaluate(StrategyContext context)
@@ -135,11 +139,12 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
                 if (!midPrice.HasValue) continue;
                 if (midPrice.Value < MinPrice || midPrice.Value > MaxPrice) continue;
 
-                // Resolve strike for this token's market
+                // Resolve strike and expiry for this token's market
                 var strike = GetStrikeForToken(tokenId, context.Markets);
+                var expiry = GetExpiryForToken(tokenId, context.Markets);
 
-                // Calculate BTC signal adjustments
-                var btcSignal = CalculateBtcSignal(tokenId, btcMomentum, btcPrice, strike);
+                // Calculate BTC signal adjustments (with TTE and asymmetry)
+                var btcSignal = CalculateBtcSignal(tokenId, btcMomentum, btcPrice, strike, expiry, context.CurrentTime);
 
                 var tokenActions = ProcessToken(tokenId, book, midPrice.Value, context, totalExposure, btcSignal);
                 actions.AddRange(tokenActions);
@@ -152,7 +157,8 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
 
         // === BTC Signal Calculation ===
 
-        internal BtcSignalAdjustment CalculateBtcSignal(string tokenId, decimal btcMomentum, decimal? btcPrice, decimal? strike)
+        internal BtcSignalAdjustment CalculateBtcSignal(string tokenId, decimal btcMomentum, decimal? btcPrice,
+            decimal? strike, DateTime? expiry = null, DateTime? currentTime = null)
         {
             var adjustment = new BtcSignalAdjustment();
 
@@ -172,6 +178,13 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
                 deltaMultiplier = Math.Clamp(1.0m - Math.Abs(moneyness) * 5m, 0.1m, 1.0m);
             }
 
+            // Calculate TTE-aware spread multiplier
+            var tteMultiplier = CalculateTteMultiplier(expiry, currentTime);
+
+            // Calculate asymmetry-adjusted spread multiplier
+            // BTC up-moves have ~4.8x stronger impact than down-moves (from analysis)
+            var effectiveSpreadMultiplier = _baseMomentumSpreadMultiplier * tteMultiplier;
+
             // Apply momentum signal scaled by correlation and delta
             var signalStrength = btcMomentum * correlation * deltaMultiplier;
 
@@ -179,24 +192,52 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
             {
                 // BTC bullish + positive correlation → YES token likely to rise
                 // Widen ask (reluctant to sell), reduce ask size
-                adjustment.AskSpreadMultiplier = _momentumSpreadMultiplier;
+                // Up-moves: use full multiplier (stronger impact per analysis)
+                adjustment.AskSpreadMultiplier = effectiveSpreadMultiplier;
                 adjustment.AskSizeMultiplier = _momentumSizeReduction;
-                adjustment.Reason = $"BTC BULL | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} sig={signalStrength:F4}";
+                adjustment.Reason = $"BTC BULL | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} tte={tteMultiplier:F2} sig={signalStrength:F4}";
             }
             else if (signalStrength < -_momentumThreshold)
             {
                 // BTC bearish + positive correlation → YES token likely to fall
                 // Widen bid (reluctant to buy), reduce bid size
-                adjustment.BidSpreadMultiplier = _momentumSpreadMultiplier;
+                // Down-moves: scale only the excess above 1.0 (asymmetry analysis shows weaker impact)
+                // e.g., base=2.0, tte=1.25, scale=0.5 → 1 + (2.0*1.25 - 1)*0.5 = 1.75 vs up's 2.5
+                var bearMultiplier = 1.0m + (effectiveSpreadMultiplier - 1.0m) * _downMoveMultiplierScale;
+                adjustment.BidSpreadMultiplier = Math.Max(1.0m, bearMultiplier);
                 adjustment.BidSizeMultiplier = _momentumSizeReduction;
-                adjustment.Reason = $"BTC BEAR | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} sig={signalStrength:F4}";
+                adjustment.Reason = $"BTC BEAR | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} tte={tteMultiplier:F2} sig={signalStrength:F4}";
             }
             else
             {
-                adjustment.Reason = $"BTC neutral | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} sig={signalStrength:F4}";
+                adjustment.Reason = $"BTC neutral | mom={btcMomentum:F4} corr={correlation:F2} delta={deltaMultiplier:F2} tte={tteMultiplier:F2} sig={signalStrength:F4}";
             }
 
             return adjustment;
+        }
+
+        /// <summary>
+        /// Calculates TTE-aware spread multiplier scaling.
+        /// Closer to expiry → stronger BTC signal response (higher gamma).
+        /// Based on TTE analysis: corr 0.73 at 3-7d → 0.83 at 1-3d → 0.80 at &lt;1d.
+        /// </summary>
+        internal static decimal CalculateTteMultiplier(DateTime? expiry, DateTime? currentTime)
+        {
+            if (!expiry.HasValue || !currentTime.HasValue)
+                return 1.0m; // Default: no TTE adjustment
+
+            var tte = expiry.Value - currentTime.Value;
+            var tteDays = (decimal)tte.TotalDays;
+
+            if (tteDays <= 0)
+                return 1.5m; // Expired/at expiry: max response
+            if (tteDays < 1)
+                return 1.5m; // <1 day: max response
+            if (tteDays < 3)
+                return 1.25m; // 1-3 days: strong response
+            if (tteDays < 7)
+                return 1.0m; // 3-7 days: default
+            return 0.75m; // >7 days: weaker signal
         }
 
         internal static decimal? ExtractStrike(string question)
@@ -241,6 +282,37 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Strategies
 
             _strikeCache[tokenId] = strike;
             return strike;
+        }
+
+        private DateTime? GetExpiryForToken(string tokenId, List<DashboardMarket> markets)
+        {
+            if (_expiryCache.TryGetValue(tokenId, out var cached))
+                return cached;
+
+            DateTime? expiry = null;
+            if (markets != null)
+            {
+                foreach (var market in markets)
+                {
+                    if (market.Tokens == null) continue;
+                    foreach (var token in market.Tokens)
+                    {
+                        if (token.TokenId == tokenId)
+                        {
+                            if (!string.IsNullOrEmpty(market.EndDate) &&
+                                DateTime.TryParse(market.EndDate, out var parsed))
+                            {
+                                expiry = parsed;
+                            }
+                            break;
+                        }
+                    }
+                    if (expiry.HasValue) break;
+                }
+            }
+
+            _expiryCache[tokenId] = expiry;
+            return expiry;
         }
 
         // === Core MM Logic (from MarketMakingStrategy) ===

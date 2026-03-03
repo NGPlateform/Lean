@@ -482,6 +482,196 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Tests
 
         #endregion
 
+        #region TTE-Aware Scaling Tests
+
+        [Test]
+        public void CalculateTteMultiplier_ReturnsDefault_WhenNoExpiry()
+        {
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(null, DateTime.UtcNow);
+            Assert.AreEqual(1.0m, result);
+        }
+
+        [Test]
+        public void CalculateTteMultiplier_ReturnsDefault_WhenNoCurrentTime()
+        {
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(DateTime.UtcNow.AddDays(5), null);
+            Assert.AreEqual(1.0m, result);
+        }
+
+        [Test]
+        public void CalculateTteMultiplier_MaxResponse_WhenLessThan1Day()
+        {
+            var now = new DateTime(2026, 3, 3, 12, 0, 0);
+            var expiry = new DateTime(2026, 3, 3, 23, 59, 59);
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(expiry, now);
+            Assert.AreEqual(1.5m, result);
+        }
+
+        [Test]
+        public void CalculateTteMultiplier_StrongResponse_When1To3Days()
+        {
+            var now = new DateTime(2026, 3, 1, 12, 0, 0);
+            var expiry = new DateTime(2026, 3, 3, 23, 59, 59);
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(expiry, now);
+            Assert.AreEqual(1.25m, result);
+        }
+
+        [Test]
+        public void CalculateTteMultiplier_DefaultResponse_When3To7Days()
+        {
+            var now = new DateTime(2026, 2, 27, 12, 0, 0);
+            var expiry = new DateTime(2026, 3, 3, 23, 59, 59);
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(expiry, now);
+            Assert.AreEqual(1.0m, result);
+        }
+
+        [Test]
+        public void CalculateTteMultiplier_WeakResponse_WhenMoreThan7Days()
+        {
+            var now = new DateTime(2026, 2, 20, 12, 0, 0);
+            var expiry = new DateTime(2026, 3, 3, 23, 59, 59);
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(expiry, now);
+            Assert.AreEqual(0.75m, result);
+        }
+
+        [Test]
+        public void CalculateTteMultiplier_MaxResponse_WhenExpired()
+        {
+            var now = new DateTime(2026, 3, 4, 12, 0, 0);
+            var expiry = new DateTime(2026, 3, 3, 23, 59, 59);
+            var result = BtcFollowMMStrategy.CalculateTteMultiplier(expiry, now);
+            Assert.AreEqual(1.5m, result);
+        }
+
+        [Test]
+        public void CalculateBtcSignal_IncludesTteInReason()
+        {
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var expiry = DateTime.UtcNow.AddDays(2); // 1-3d bucket
+            var signal = _strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 74000m, expiry, DateTime.UtcNow);
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                Assert.That(signal.Reason, Does.Contain("tte="));
+            }
+        }
+
+        [Test]
+        public void CalculateBtcSignal_TteScalesSpread_NearExpiry()
+        {
+            // Build strong correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var now = DateTime.UtcNow;
+            var nearExpiry = now.AddHours(12);  // <1d → 1.5x TTE multiplier
+            var farExpiry = now.AddDays(10);     // >7d → 0.75x TTE multiplier
+
+            var signalNear = _strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m, nearExpiry, now);
+            var signalFar = _strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m, farExpiry, now);
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                // Near expiry should have stronger ask spread multiplier than far
+                Assert.Greater(signalNear.AskSpreadMultiplier, signalFar.AskSpreadMultiplier,
+                    "Near-expiry should produce stronger spread adjustment");
+            }
+        }
+
+        #endregion
+
+        #region Asymmetry Tests
+
+        [Test]
+        public void CalculateBtcSignal_BullishStrongerThanBearish()
+        {
+            // Build strong correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var bullSignal = _strategy.CalculateBtcSignal("token-1", 0.005m, 81000m, 81000m);
+            var bearSignal = _strategy.CalculateBtcSignal("token-1", -0.005m, 81000m, 81000m);
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                // Bull ask spread > Bear bid spread (asymmetry: up-moves are stronger)
+                Assert.Greater(bullSignal.AskSpreadMultiplier, bearSignal.BidSpreadMultiplier,
+                    "Bullish spread adjustment should be stronger than bearish (asymmetry)");
+            }
+        }
+
+        [Test]
+        public void CalculateBtcSignal_BearishStillWidensSpread()
+        {
+            // Build strong correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var bearSignal = _strategy.CalculateBtcSignal("token-1", -0.005m, 81000m, 81000m);
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                // Even with asymmetry reduction, bear should still widen spread > 1.0
+                Assert.Greater(bearSignal.BidSpreadMultiplier, 1.0m,
+                    "Bearish signal should still widen bid spread above 1.0");
+            }
+        }
+
+        [Test]
+        public void Initialize_CustomDownMoveScale_Applied()
+        {
+            _strategy.Initialize(new Dictionary<string, string>
+            {
+                { "DownMoveMultiplierScale", "0.8" }
+            });
+
+            // Build correlation
+            _btcService.InjectSample(80000m);
+            for (int i = 1; i <= 10; i++)
+            {
+                _btcService.InjectSample(80000m + i * 100m);
+                _correlationMonitor.UpdateTokenPrice("token-1", 0.50m + i * 0.005m);
+            }
+
+            var bearDefault = new BtcFollowMMStrategy(_btcService, _correlationMonitor);
+            bearDefault.Initialize(new Dictionary<string, string>());
+            var defaultSignal = bearDefault.CalculateBtcSignal("token-1", -0.005m, 81000m, 81000m);
+            var customSignal = _strategy.CalculateBtcSignal("token-1", -0.005m, 81000m, 81000m);
+
+            var corr = _correlationMonitor.GetCorrelation("token-1");
+            if (Math.Abs(corr) >= 0.3m)
+            {
+                // Custom 0.8 scale should produce stronger bear spread than default 0.5
+                Assert.Greater(customSignal.BidSpreadMultiplier, defaultSignal.BidSpreadMultiplier,
+                    "Higher DownMoveMultiplierScale should produce stronger bearish adjustment");
+            }
+        }
+
+        #endregion
+
         #region Size/Balance Limit Tests
 
         [Test]
