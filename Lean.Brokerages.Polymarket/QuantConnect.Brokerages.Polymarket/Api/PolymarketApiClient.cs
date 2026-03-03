@@ -33,11 +33,11 @@ namespace QuantConnect.Brokerages.Polymarket.Api
         /// <summary>
         /// Creates a new Polymarket API client
         /// </summary>
-        public PolymarketApiClient(PolymarketCredentials credentials, string baseUrl = "https://clob.polymarket.com")
+        public PolymarketApiClient(PolymarketCredentials credentials, string baseUrl = "https://clob.polymarket.com", HttpMessageHandler handler = null)
         {
             _credentials = credentials ?? throw new ArgumentNullException(nameof(credentials));
             _baseUrl = baseUrl.TrimEnd('/');
-            _httpClient = new HttpClient();
+            _httpClient = handler != null ? new HttpClient(handler) : new HttpClient();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             if (!string.IsNullOrWhiteSpace(credentials.PrivateKey))
