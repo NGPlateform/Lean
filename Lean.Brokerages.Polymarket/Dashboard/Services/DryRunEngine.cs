@@ -567,6 +567,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
                     _equityCurve.Clear();
                     _tickCount = 0;
                     _orderCounter = 0;
+                    _lastAutoSubscribeTick = -AutoSubscribeRefreshIntervalTicks;
                 }
 
                 _strategy = newStrategy;
