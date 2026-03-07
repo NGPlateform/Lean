@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "Will the price of Bitcoin be above $110,000 on September 26 at 4AM ET?",
+    "conditionId": "0xee5a7f44c8096918177d196f28075a3e1a725b3b0c03a112084bb28aa3c9a3c2",
+    "slug": "btc-multistrike-4h-1758873600-110k",
+    "volume": 99.9998,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/26/2025 8:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "101093682496950402447970523482815214812181302554563743315056370619783161040475",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758873600-110kyes"
+      },
+      {
+        "tokenId": "37839275698584141869811824793742792041454224651623417680937775930833139984738",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758873600-110kno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $109,500 on September 26 at 4AM ET?",
+    "conditionId": "0x96ccd9f4a0065c24ab57c4f61e62e114bd5dce3ac9c28b0bffb757d6b175ef18",
+    "slug": "btc-multistrike-4h-1758873600-109pt5k",
+    "volume": 99.9903,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/26/2025 8:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "57571662133713103453714357279279505115669592651712934050644534984691194314868",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758873600-109pt5kyes"
+      },
+      {
+        "tokenId": "22651475346950463620993984082871685173684556503575121295391745593046593085662",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758873600-109pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $110,500 on September 26 at 4AM ET?",
+    "conditionId": "0x63ac3fd96f341b2264a76b2797eac8e5e2bca3aca7cf8eda8d0deb351b2707b0",
+    "slug": "btc-multistrike-4h-1758873600-110pt5k",
+    "volume": 99.9892,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/26/2025 8:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "88644980489013325935172310604275360691756669916055612515028144409773707103103",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758873600-110pt5kyes"
+      },
+      {
+        "tokenId": "73945179646643208605762091519082570890781634425067230204796969687864095294754",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758873600-110pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $116,500 on September 17 at 8PM ET?",
+    "conditionId": "0x0daf0e7b438031e375f6475ec752b93fff7ebba8b93250eaa5e150e2856ec1b1",
+    "slug": "btc-multistrike-4h-1758153600-116pt5k",
+    "volume": 9997.043878,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/18/2025 12:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "69019111373691453514325540827894517914443361642543582628000837451606919198974",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758153600-116pt5kyes"
+      },
+      {
+        "tokenId": "1540108904272822242645250976539340832170728389539192985400981095107395421526",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758153600-116pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 13, 6AM ET",
+    "conditionId": "0x9f490913b2d232c302f39b113a71e219146059100b531ee550006e35683dd7e8",
+    "slug": "bitcoin-up-or-down-september-13-6am-et",
+    "volume": 99963.783502,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/13/2025 11:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "61931697650067357528929192069104344302920181571227904870785003487016946359113",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-september-13-6am-etup"
+      },
+      {
+        "tokenId": "36283910935236448263978306799623757568063481046342250416923280306980967525189",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-september-13-6am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 31, 8PM ET",
+    "conditionId": "0x8bff650e0a62488c2c49d4c44230b26ee9440a22c7151b191dc5325c6146b364",
+    "slug": "bitcoin-up-or-down-august-31-8pm-et",
+    "volume": 99936.563283,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/1/2025 1:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "55144858227398749762838892777753443795021522627439002091733069374240417887101",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-31-8pm-etup"
+      },
+      {
+        "tokenId": "101405411800264229101423278038200629177694187147947429255167125065270136537428",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-31-8pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $113,000 on September 10 at 12AM ET?",
+    "conditionId": "0x71c80070dea9b8a389f78f95352e2bb2850d0b537af157a925bd6063eb514b56",
+    "slug": "btc-multistrike-4h-1757476800-113k",
+    "volume": 999.28205,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/10/2025 4:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "40215936673914814540028934153141632310253733587813887953779360704064073768320",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1757476800-113kyes"
+      },
+      {
+        "tokenId": "35117408499283388098268490206276777467225886571822102640884294125943467278215",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1757476800-113kno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 19, 2:30AM-2:45AM ET",
+    "conditionId": "0xbe6308827794c0daa14a6b8334f47355ad6bd42163dd25f89cf6e17495f8e142",
+    "slug": "btc-up-or-down-15m-1758263400",
+    "volume": 999.205978,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/19/2025 6:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "58014106898694647502994128022565152803895871609228459942990821926027870961996",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1758263400up"
+      },
+      {
+        "tokenId": "80005233398007530201115272636508794677480807690586694721979742402818252221526",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1758263400down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be less than $109,500 on September 8 at 4PM ET?",
+    "conditionId": "0x000dd2fdee52600dbeb64f1cd7d43be596d00bed47dd83b074f3c3468fa46dfd",
+    "slug": "will-the-price-of-bitcoin-be-less-than-109500-on-september-8-at-4pm-et",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "70485579597613165929696220412534008928717636343085531896434018074143311133971",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-less-than-109500-on-september-8-at-4pm-etyes"
+      },
+      {
+        "tokenId": "4112142019584614139703590029830588911412196174371701671549840799701255366657",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-less-than-109500-on-september-8-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $110,000 and $110,500 on September 8 at 4PM ET?",
+    "conditionId": "0xe21eade473ab94329e1dd36e9e69c1d318fae95c26f81bfbd4a10dac8e1c560f",
+    "slug": "will-the-price-of-bitcoin-be-between-110k-and-110500-on-september-8-at-4pm-et",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "2869090649984092979808670909269531832288375689866975001111332932573046953389",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-110k-and-110500-on-september-8-at-4pm-etyes"
+      },
+      {
+        "tokenId": "90247946747340065801767927085449741823327351980029510592836977371052381655751",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-110k-and-110500-on-september-8-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be greater than $114,000 on September 8 at 4PM ET?",
+    "conditionId": "0x336bd72e87c32096e626c0992d634cf5af37263000ed3aac6869c80f81f1cf56",
+    "slug": "will-the-price-of-bitcoin-be-greater-than-114k-on-september-8-at-4pm-et",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "25859908076298149782473789558736437212865001946228863203954918466485781209560",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-greater-than-114k-on-september-8-at-4pm-etyes"
+      },
+      {
+        "tokenId": "12914550861784530560318830497572744228890905285644556753633464063475728513494",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-greater-than-114k-on-september-8-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $109,500 and $110,000 on September 8 at 4PM ET?",
+    "conditionId": "0x8fe8316c0d526f22540963a2804e1fe4295114dbe12e02a624c752f352bfc937",
+    "slug": "will-the-price-of-bitcoin-be-between-109500-and-110k-on-september-8-at-4pm-et",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "99216392806826982847765836524111471654620670896185478574991074319096889384251",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-109500-and-110k-on-september-8-at-4pm-etyes"
+      },
+      {
+        "tokenId": "103551526689473274828597452282482343641947797600717512117912421690232728909862",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-109500-and-110k-on-september-8-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin above $122K on September 3?",
+    "conditionId": "0xef0c91540c45bb8c41038de55f80b5d535c105d555183e507a98793031356c13",
+    "slug": "bitcoin-above-122k-on-september-3",
+    "volume": 9989.208891,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/3/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "112974637359127221197887600133400590872996921781510922088901307919302870140947",
+        "outcome": "Yes",
+        "ticker": "bitcoin-above-122k-on-september-3yes"
+      },
+      {
+        "tokenId": "11109388899282927862844284609272186601918085945493290531763095506987181274582",
+        "outcome": "No",
+        "ticker": "bitcoin-above-122k-on-september-3no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 15, 4PM ET",
+    "conditionId": "0x33cc0d65aa211e61d20a6e4823d85485762f298d64428de76ec4f3bd7ebb93cb",
+    "slug": "bitcoin-up-or-down-august-15-4pm-et",
+    "volume": 99890.96937,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/15/2025 9:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "2704866180970794299406596196152401946241111286651036216593157293499855586109",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-15-4pm-etup"
+      },
+      {
+        "tokenId": "59672543594389401350870511842095483520242377635403930951146793811579706089462",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-15-4pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $113,000 and $113,500 on September 8 at 4PM ET?",
+    "conditionId": "0xa556fb73d6677153b16953e1b83f51ed56ed780f3009987e8ddf6c190211441b",
+    "slug": "will-the-price-of-bitcoin-be-between-113k-and-113500-on-september-8-at-4pm-et",
+    "volume": 99.81,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "45641151109627087061330758507986260119551441326030050989394216574258622111913",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-113k-and-113500-on-september-8-at-4pm-etyes"
+      },
+      {
+        "tokenId": "109766980041383784385033160040247432431822355368269415276921968303457562867082",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-113k-and-113500-on-september-8-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $111,500 on September 2 at 8AM ET?",
+    "conditionId": "0x9c26ab976a40ae2e683d1c4ea9ac7a1d861c852a95011ef7f449a389c2907a54",
+    "slug": "btc-multistrike-4h-1756814400-111pt5k",
+    "volume": 998.083332,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/2/2025 12:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "104994605721353662265111832288341015133550026567799910712605807093390933127665",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1756814400-111pt5kyes"
+      },
+      {
+        "tokenId": "115160149232095969477934723259944184205809511933619519104600236781409405955152",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1756814400-111pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 19, 2PM ET",
+    "conditionId": "0x0b373b2f77124312f99f0fe1cf2b73f5f5cd23cc46ca4bd953429a89fea45fea",
+    "slug": "bitcoin-up-or-down-august-19-2pm-et",
+    "volume": 99806.744569,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/19/2025 7:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "44523118964114063177416467035981989839170083501476530172859484836521538062333",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-19-2pm-etup"
+      },
+      {
+        "tokenId": "63662237328908499699793595226854975785255022422390504851815412378097743033945",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-19-2pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $111,500 on September 25 at 4PM ET?",
+    "conditionId": "0x910cc217698bb306fc0a848f8eaee82a9cdc62f42987285d821079e1fa972f22",
+    "slug": "btc-multistrike-4h-1758830400-111pt5k",
+    "volume": 998.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/25/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "44301215784020601801924786457324335477893175318277042914964824425237506702191",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758830400-111pt5kyes"
+      },
+      {
+        "tokenId": "115531975130894040463758428055890992401563918288742513348501778596692383847115",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758830400-111pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $116,000 and $116,500 on September 17 at 12PM ET?",
+    "conditionId": "0x82db3504cb07f5400b7194b018181eed96795aa075e5277ad27a54f4f5ab82e7",
+    "slug": "will-the-price-of-bitcoin-be-between-116k-and-116500-on-september-17-at-12pm-et",
+    "volume": 9977.049997,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/17/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "64990771467745725614821094583300599551904729438251493461639412069648758447028",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-116k-and-116500-on-september-17-at-12pm-etyes"
+      },
+      {
+        "tokenId": "8054516140891087860461385581091137533855473046256702997779912460531120028273",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-116k-and-116500-on-september-17-at-12pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 3, 6AM ET",
+    "conditionId": "0x4fb1f4af5a40eb89e771b3e59478fff20d17d3916400363d4bae42c49b7c33bb",
+    "slug": "bitcoin-up-or-down-september-3-6am-et",
+    "volume": 99727.044295,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/3/2025 11:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "76624107652914792811550700463341248004427810157690247696058037253137782904302",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-september-3-6am-etup"
+      },
+      {
+        "tokenId": "112309636293988581315528630210001084093090900992416201576827271681082281003570",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-september-3-6am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 20, 11AM ET",
+    "conditionId": "0xa473e5ff5e01779073283a14d45f26e5252cf1e6ee31f54bb147b94c43b224ea",
+    "slug": "bitcoin-up-or-down-august-20-11am-et",
+    "volume": 99692.375457,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/20/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "67553895711057503811825901786075070244406108899966068803800789315698511241177",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-20-11am-etup"
+      },
+      {
+        "tokenId": "80528655787847058676929424578951129524067733868250024918628796560316362625580",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-20-11am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $116,000 on September 14 at 4PM ET?",
+    "conditionId": "0x30f3f8c412f01ec55f1bd829e58028741f2444d0b482169c9ab149776f44ede5",
+    "slug": "btc-multistrike-4h-1757880000-116k",
+    "volume": 99.686025,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/14/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "89777801908239420269355087877028385678269977304800600042214385231537997941280",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1757880000-116kyes"
+      },
+      {
+        "tokenId": "9833966482060898376200111747701491908345403507988483458962689373754713452592",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1757880000-116kno"
+      }
+    ]
+  },
+  {
+    "question": "Will MicroStrategy purchase Bitcoin September 9-15?",
+    "conditionId": "0xef0ae0ce5c2c561b3edbd789af22c5e70f15618743cc7a5e2c277949276a34f4",
+    "slug": "will-microstrategy-purchase-bitcoin-september-9-15",
+    "volume": 99671.229309,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/16/2025 4:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "51967077815025568718382050149977681775853951905983898519807028008869836176156",
+        "outcome": "Yes",
+        "ticker": "will-microstrategy-purchase-bitcoin-september-9-15yes"
+      },
+      {
+        "tokenId": "19791414895805120831002225572783727790413383555977822718587921324364555898063",
+        "outcome": "No",
+        "ticker": "will-microstrategy-purchase-bitcoin-september-9-15no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $113,000 and $113,500 on September 10 at 4PM ET?",
+    "conditionId": "0xc75b30fa9eb510439e49878de7f0bfec8b1b2564d8dcf15d6428daec072c22b8",
+    "slug": "will-the-price-of-bitcoin-be-between-113k-and-113500-on-september-10-at-4pm-et",
+    "volume": 9960.152476,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/10/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "42602001696506359989160619065284876374742140019563337137230758658729160192342",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-113k-and-113500-on-september-10-at-4pm-etyes"
+      },
+      {
+        "tokenId": "49358358965528365391139788482604808651620614767567711222071338098254192375451",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-113k-and-113500-on-september-10-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $116,000 and $118,000 on September 26?",
+    "conditionId": "0x823a2d8cf1013191ca54c5f6f317523e79c7169465f22cd93339ea91e4d0c884",
+    "slug": "will-the-price-of-bitcoin-be-between-116000-118000-on-september-26",
+    "volume": 9958.985195,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/26/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "20538382021254968461759731863875762324189884498262308078073070809155871680905",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-116000-118000-on-september-26yes"
+      },
+      {
+        "tokenId": "18992402499444772217895817007210357560850701534365129366078983647276969631759",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-116000-118000-on-september-26no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 22, 8AM ET",
+    "conditionId": "0xab1c356e6945c968c53ed2cd4854e957b891e26673ffa205cfc61eb1f06451e2",
+    "slug": "bitcoin-up-or-down-september-22-8am-et",
+    "volume": 99535.514974,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/22/2025 1:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "39693627368272413024682536305111655317559970307329825158699381119280734108377",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-september-22-8am-etup"
+      },
+      {
+        "tokenId": "36725013928743863220708933983122376634021200604022796612949750096147186890642",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-september-22-8am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 18, 10AM ET",
+    "conditionId": "0x961bac50c192432678bd3d95681811513832a7db866b6bfe456d50f31d53d360",
+    "slug": "bitcoin-up-or-down-august-18-10am-et",
+    "volume": 99459.374682,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/18/2025 3:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "42854787692953496628443435491190724973126545918603341311977858494648557748062",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-18-10am-etup"
+      },
+      {
+        "tokenId": "17622186745597632826955148062971287363940419945995703908823676904183610547960",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-18-10am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 15, 3:30AM-3:45AM ET",
+    "conditionId": "0x687886ce6ef72baf51e388271fcc27da84046fcec81d5a32483c329d9e7062df",
+    "slug": "btc-up-or-down-15m-1757921400",
+    "volume": 994.171259,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/15/2025 7:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "27328681036299750671904714773575574912563742895136238599006644929480202219761",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1757921400up"
+      },
+      {
+        "tokenId": "83411511041357459905030494298809199003954833482379255083206745098187583167971",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1757921400down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $116,000 and $116,500 on September 14 at 8PM ET?",
+    "conditionId": "0xbdf785d187c8a5f6daf33c4798309c1486eafff4508c0da5a3b5c19d505c8f6d",
+    "slug": "will-the-price-of-bitcoin-be-between-116k-and-116500-on-september-14-at-8pm-et",
+    "volume": 9934.77963,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/15/2025 12:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "103491393416909941948154788607860895647539397306854126538416020458998750110962",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-116k-and-116500-on-september-14-at-8pm-etyes"
+      },
+      {
+        "tokenId": "99206276117058191006362466687899464339660613540035543457732206545184095459177",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-116k-and-116500-on-september-14-at-8pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $114,000 on September 18?",
+    "conditionId": "0x9ec4015a7b079285ca78fb09ed81b4ecf5fd18e801f01f9c012065a97f2e3ca7",
+    "slug": "bitcoin-above-114k-on-september-18",
+    "volume": 99326.059514,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/18/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "52261773145814461811603504206133433340890910432797855371228473971205751276406",
+        "outcome": "Yes",
+        "ticker": "bitcoin-above-114k-on-september-18yes"
+      },
+      {
+        "tokenId": "3301724728564305788923140680079670791697475853585049763116673187069553615434",
+        "outcome": "No",
+        "ticker": "bitcoin-above-114k-on-september-18no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 13, 4:30PM-4:45PM ET",
+    "conditionId": "0x7e41ad58fedbb489751e575277420df5730d9c3aa3869fe85c41a56f84ccbd74",
+    "slug": "btc-up-or-down-15m-1757795400",
+    "volume": 99.267413,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/13/2025 8:45:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "59561155773837443660331424722900641562392275204714109661939564841084885480643",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1757795400up"
+      },
+      {
+        "tokenId": "96651074803261972003200552161802767838743003163701573861069735399084030632085",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1757795400down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $110,000 on September 15?",
+    "conditionId": "0xd25297967df00348d942adcfff0d3cc1d27b5ea83769f62a11797fa92efa1ec8",
+    "slug": "bitcoin-above-110k-on-september-15",
+    "volume": 9926.430728,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/15/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "14541589903389278215170387475192928114524779968130841004287837351696455665189",
+        "outcome": "Yes",
+        "ticker": "bitcoin-above-110k-on-september-15yes"
+      },
+      {
+        "tokenId": "102312370056280027615027486504820638465707899558588376118754727129697839927769",
+        "outcome": "No",
+        "ticker": "bitcoin-above-110k-on-september-15no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 30, 5:00PM-5:15PM ET",
+    "conditionId": "0x963a7ce6a0b71038d9cfd9c13163772386d226fce9553e16883ab0863a0215d1",
+    "slug": "btc-up-or-down-15m-1759266000",
+    "volume": 992.636497,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/30/2025 9:15:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "11885800628298768210393375357618634329045956778175699178444142335260095741245",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1759266000up"
+      },
+      {
+        "tokenId": "33372708764527187339224157214361056943856625498486106233486328741437152081848",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1759266000down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin above $114K on August 25 at 8PM ET?",
+    "conditionId": "0xddd8a89516d96c424219493594a5db501b604351d3086fe45c43785c6c33580b",
+    "slug": "bitcoin-above-114k-on-august-25-at-8pm-et-181",
+    "volume": 992.285713,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/26/2025 12:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "71400844448342191713861502187571829458128867802421829975153455518801557843138",
+        "outcome": "Yes",
+        "ticker": "bitcoin-above-114k-on-august-25-at-8pm-et-181yes"
+      },
+      {
+        "tokenId": "35133595001652772650011776589498907270124410473352411972604530629366370323565",
+        "outcome": "No",
+        "ticker": "bitcoin-above-114k-on-august-25-at-8pm-et-181no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 18, 10:00PM-10:15PM ET",
+    "conditionId": "0xa88093ea13e360403d1fe602e21f7d3e3c2dd33500e1aab08e82e29dedf63aba",
+    "slug": "btc-up-or-down-15m-1758247200",
+    "volume": 991.046392,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/19/2025 2:15:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "57728531217489863432348242894756537935022552163055065810151474067385497959408",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1758247200up"
+      },
+      {
+        "tokenId": "88198971656435426859254776739473175814574623178258212404782815222400670454004",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1758247200down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $116,500 on September 16 at 8PM ET?",
+    "conditionId": "0x22a3ac2ecf5e8184c9de29d10f825985a01b491de121319bb1c156abc0343272",
+    "slug": "btc-multistrike-4h-1758067200-116pt5k",
+    "volume": 9909.397696,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/17/2025 12:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "37823935390708607133008765906201575888826797415177316865211037618832837822511",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758067200-116pt5kyes"
+      },
+      {
+        "tokenId": "12615136683037524405615009335601634873565712895041769506823151887145330448363",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758067200-116pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 30, 11AM ET",
+    "conditionId": "0x2e2c52db1b0e99a8ab3c695cedb13f83ba27104498d89502baa1c3fe3df75302",
+    "slug": "bitcoin-up-or-down-august-30-11am-et",
+    "volume": 99008.035217,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/30/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "93808868689845495918460549854138437777612792425459572310107253181060463954703",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-30-11am-etup"
+      },
+      {
+        "tokenId": "89064839146616029096921950616379826431805099200477535761877680816691904885508",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-30-11am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 11, 7AM ET",
+    "conditionId": "0xc2ddc0a2d0a4c9d3de7eb6b5c1da9f021fe3d1d2c3371040a22db0b15c470e16",
+    "slug": "bitcoin-up-or-down-september-11-7am-et",
+    "volume": 99000.325702,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/11/2025 12:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "63083752355835326294898952086157823096306794459626690081273887675283023192726",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-september-11-7am-etup"
+      },
+      {
+        "tokenId": "6073542803873348012521366037000684936057113568129993073933516327977163362008",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-september-11-7am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $108,500 on September 3 at 4AM ET?",
+    "conditionId": "0x9c6aa992dd158e30faf16c3e21dea5eef5049913a4d97199acbbc9bbb3dd6952",
+    "slug": "btc-multistrike-4h-1756886400-108pt5k",
+    "volume": 99.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/3/2025 8:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "11653893537697547528311283986129251648228416973070836584411388978271475700793",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1756886400-108pt5kyes"
+      },
+      {
+        "tokenId": "18073857649480275745970902457767661818962203660962957863499030747984022206783",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1756886400-108pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $117,500 and $118,000 on September 18 at 4PM ET?",
+    "conditionId": "0x36bf2ba2e35276800f3fafa092bb6a83ff547bd828a44fcd3e46eaa552a9d22b",
+    "slug": "will-the-price-of-bitcoin-be-between-117500-and-118k-on-september-18-at-4pm-et",
+    "volume": 9892.578076,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/18/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "104220269343476562389776975683688886760295475135448856551738264446421511334084",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-117500-and-118k-on-september-18-at-4pm-etyes"
+      },
+      {
+        "tokenId": "115453249498096214759548991240238241433219439719910392269096518434507438404387",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-117500-and-118k-on-september-18-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 10, 2PM ET",
+    "conditionId": "0x702ea75c282863fea465f5214aceb772f75418929ab9ebd33a3edf6acaa8939b",
+    "slug": "bitcoin-up-or-down-september-10-2pm-et",
+    "volume": 98912.847401,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/10/2025 7:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "70171192772842060004949373687059783616841363307905552885911381875010772886335",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-september-10-2pm-etup"
+      },
+      {
+        "tokenId": "3620635233799682157859511567951666674892614231248620284592090142476956379094",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-september-10-2pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 26, 4:30AM-4:45AM ET",
+    "conditionId": "0x058a1a7232b73604ec3931d8aa538886c62d50b0bcfe49f99d179dda932fe8c6",
+    "slug": "btc-up-or-down-15m-1758875400",
+    "volume": 989.069987,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/26/2025 8:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "54999428539699076060470699204489737291518084249648500270201839875462523328378",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1758875400up"
+      },
+      {
+        "tokenId": "58738844055816548286549537358688280580047950955678236565699497891623845587160",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1758875400down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 19, 12AM ET",
+    "conditionId": "0xf821c5b5f2676b62b58bc009e93139fb8832d39e928e54706d3c85ba025b2216",
+    "slug": "bitcoin-up-or-down-august-19-12am-et",
+    "volume": 98905.288912,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/19/2025 5:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "95928507182064722532822192305879175203176213435138335385207135394238771575603",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-19-12am-etup"
+      },
+      {
+        "tokenId": "40825949715038923248022544330717832662881809171496104152725861497289578497635",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-19-12am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $115,500 and $116,000 on September 17 at 8AM ET?",
+    "conditionId": "0xc0dfd1bf4815fbb33ab91d5d733096ff8c830021f8d44db5f195b22c5a6c0a23",
+    "slug": "will-the-price-of-bitcoin-be-between-115500-and-116k-on-september-17-at-8am-et",
+    "volume": 9885.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/17/2025 12:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "27521804204756107338045652223233943615085078051308841093334052906454025970749",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-115500-and-116k-on-september-17-at-8am-etyes"
+      },
+      {
+        "tokenId": "85032529237347680996175559018687769866962359264782325169620267226912573621653",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-115500-and-116k-on-september-17-at-8am-etno"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $117,500 on September 19 at 4AM ET?",
+    "conditionId": "0x6de4c88d8ebe7a5e61c72ebe83e29039215b76763919d4b8186114052343ff6f",
+    "slug": "btc-multistrike-4h-1758268800-117pt5k",
+    "volume": 9885.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/19/2025 8:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "2126351526215008458112472690681873768949210678114852627125499509553621281321",
+        "outcome": "Yes",
+        "ticker": "btc-multistrike-4h-1758268800-117pt5kyes"
+      },
+      {
+        "tokenId": "69419905340207153280299188058653461126149296611806152415911419978149761522162",
+        "outcome": "No",
+        "ticker": "btc-multistrike-4h-1758268800-117pt5kno"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 19, 6PM ET",
+    "conditionId": "0x8709b7d52b57d56dc5e9aa7b540941e1dcac3c7e5f6b937059e8f96a047cf8b0",
+    "slug": "bitcoin-up-or-down-august-19-6pm-et",
+    "volume": 98821.293099,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/19/2025 11:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "24094823229403260988230181869877574809019556513582213044266831725030500737325",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-19-6pm-etup"
+      },
+      {
+        "tokenId": "49363216715924639111000667938480528407469875584840398327666765560949987752739",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-19-6pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - September 30, 2:00AM-2:15AM ET",
+    "conditionId": "0xd5a5ea961e617159e24e13afb6f133258aa5f857ff4dc5caa3e41ce52bdc5132",
+    "slug": "btc-up-or-down-15m-1759212000",
+    "volume": 987.929443,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/30/2025 6:15:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "115526390274277237876054594064442350176369261878962371469589934301575495903510",
+        "outcome": "Up",
+        "ticker": "btc-up-or-down-15m-1759212000up"
+      },
+      {
+        "tokenId": "45913549071486027846545778840993878742763150444882186248176308549567753971308",
+        "outcome": "Down",
+        "ticker": "btc-up-or-down-15m-1759212000down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - August 28, 2PM ET",
+    "conditionId": "0x0f01fc2e35bd2208829e9869e5dcfa20e04de3ea6da2c9dc4190cd1cc68b7b90",
+    "slug": "bitcoin-up-or-down-august-28-2pm-et",
+    "volume": 98672.227147,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/28/2025 7:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "110280617100717072790808610233315956588272844688148934366631323405712826224207",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-august-28-2pm-etup"
+      },
+      {
+        "tokenId": "25544035324364326107177597001512412777109252819235501073379857903233474696106",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-august-28-2pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be less than $102,000 on September 13?",
+    "conditionId": "0x9fadb879a726622f72a7a84734a10ff0a5d3667ed22cc32b16c2691cf7a08793",
+    "slug": "will-the-price-of-bitcoin-be-less-than-102000-on-september-13",
+    "volume": 9866.248441,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/13/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "37986129284340007798569230377795478932308603338022198516619402160243638647857",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-less-than-102000-on-september-13yes"
+      },
+      {
+        "tokenId": "32384666266087220226637204345400438925214975060714457557010549994426664893339",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-less-than-102000-on-september-13no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $111K and $112K on September 3 at 4PM ET?",
+    "conditionId": "0x8b7e78d3f4796ca88929b3e3811bbfc3fffd1090506fc1d989e889a2c839ac4b",
+    "slug": "will-the-price-of-bitcoin-be-between-111k-and-112k-on-september-3-at-4pm-et",
+    "volume": 98582.797328,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/3/2025 8:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "96668356918879841565921845328436065928104131655806853330422925124654735555757",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-111k-and-112k-on-september-3-at-4pm-etyes"
+      },
+      {
+        "tokenId": "35911170428606064354056261062980085097739791894320420691889320445176243614733",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-111k-and-112k-on-september-3-at-4pm-etno"
+      }
+    ]
+  }
+]

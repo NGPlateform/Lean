@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "Will the price of Ethereum be above $4,475 on September 11 at 12PM ET?",
+    "conditionId": "0x9d56d5c861cc1c3f3cee73437978f538d92251fb89cc5c828066271c47a18616",
+    "slug": "eth-multistrike-4h-1757606400-4475",
+    "volume": 9999.753845,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/11/2025 4:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "20928719551465130003418832503405363290136631012444999220625325908801226379410",
+        "outcome": "Yes",
+        "ticker": "eth-multistrike-4h-1757606400-4475yes"
+      },
+      {
+        "tokenId": "44603972517629171213420358072681067692351936117167718738074596991086449468242",
+        "outcome": "No",
+        "ticker": "eth-multistrike-4h-1757606400-4475no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 25, 2:00PM-2:15PM ET",
+    "conditionId": "0x38282855ba6545d931b21fcedf2567029f3cc97782909cd994055e87f0541971",
+    "slug": "eth-updown-15m-1764097200",
+    "volume": 9999.314073,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/25/2025 7:15:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "51696305005883372874448179109501556734929709276076783018542109097758740715518",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1764097200up"
+      },
+      {
+        "tokenId": "31112864643994639617863164259463290972965836696516930219419674708579179283942",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1764097200down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 27, 10:10AM-10:15AM ET",
+    "conditionId": "0xf66a3654b5ae16a48cc5e84bd7725a0dc41399c1e66628473c3b2cf052c9e199",
+    "slug": "eth-updown-5m-1772205000",
+    "volume": 9998.172084,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/27/2026 3:15:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "49638594114325087636274973377724543618339409168711784750284670622188702937581",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1772205000up"
+      },
+      {
+        "tokenId": "2133421163655226268200683512781339370461103606294003369901222125203350848772",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1772205000down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be between $4,575 and $4,600 on September 14 at 4PM ET?",
+    "conditionId": "0x57ea4f71214d6ea744b690c8c42847123d6ac6e31a38ee21984403997b680283",
+    "slug": "will-the-price-of-ethereum-be-between-4575-and-4600-on-september-14-at-4pm-et",
+    "volume": 9.996664,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/14/2025 8:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "71166847312487772113467471124628248591111717393546994755819286966491061424497",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-ethereum-be-between-4575-and-4600-on-september-14-at-4pm-etyes"
+      },
+      {
+        "tokenId": "32461221489558961062022193233678991127522818029585443721093221561264587740838",
+        "outcome": "No",
+        "ticker": "will-the-price-of-ethereum-be-between-4575-and-4600-on-september-14-at-4pm-etno"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - July 6, 4PM ET",
+    "conditionId": "0x0fea2686a4fcc9d38e12b68149efa823810ff18e5d3ccb85979240d419f07adf",
+    "slug": "ethereum-up-or-down-july-6-4pm-et",
+    "volume": 9996.197436,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/6/2025 9:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "109851974096640644015312214739523903119239417963717323548454696118719490002941",
+        "outcome": "Up",
+        "ticker": "ethereum-up-or-down-july-6-4pm-etup"
+      },
+      {
+        "tokenId": "108575846299012545110363884547729508372319337171289584709213051016975471756578",
+        "outcome": "Down",
+        "ticker": "ethereum-up-or-down-july-6-4pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will Ethereum hit $6,000 by December 31?",
+    "conditionId": "0x9c08beafa73308625ad24e270e44d9edd634585f2424eea8df262a05a2337613",
+    "slug": "will-ethereum-hit-6000-by-december-31-843-315",
+    "volume": 9995564.195892,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/31/2025 12:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "81425397446351426621727450375895254607015946433493851514616485979278175609514",
+        "outcome": "Yes",
+        "ticker": "will-ethereum-hit-6000-by-december-31-843-315yes"
+      },
+      {
+        "tokenId": "796584219710508341356184389057648832166516548136309631230564122389735606484",
+        "outcome": "No",
+        "ticker": "will-ethereum-hit-6000-by-december-31-843-315no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down on January 3?",
+    "conditionId": "0x9fc72ae2b384dab8e79b2c993371ec9a942db2c8942f125c8909849811fd6eeb",
+    "slug": "ethereum-up-or-down-on-january-3",
+    "volume": 99948.377533,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/3/2026 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "103310738783773892720887628289286789478886935471866620369732692333197266430362",
+        "outcome": "Up",
+        "ticker": "ethereum-up-or-down-on-january-3up"
+      },
+      {
+        "tokenId": "96318408605672263754777499586368823666005706470298025471264881233618894613595",
+        "outcome": "Down",
+        "ticker": "ethereum-up-or-down-on-january-3down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 20, 3AM ET",
+    "conditionId": "0x37bc39c5a7c575f78567f21ffec8d8782c1ab19d641b52ba7b5aecc66553457f",
+    "slug": "ethereum-up-or-down-february-20-3am-et",
+    "volume": 99945.891162,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/20/2026 9:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "77533194821065201522870758946519330995299494650496504376395080304350280753379",
+        "outcome": "Up",
+        "ticker": "ethereum-up-or-down-february-20-3am-etup"
+      },
+      {
+        "tokenId": "96978007732676944254895921181260246596362868116838853586744927709895158226949",
+        "outcome": "Down",
+        "ticker": "ethereum-up-or-down-february-20-3am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - September 21, 11:00PM-11:15PM ET",
+    "conditionId": "0xd03d9a6b61c59684f629a86f460a6c4c287c8f5f901de6c4d83ba6c80c33eb3e",
+    "slug": "eth-up-or-down-15m-1758510000",
+    "volume": 9.99392,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/22/2025 3:15:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "24489621785635102371856240018491355530587749401654797242856580187301047381664",
+        "outcome": "Up",
+        "ticker": "eth-up-or-down-15m-1758510000up"
+      },
+      {
+        "tokenId": "64797047161264788876737266308890094415485357960191427400515640743341211457257",
+        "outcome": "Down",
+        "ticker": "eth-up-or-down-15m-1758510000down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - October 22, 1:00PM-1:15PM ET",
+    "conditionId": "0x70056a58a1c867335c75d5fa3114038f1dc71beaae91e2a970a8cf306298fc18",
+    "slug": "eth-updown-15m-1761152400",
+    "volume": 9993.859126,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/22/2025 5:15:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "31096204286222276825042966365772067415755421877266251725453925021301160906818",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1761152400up"
+      },
+      {
+        "tokenId": "33571616200162935863752898639328374315183845271446053092440666436159004792482",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1761152400down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - December 30, 3:45AM-4:00AM ET",
+    "conditionId": "0x9f860071df12134933f78f3332f5b93fda084ce9473eb0ad24164982c2af6181",
+    "slug": "eth-updown-15m-1767084300",
+    "volume": 99938.208153,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/30/2025 9:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "66962938697561144731415438591706153143140666451766106811979890536105354956006",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1767084300up"
+      },
+      {
+        "tokenId": "14933280253651331653107285985222549687137279698764329758758692700765584964252",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1767084300down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 21, 6:30AM-6:35AM ET",
+    "conditionId": "0x8aac43583ffd6bed474fb9e10e7e5f1f63b0012eb5c0fb07d69a44688e0c724d",
+    "slug": "eth-updown-5m-1771673400",
+    "volume": 9991.399758,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/21/2026 11:35:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "41146959480341605319867369388975443776816832971967297112622442083552909052571",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1771673400up"
+      },
+      {
+        "tokenId": "5968477721618226324924194144260692307297617439647649657001606414765210268260",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1771673400down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 5, 7:30PM-7:45PM ET",
+    "conditionId": "0x295cbac90fde8e41d868cd4d491163dba195ae83af6ad323e51bf920d91720d4",
+    "slug": "eth-updown-15m-1762389000",
+    "volume": 9990.123606,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/6/2025 12:45:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "88766339133139036554961376618919428525716546874734217231610818687043744917078",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1762389000up"
+      },
+      {
+        "tokenId": "2838242742472104467163386133816116654074633094049386725198979759356651268216",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1762389000down"
+      }
+    ]
+  },
+  {
+    "question": "Will Ethereum reach $3300 July 14–20?",
+    "conditionId": "0xdd6068f18776116aaa963abcba8988679b7dac81a54bba14a1df33ec494ba1d1",
+    "slug": "will-ethereum-reach-3300-july-1420-922-778-617-353",
+    "volume": 9990.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": null,
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "47207290272455988300821760689028258939907644525640676086642703740249729035114",
+        "outcome": "Yes",
+        "ticker": "will-ethereum-reach-3300-july-1420-922-778-617-353yes"
+      },
+      {
+        "tokenId": "58621894241699078992212125866119467239999772832613037142643783937945602167640",
+        "outcome": "No",
+        "ticker": "will-ethereum-reach-3300-july-1420-922-778-617-353no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be above $4,200 on September 8 at 4PM ET?",
+    "conditionId": "0xfbdc8f7fd9d36f86f95f318c4296a1426af2ab30e2f631a0073dd6dc32cdc2d6",
+    "slug": "eth-multistrike-4h-1757361600-4200",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "35773255842987595394188483119528260849768575045314280885031948275174035191099",
+        "outcome": "Yes",
+        "ticker": "eth-multistrike-4h-1757361600-4200yes"
+      },
+      {
+        "tokenId": "539882447004489126038287805404555056477905812231446532281037525764522097268",
+        "outcome": "No",
+        "ticker": "eth-multistrike-4h-1757361600-4200no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be above $4,250 on September 8 at 4PM ET?",
+    "conditionId": "0xef366d2b13d0f304866bcc2ce8635f0c0016fa7bff419a0ac33f77cc8cbe614e",
+    "slug": "eth-multistrike-4h-1757361600-4250",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "43555028346977601017748090495307209854913922740598171445100380738327605374072",
+        "outcome": "Yes",
+        "ticker": "eth-multistrike-4h-1757361600-4250yes"
+      },
+      {
+        "tokenId": "91550094052902827436173877873717393176788653722833808380981660039608254947040",
+        "outcome": "No",
+        "ticker": "eth-multistrike-4h-1757361600-4250no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 1, 6:30PM-6:45PM ET",
+    "conditionId": "0x528b4cc7e6fa8cd3771c1bc33ade737a8b70763a224e9ed950178ca158283713",
+    "slug": "eth-updown-15m-1762036200",
+    "volume": 998.980391,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/1/2025 10:45:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "79158124213163124581068428956856197226709419251655993183127345388508426375511",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1762036200up"
+      },
+      {
+        "tokenId": "87447702583740360700261952379274368453873228045683507274312239838806551639924",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1762036200down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be between $3,700 and $3,800 on October 19?",
+    "conditionId": "0x987f87314086e561868c85549442757d4acf5793a9cbb2bb49abbf7b922e6f39",
+    "slug": "will-the-price-of-ethereum-be-between-3700-3800-on-october-19",
+    "volume": 9989.764812,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/19/2025 4:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "7530837527018655308912935597354375072831941056290539860386566517709838313452",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-ethereum-be-between-3700-3800-on-october-19yes"
+      },
+      {
+        "tokenId": "39522533852867589248104133867314681829663591749352787913201322906090529145006",
+        "outcome": "No",
+        "ticker": "will-the-price-of-ethereum-be-between-3700-3800-on-october-19no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 24, 8:00PM-12:00AM ET",
+    "conditionId": "0x18d753a7fd8e863ff21df9ead617c70eda87228f8a4fd5e2428b8ce00a278533",
+    "slug": "eth-updown-4h-1764032400",
+    "volume": 998.90673,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/25/2025 5:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "101707598471975272070283674266106221246843744733190133852946660702126739472548",
+        "outcome": "Up",
+        "ticker": "eth-updown-4h-1764032400up"
+      },
+      {
+        "tokenId": "99040016221996015108461011508853367733031099241219449978301706198041515784762",
+        "outcome": "Down",
+        "ticker": "eth-updown-4h-1764032400down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be between $2,500 and $2,600 on December 25?",
+    "conditionId": "0xc9ad3f399eb073343b0cf22dc70c7e9c23026bc6ec5abfc16c06198b870d983d",
+    "slug": "will-the-price-of-ethereum-be-between-2500-2600-on-december-25",
+    "volume": 99884.670602,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/25/2025 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "8893632983119138814973124799967387641974709990863102615853629221568812023359",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-ethereum-be-between-2500-2600-on-december-25yes"
+      },
+      {
+        "tokenId": "17124291421797940479783541073645843643370108052512815188075758121142195975651",
+        "outcome": "No",
+        "ticker": "will-the-price-of-ethereum-be-between-2500-2600-on-december-25no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 7, 9:15AM-9:30AM ET",
+    "conditionId": "0x140022013b0671a669a3f2dad585ecc0070c83fce01e991d61d1e80bdfdcb7f8",
+    "slug": "eth-updown-15m-1762524900",
+    "volume": 9988.26455,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/7/2025 2:30:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "1868823516981882189252591063524016832024232254372084469445153108159593229400",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1762524900up"
+      },
+      {
+        "tokenId": "112993448795964366767157522872721269257627311946097829462629418001079616277608",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1762524900down"
+      }
+    ]
+  },
+  {
+    "question": "Will Ethereum reach $5600 in October?",
+    "conditionId": "0x78b85c6a7a86506caab07300b63d550ee4b7dfc2448a5f282b1d46a9e47a8802",
+    "slug": "will-ethereum-reach-5600-in-october",
+    "volume": 998599.889847,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/1/2025 4:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "22291813210021707433560334279152161285830422675206503877418321960089308473637",
+        "outcome": "Yes",
+        "ticker": "will-ethereum-reach-5600-in-octoberyes"
+      },
+      {
+        "tokenId": "65498195305508502648467304836466028574386198903987400965115860263125202560267",
+        "outcome": "No",
+        "ticker": "will-ethereum-reach-5600-in-octoberno"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - September 19, 10:15AM-10:30AM ET",
+    "conditionId": "0x75dfb703da79c8cdf1d0da5acba6d1c5506be309875a23204bdc3ddb65b9f2d5",
+    "slug": "eth-up-or-down-15m-1758291300",
+    "volume": 99.858787,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/19/2025 2:30:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "394140607853453851618056197725736010923202067822672592412351493577466112668",
+        "outcome": "Up",
+        "ticker": "eth-up-or-down-15m-1758291300up"
+      },
+      {
+        "tokenId": "89106828098401069335005473853980657131251763446874191480503382124844208040315",
+        "outcome": "Down",
+        "ticker": "eth-up-or-down-15m-1758291300down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - October 25, 8:00AM-8:15AM ET",
+    "conditionId": "0x5ea12613dd200f4ef792afe44550549f040adcf6a053e25a4c833759c370537b",
+    "slug": "eth-updown-15m-1761393600",
+    "volume": 9984.598167,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/25/2025 12:15:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "9774769429004784364117498296649554357015160916891103129297567200961017225529",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1761393600up"
+      },
+      {
+        "tokenId": "32116676983529935102140775697087249451639153793310608556605000708818225300932",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1761393600down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 22, 7:15PM-7:20PM ET",
+    "conditionId": "0xd4071345420c4284f860604b15131ec444c13a5f012ca090bd3e94b97c061552",
+    "slug": "eth-updown-5m-1771805700",
+    "volume": 9984.005506,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/23/2026 12:20:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "2568385148058588458259875656348850441923873603656965309628056957746982847612",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1771805700up"
+      },
+      {
+        "tokenId": "45972968903167032850467024154051893411109347143772905952460965409450122215416",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1771805700down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - January 5, 10:15AM-10:30AM ET",
+    "conditionId": "0x74f7833c5b9adf74dfdfe3c24e34023264cfed3b8d0266a6662cd1288198f784",
+    "slug": "eth-updown-15m-1767626100",
+    "volume": 99826.334361,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/5/2026 3:30:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "33209206174363399392127013552224177690018527660089160455174486836741206927335",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1767626100up"
+      },
+      {
+        "tokenId": "11396031052594250620796413845358408077950380600286368582713880714775687894290",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1767626100down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 25, 1:25AM-1:30AM ET",
+    "conditionId": "0x505131ab199b11145704ab6048375c789e951a83edd5fc4f4a649446dc85c0f4",
+    "slug": "eth-updown-5m-1772000700",
+    "volume": 9982.145602,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/25/2026 6:30:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "63746505704071824583082605892892689340699684659182763616014164842320810947001",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1772000700up"
+      },
+      {
+        "tokenId": "25249405619667729183918658381870478552848561171946009604933868201461659417492",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1772000700down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be between $3,000 and $3,100 on December 5?",
+    "conditionId": "0xa0149f1f93d85fff28ba3e6cebdf166b7281705820430af795709818e9054c80",
+    "slug": "will-the-price-of-ethereum-be-between-3000-3100-on-december-5",
+    "volume": 99811.814092,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/5/2025 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "100635763242940974875325657656170914034057794685786523494698041876611110713534",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-ethereum-be-between-3000-3100-on-december-5yes"
+      },
+      {
+        "tokenId": "68437033303422318059718818204984534669977331426920143317740436232370049552962",
+        "outcome": "No",
+        "ticker": "will-the-price-of-ethereum-be-between-3000-3100-on-december-5no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 11, 11:45AM-12:00PM ET",
+    "conditionId": "0x5456ba5dd586bb8ff7ccbefdf7b6f618b09162d660dcd09ee3cc3141de2a5bb8",
+    "slug": "eth-updown-15m-1770828300",
+    "volume": 99811.102646,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/11/2026 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "56430440476720412725669013257521528426372856848180222543677123840530768355645",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1770828300up"
+      },
+      {
+        "tokenId": "17247366026549611766907563975487024983479992669576826346994451011773930705126",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1770828300down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - October 24, 2:30PM-2:45PM ET",
+    "conditionId": "0xa2c7244c72682b51c340ac2a48918ebb387843cd69d00a4c0d4c984b4d3a6000",
+    "slug": "eth-updown-15m-1761330600",
+    "volume": 9.980391,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/24/2025 6:45:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "93939736658680183679967861053559391222833799186231167776159001987725009735016",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1761330600up"
+      },
+      {
+        "tokenId": "21310390940199072901074739424827320304164731887279476316694202222573420816160",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1761330600down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be between $2,700 and $2,800 on December 28?",
+    "conditionId": "0x84b6184ca5b172c6d1bb11a906dee8e718a04c21943232ca299cacb44d9afc04",
+    "slug": "will-the-price-of-ethereum-be-between-2700-2800-on-december-28",
+    "volume": 9980.349294,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/28/2025 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "109419295547681187775280226837772165745133060768599890341899200093294055518674",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-ethereum-be-between-2700-2800-on-december-28yes"
+      },
+      {
+        "tokenId": "24605662616805973815636014518143076704460717667853316937930395956109984905325",
+        "outcome": "No",
+        "ticker": "will-the-price-of-ethereum-be-between-2700-2800-on-december-28no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - July 27, 7PM ET",
+    "conditionId": "0x66f6cca527a7cf2cfc80e1ef57c93f11f85a786fbfdc911f094f28ee0bb502c0",
+    "slug": "ethereum-up-or-down-july-27-7pm-et",
+    "volume": 9980.086948,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/28/2025 12:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "50333306157327989311990641301967737406863428777653881548482494408350048084911",
+        "outcome": "Up",
+        "ticker": "ethereum-up-or-down-july-27-7pm-etup"
+      },
+      {
+        "tokenId": "33283924388300930981115639236070966139373561061389099793482725164722935327982",
+        "outcome": "Down",
+        "ticker": "ethereum-up-or-down-july-27-7pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - March 1, 1:45PM-1:50PM ET",
+    "conditionId": "0x03aba6d86abdd9096618009c42aefc2a9904052c785b7445fbae8b14b0125f5d",
+    "slug": "eth-updown-5m-1772390700",
+    "volume": 9979.633395,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/1/2026 6:50:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "54574419825304870763102704848185287487617852058866247008763744856133976294777",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1772390700up"
+      },
+      {
+        "tokenId": "72844542384922391411013393959930244822674712385193173450956903326275451848972",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1772390700down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 27, 6:15PM-6:20PM ET",
+    "conditionId": "0x56c14e725c6b04b0990ba52124c2081afa3e643a362f002314261cf90ff39542",
+    "slug": "eth-updown-5m-1772234100",
+    "volume": 9977.910785,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/27/2026 11:20:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "83685699964554879195629574574702536056537409961901597658280834540630634450511",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1772234100up"
+      },
+      {
+        "tokenId": "86066875309736027057011826531051098626009410512226942099299916333132052191037",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1772234100down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - July 9, 1AM ET",
+    "conditionId": "0x6745a3540d99281ab287d64a563be64d407c4de5d89136a9de5c7c518f2ccc2d",
+    "slug": "ethereum-up-or-down-july-9-1am-et",
+    "volume": 9976.061034,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/9/2025 6:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "47141127101833476784263126715248394372369883280769717070302619198442150384327",
+        "outcome": "Up",
+        "ticker": "ethereum-up-or-down-july-9-1am-etup"
+      },
+      {
+        "tokenId": "34406339666823867139833092433874301839400715047019467107961550461878942604309",
+        "outcome": "Down",
+        "ticker": "ethereum-up-or-down-july-9-1am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - September 23, 5:30AM-5:45AM ET",
+    "conditionId": "0x28b1176e6e0210a676b82572742d562875f3d8a2f14e1bb698636e7e15f483b4",
+    "slug": "eth-up-or-down-15m-1758619800",
+    "volume": 997.478029,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/23/2025 9:45:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "81872867489510099970504139932843170753522694329810241567132252070228825027952",
+        "outcome": "Up",
+        "ticker": "eth-up-or-down-15m-1758619800up"
+      },
+      {
+        "tokenId": "94639130018716489935654915668323222098279062130965573447191891345142860539096",
+        "outcome": "Down",
+        "ticker": "eth-up-or-down-15m-1758619800down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 3, 2:45PM-3:00PM ET",
+    "conditionId": "0xe27c3fd38a106271abfd9b7597084f8b9135116fab69345047b9d9ef5d52df83",
+    "slug": "eth-updown-15m-1762199100",
+    "volume": 997.451102,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/3/2025 8:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "57876435256734479349765193837802264364876253165904963962004718178953311473779",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1762199100up"
+      },
+      {
+        "tokenId": "59788539023016158561201933076133685509858487515746765035559841808456641401995",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1762199100down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 18, 8:15PM-8:20PM ET",
+    "conditionId": "0x286a5e0dd0a738591c4d80b883d4b698375a1abf34329474e55a00e3eb48bfa6",
+    "slug": "eth-updown-5m-1771463700",
+    "volume": 9974.368597,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/19/2026 1:20:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "38315066225670114249894779160283583792525098823437026244690403908144931639070",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1771463700up"
+      },
+      {
+        "tokenId": "77100240676635754190190229111516777251489124991486806649068112059206523536442",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1771463700down"
+      }
+    ]
+  },
+  {
+    "question": "Bethune-Cookman Wildcats vs. Mississippi Valley State Delta Devils",
+    "conditionId": "0x28c4d451870646d103f85dc61d821addf82223f246baa6be6762cbbabfb67a54",
+    "slug": "cbb-bcook-msvlst-2026-01-17",
+    "volume": 9973.010123,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/17/2026 11:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "4506734035517569243263502935771720192379944013700006718917484559353556657140",
+        "outcome": "Bethune-Cookman Wildcats",
+        "ticker": "cbb-bcook-msvlst-2026-01-17bethune-cookmanwildcats"
+      },
+      {
+        "tokenId": "102357332805037110038782807339574294674002651587910384107519409307634585317464",
+        "outcome": "Mississippi Valley State Delta Devils",
+        "ticker": "cbb-bcook-msvlst-2026-01-17mississippivalleystatedeltadevils"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 28, 10:15AM-10:20AM ET",
+    "conditionId": "0x9b4a4580e923d012ea6c512d5c263b03bdd2c4cac5fbc2c6bcf86a125bcf57c0",
+    "slug": "eth-updown-5m-1772291700",
+    "volume": 9972.938353,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/28/2026 3:20:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "79278917748663343275712405576378722611619795742266054168033542172934739492072",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1772291700up"
+      },
+      {
+        "tokenId": "107647236938257817725207954163640024342616125927626410685599951962517749370698",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1772291700down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum above $4000 on August 27?",
+    "conditionId": "0x75fc21508bbeeb0c5319975dfe958125478a3d928ca0c4f27b1448244e3dc13b",
+    "slug": "ethereum-above-4000-on-august-27",
+    "volume": 99711.368313,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/27/2025 4:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "18795585703094416992528233213395557340504792455047948915144906231350557693593",
+        "outcome": "Yes",
+        "ticker": "ethereum-above-4000-on-august-27yes"
+      },
+      {
+        "tokenId": "64446822590368568844488107256779032223658156505950275796571137180825197880383",
+        "outcome": "No",
+        "ticker": "ethereum-above-4000-on-august-27no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 27, 5:00PM-5:15PM ET",
+    "conditionId": "0x727bb67b39ee08091fd419f49965c5d97f3032efc2ee1d3a8f15d35c12c4f1a7",
+    "slug": "eth-updown-15m-1764280800",
+    "volume": 9970.520037,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/27/2025 10:15:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "60930247279921437144267950184811606263342698083865688069753778629711617092158",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1764280800up"
+      },
+      {
+        "tokenId": "56577661923421118147415563271044475564254561061803266994182489959822382549607",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1764280800down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - November 15, 11:00PM-11:15PM ET",
+    "conditionId": "0x07084e8397bd692321181d07e157a61b5e3c7daa870c3ad7094cf131aa732eb8",
+    "slug": "eth-updown-15m-1763265600",
+    "volume": 9970.388064,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/16/2025 4:15:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "87930135244036587473299062355238684350690739183952576948920798722587046018113",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1763265600up"
+      },
+      {
+        "tokenId": "89541658595335082038096246611507156753045984244643125752710379678410691177493",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1763265600down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be above $4,100 on October 27?",
+    "conditionId": "0xb1e66a7896d28a197fb8f594eaca1ba554aa31a03d8641cdf3912f623ebaea73",
+    "slug": "ethereum-above-4100-on-october-27",
+    "volume": 99698.798809,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/27/2025 4:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "22443502518828334346274073525550240601984728758531053810444882734795538293552",
+        "outcome": "Yes",
+        "ticker": "ethereum-above-4100-on-october-27yes"
+      },
+      {
+        "tokenId": "21130246818320623514015952638163266476531808130326644381994158172420624217921",
+        "outcome": "No",
+        "ticker": "ethereum-above-4100-on-october-27no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be above $3,300 on November 20?",
+    "conditionId": "0x5bb2a128f0626399dfab888253649051122e995087a9a420a79021e110b316e0",
+    "slug": "ethereum-above-3300-on-november-20",
+    "volume": 99697.713325,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/20/2025 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "110358293627935759065973455151383865220488439338967316279282912989785553354035",
+        "outcome": "Yes",
+        "ticker": "ethereum-above-3300-on-november-20yes"
+      },
+      {
+        "tokenId": "109164539677297870368100095575749317495991003621377415810371374702153550235306",
+        "outcome": "No",
+        "ticker": "ethereum-above-3300-on-november-20no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - October 28, 6:45AM-7:00AM ET",
+    "conditionId": "0x90f080ab915f6018600806b68a4e5e3c6d29fcb10fcf83c495bcf989baa1620b",
+    "slug": "eth-updown-15m-1761648300",
+    "volume": 9969.684296,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/28/2025 11:00:00AM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "63068757497049628560352529866810644606243875298629348591575817580897801759109",
+        "outcome": "Up",
+        "ticker": "eth-updown-15m-1761648300up"
+      },
+      {
+        "tokenId": "92063144209907702220632564545194977516188987388199711481318562189633429962178",
+        "outcome": "Down",
+        "ticker": "eth-updown-15m-1761648300down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 26, 6:55AM-7:00AM ET",
+    "conditionId": "0xaf3196fa6c51b1dadc8908575df8f2bbe2c22dcc294b86997e68b0450353cf23",
+    "slug": "eth-updown-5m-1772106900",
+    "volume": 9968.766675,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/26/2026 12:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "6139775450088093179317051631307433730477713251059837102563956646084498575104",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1772106900up"
+      },
+      {
+        "tokenId": "64502300640346539457237733590694805155441830033875445141299279008250471895556",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1772106900down"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum Up or Down - February 21, 10:40AM-10:45AM ET",
+    "conditionId": "0x0bebf9d3bacfe375fa60ea6504d579c32a68643f3d28d2f9349f7c61a68ad0e9",
+    "slug": "eth-updown-5m-1771688400",
+    "volume": 9966.862993,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/21/2026 3:45:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "52310646472911667456691605238171907701914485940183025634418041856296256357872",
+        "outcome": "Up",
+        "ticker": "eth-updown-5m-1771688400up"
+      },
+      {
+        "tokenId": "9602266447839765022560428822345401059574595480711255955649133461350394962985",
+        "outcome": "Down",
+        "ticker": "eth-updown-5m-1771688400down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be above $3,400 on November 20?",
+    "conditionId": "0xb94b29165172e1d95a1193512afa5261a245e4102d1107c6520efc37f752e677",
+    "slug": "ethereum-above-3400-on-november-20",
+    "volume": 99666.114714,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/20/2025 5:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "64977856779195978450211421635409848446356230108093343924668941069529589747056",
+        "outcome": "Yes",
+        "ticker": "ethereum-above-3400-on-november-20yes"
+      },
+      {
+        "tokenId": "20840912566058353128515219150379296890487660095700461746906527954186082567040",
+        "outcome": "No",
+        "ticker": "ethereum-above-3400-on-november-20no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Ethereum be above $4,450 on August 31 at 4PM ET?",
+    "conditionId": "0x36c84ce3df2fe7d251cb17d6b02e6d30bc52a8c291c8a673f2eb4084a94cf1e7",
+    "slug": "eth-multistrike-4h-1756670400-4450",
+    "volume": 9966.431983,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/31/2025 8:00:00PM",
+    "marketType": "ETH Price",
+    "tokens": [
+      {
+        "tokenId": "62481969314066734389116340216617026759338995164487563701055054150000925649126",
+        "outcome": "Yes",
+        "ticker": "eth-multistrike-4h-1756670400-4450yes"
+      },
+      {
+        "tokenId": "103676188045915988667400189858630656471392808956633857637986647148718596423204",
+        "outcome": "No",
+        "ticker": "eth-multistrike-4h-1756670400-4450no"
+      }
+    ]
+  }
+]

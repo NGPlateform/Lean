@@ -11,9 +11,16 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
     public class HistoricalDataLoader
     {
         private readonly string _dataRoot;
+        private readonly string _batchName;
 
-        public HistoricalDataLoader(string dataRoot = null)
+        public HistoricalDataLoader(string dataRoot = null) : this(dataRoot, null)
         {
+        }
+
+        public HistoricalDataLoader(string dataRoot, string batchName)
+        {
+            _batchName = batchName;
+
             if (dataRoot != null)
             {
                 _dataRoot = dataRoot;
@@ -31,10 +38,16 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
 
         /// <summary>
         /// Loads market metadata from markets.json.
+        /// When batchName is set, reads from batches/{batchName}/markets.json.
         /// </summary>
         public List<CryptoMarketInfo> LoadMarketMetadata()
         {
-            var path = Path.Combine(_dataRoot, "crypto", "polymarket", "markets.json");
+            string path;
+            if (!string.IsNullOrEmpty(_batchName))
+                path = Path.Combine(_dataRoot, "crypto", "polymarket", "batches", _batchName, "markets.json");
+            else
+                path = Path.Combine(_dataRoot, "crypto", "polymarket", "markets.json");
+
             if (!File.Exists(path)) return new List<CryptoMarketInfo>();
 
             var json = File.ReadAllText(path);
@@ -48,7 +61,11 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
         public List<HistoricalBar> LoadPriceBars(string ticker, DateTime start, DateTime end)
         {
             var bars = new List<HistoricalBar>();
-            var dir = Path.Combine(_dataRoot, "crypto", "polymarket", "minute", ticker);
+            string dir;
+            if (!string.IsNullOrEmpty(_batchName))
+                dir = Path.Combine(_dataRoot, "crypto", "polymarket", "batches", _batchName, "minute", ticker);
+            else
+                dir = Path.Combine(_dataRoot, "crypto", "polymarket", "minute", ticker);
             if (!Directory.Exists(dir)) return bars;
 
             for (var date = start.Date; date <= end.Date; date = date.AddDays(1))

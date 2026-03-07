@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "Will Trump say “Sleazebag” by February 28?",
+    "conditionId": "0xdccf0378bda7224b954559e1ace6d2908d1c134104164114853eb74d5df3029d",
+    "slug": "will-trump-say-sleazebag-by-february-28",
+    "volume": 9999.803406,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/28/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "81179068395242817563968802141088033432492275007841026810139570981527684541305",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-sleazebag-by-february-28yes"
+      },
+      {
+        "tokenId": "83469931259071473016779072134241007202083233066455840909373143186077268556134",
+        "outcome": "No",
+        "ticker": "will-trump-say-sleazebag-by-february-28no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Two Weeks\" first during Saudi PM events on November 18?",
+    "conditionId": "0xeb33df1334122ae60e1c3c3a7eb9420a7a12e3391523ce7dcd6e20a0d015e3f9",
+    "slug": "will-trump-say-two-weeks-first-during-saudi-pm-events-on-november-18",
+    "volume": 9999.505189,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/18/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "33581901456343036954904888801095364772422688198465886153555154176382487521048",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-two-weeks-first-during-saudi-pm-events-on-november-18yes"
+      },
+      {
+        "tokenId": "21958938297540282064178856949596635756536749798208283237951796484787182756676",
+        "outcome": "No",
+        "ticker": "will-trump-say-two-weeks-first-during-saudi-pm-events-on-november-18no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump pardon Joe Exotic \"The Tiger King\" in 2025?",
+    "conditionId": "0x6c4d221b3cf2c8d17467c70a8aa3c714e30299b6e57cd3e4269dc8a41d2b0cd8",
+    "slug": "will-trump-pardon-joe-exotic-the-tiger-king-in-2025-784-928-365",
+    "volume": 99993.937724,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/31/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "30698649476690694814108493145041085718609914990967907518412053225237708492787",
+        "outcome": "Yes",
+        "ticker": "will-trump-pardon-joe-exotic-the-tiger-king-in-2025-784-928-365yes"
+      },
+      {
+        "tokenId": "43362318061877762261164265810725209343672429810065542703856317173848260953021",
+        "outcome": "No",
+        "ticker": "will-trump-pardon-joe-exotic-the-tiger-king-in-2025-784-928-365no"
+      }
+    ]
+  },
+  {
+    "question": "Will a candidate from another party win New Mexico Presidential Election?",
+    "conditionId": "0x208938ca6a4b6474fc1a9346b6415c69bca34854f27e232200dea09eb18d23aa",
+    "slug": "will-a-candidate-from-another-party-win-new-mexico-presidential-election-2024",
+    "volume": 999722.941966,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/5/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "26853647263822975953364582665233633174590267092489120199160800552859810508022",
+        "outcome": "Yes",
+        "ticker": "will-a-candidate-from-another-party-win-new-mexico-presidential-election-2024yes"
+      },
+      {
+        "tokenId": "36657118186654538136916008590666299434286739843517116671714568148263515923875",
+        "outcome": "No",
+        "ticker": "will-a-candidate-from-another-party-win-new-mexico-presidential-election-2024no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Big\" or \"Biggest\" or \"Bigly\" 10+ times during the announcement on Thursday?",
+    "conditionId": "0x499850944f3446d568301dd9c21607884cbae04c5e4edeab25cdadbdb5c7146c",
+    "slug": "will-trump-say-big-or-biggest-or-bigly-10-times-during-the-announcement-on-thursday",
+    "volume": 9996.263774,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/5/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "28260015380335255367888123315481986417337543742067355157764288857914723604402",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-big-or-biggest-or-bigly-10-times-during-the-announcement-on-thursdayyes"
+      },
+      {
+        "tokenId": "93635044298529834790299871478243311334330224883493100514643308008510115347599",
+        "outcome": "No",
+        "ticker": "will-trump-say-big-or-biggest-or-bigly-10-times-during-the-announcement-on-thursdayno"
+      }
+    ]
+  },
+  {
+    "question": "Trump margin of victory in New Hampshire Primary 0-2.5%",
+    "conditionId": "0xa9e204946babab23bfca5d712c4c8db9d7dc444dbe7ab6749c5bd15a7a6e2129",
+    "slug": "trump-margin-of-victory-in-new-hampshire-primary-0-2pt5",
+    "volume": 99924.95,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/22/2024 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "8773986590830415530323848337302156082234957618136684884944698290459544145793",
+        "outcome": "Yes",
+        "ticker": "trump-margin-of-victory-in-new-hampshire-primary-0-2pt5yes"
+      },
+      {
+        "tokenId": "25336341917193050679583734334532661189893471516958744634992211310857252780320",
+        "outcome": "No",
+        "ticker": "trump-margin-of-victory-in-new-hampshire-primary-0-2pt5no"
+      }
+    ]
+  },
+  {
+    "question": "Will Donald Trump say \"eighth war\" or \"eight wars\" during Ukraine President events on December 28?",
+    "conditionId": "0xef1a05315e15b48e84757c7e78c4b7e1e725ed204770b1d0a031bad99d8da8cc",
+    "slug": "will-donald-trump-say-eighth-war-or-eight-wars-during-ukraine-president-events-on-december-28",
+    "volume": 99901.145729,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": null,
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "85925136668319546814311751590581842645670560719070865236943765233602902419292",
+        "outcome": "Yes",
+        "ticker": "will-donald-trump-say-eighth-war-or-eight-wars-during-ukraine-president-events-on-december-28yes"
+      },
+      {
+        "tokenId": "103391481676176279183114060605968229727535889319418466781762237562410575210023",
+        "outcome": "No",
+        "ticker": "will-donald-trump-say-eighth-war-or-eight-wars-during-ukraine-president-events-on-december-28no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump save TikTok in first 100 days?",
+    "conditionId": "0x850bf92195e8d03219e8a292eb3c1935d4dc55ea9e902837f761faf6df25252a",
+    "slug": "will-trump-save-tiktok-in-first-100-days",
+    "volume": 99878.993288,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/29/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "79285173305341985372714479129641870324619236106356086074270575945749186668654",
+        "outcome": "Yes",
+        "ticker": "will-trump-save-tiktok-in-first-100-daysyes"
+      },
+      {
+        "tokenId": "25857543993687005241136453710972443864032278720961988358280206572668956596190",
+        "outcome": "No",
+        "ticker": "will-trump-save-tiktok-in-first-100-daysno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Six Seven\" this week? (February 8)",
+    "conditionId": "0x0853df2fa83b1669193dcb0a992fcf5f28144dcba78f8719f0193646edae1d53",
+    "slug": "will-trump-say-six-seven-this-week-february-8",
+    "volume": 99845.723056,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/8/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "94089776455752097495878425985033653562983659466318720613082028635208815629857",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-six-seven-this-week-february-8yes"
+      },
+      {
+        "tokenId": "52986814740948254673999811235129774634080743348601997733714110557529502924150",
+        "outcome": "No",
+        "ticker": "will-trump-say-six-seven-this-week-february-8no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Peace through strength\" during his NATO speech?",
+    "conditionId": "0x73caf8ee3b55184a4abd0f6ae091ae71d63f08af3c56032d482360ea939684a7",
+    "slug": "will-trump-say-peace-through-strength-during-his-nato-speech",
+    "volume": 9981.377487,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/26/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "92362542350929609332850746627956277488040683167095368241582403288644318001052",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-peace-through-strength-during-his-nato-speechyes"
+      },
+      {
+        "tokenId": "88891246559861098958657055038015443144419607397980449008732549966314139669133",
+        "outcome": "No",
+        "ticker": "will-trump-say-peace-through-strength-during-his-nato-speechno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump announce tariffs on Venezuela on April 2?",
+    "conditionId": "0x4ee267cf2ea1509dd6a7e39a0eb167ef721cc62fe1f586d4f7f50c5b62021e3e",
+    "slug": "will-trump-announce-tariffs-on-venezuela-on-april-2",
+    "volume": 99812.422519,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/2/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "14376198920612519741466305995581813181881691985193345606094633671394891027227",
+        "outcome": "Yes",
+        "ticker": "will-trump-announce-tariffs-on-venezuela-on-april-2yes"
+      },
+      {
+        "tokenId": "50100349879404066122449459645816293337813130062327861143773299740002499446629",
+        "outcome": "No",
+        "ticker": "will-trump-announce-tariffs-on-venezuela-on-april-2no"
+      }
+    ]
+  },
+  {
+    "question": "Will Donald Trump say \"Russia\" during his Mar-a-Lago press conference on Venezuela on Saturday?",
+    "conditionId": "0x6088123dd7387fe5faaff07fcf96c071ea79f4ee9952b2ca2bf81adc340ffed6",
+    "slug": "will-donald-trump-say-russia-during-his-mar-a-lago-press-conference-on-venezuela-on-saturday",
+    "volume": 9980.672425,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/3/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "95198870950683360855920186446680862894805831681325761611807808103017044301552",
+        "outcome": "Yes",
+        "ticker": "will-donald-trump-say-russia-during-his-mar-a-lago-press-conference-on-venezuela-on-saturdayyes"
+      },
+      {
+        "tokenId": "56316264478719344697645333113542788312957191122157820558198074469703263048310",
+        "outcome": "No",
+        "ticker": "will-donald-trump-say-russia-during-his-mar-a-lago-press-conference-on-venezuela-on-saturdayno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Too late\" or \"Fed\" during the private dinner on November 12?",
+    "conditionId": "0x3823fc90fc681d4ff7197027b5b7313928477f662798579bf8dc29b28a1d5242",
+    "slug": "will-trump-say-too-late-or-fed-during-the-private-dinner-on-november-12",
+    "volume": 998.01449,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/12/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "48263258126461372399045221551106676990567973140397432309871521269386377328417",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-too-late-or-fed-during-the-private-dinner-on-november-12yes"
+      },
+      {
+        "tokenId": "87861755749251077350669763446983969745828855241785616729463201036578036283259",
+        "outcome": "No",
+        "ticker": "will-trump-say-too-late-or-fed-during-the-private-dinner-on-november-12no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Green new scam\" during the Energy and Innovation Summit on July 15?",
+    "conditionId": "0x73fb9ec403cf1b877b97be4edfb7a8354e074fbc99dd8ff589558fccdf7bac93",
+    "slug": "will-trump-say-green-new-scam-during-the-energy-and-innovation-summit-on-july-15",
+    "volume": 9980.096792,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/15/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "75005003944666059697469051519424525488172453058337326520646510112085307363142",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-green-new-scam-during-the-energy-and-innovation-summit-on-july-15yes"
+      },
+      {
+        "tokenId": "99289273049795956772214792890958821471857114117894633787134054665748124852950",
+        "outcome": "No",
+        "ticker": "will-trump-say-green-new-scam-during-the-energy-and-innovation-summit-on-july-15no"
+      }
+    ]
+  },
+  {
+    "question": "Will the Tampa Bay Lightning win the 2025 President’s Trophy?",
+    "conditionId": "0x3c02e07ce45d8ef1acb4b1cf82fcd169e1b1b8cd267391d18ae00103522b1fc1",
+    "slug": "will-the-tampa-bay-lightning-win-the-2025-presidents-trophy",
+    "volume": 997980.406767,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/17/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "47643874089675349498244847841711833037687812165646213214289544564662971164430",
+        "outcome": "Yes",
+        "ticker": "will-the-tampa-bay-lightning-win-the-2025-presidents-trophyyes"
+      },
+      {
+        "tokenId": "51077424931118160514226530372123529714870803765863430733363361622974083153421",
+        "outcome": "No",
+        "ticker": "will-the-tampa-bay-lightning-win-the-2025-presidents-trophyno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump and JD Vance handshake last 2–6 seconds during the day of the 2026 State of the Union address?",
+    "conditionId": "0x12c96d8d6b8c3d9cb304b428e3c06501ee8630e260d760c63f24a3139659e317",
+    "slug": "will-trump-and-jd-vance-handshake-last-26-seconds-during-the-day-of-the-2026-state-of-the-union-address",
+    "volume": 9976.654934,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/24/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "15879716679155060979733592052924857371262824831544579296100458623061047492482",
+        "outcome": "Yes",
+        "ticker": "will-trump-and-jd-vance-handshake-last-26-seconds-during-the-day-of-the-2026-state-of-the-union-addressyes"
+      },
+      {
+        "tokenId": "16582702345915215432222259356197967902004765763397343642989430605606178950627",
+        "outcome": "No",
+        "ticker": "will-trump-and-jd-vance-handshake-last-26-seconds-during-the-day-of-the-2026-state-of-the-union-addressno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Putin\" during Diwali Celebration events on October 21?",
+    "conditionId": "0x5865a4a92d7bf42ff272027e520fe1e61d065f45af923482bee0e0ea153c5536",
+    "slug": "will-trump-say-putin-during-diwali-celebration-events-on-october-21",
+    "volume": 997.626945,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": null,
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "102649549637987006978719179611516238632046107313233248379565929858345730525717",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-putin-during-diwali-celebration-events-on-october-21yes"
+      },
+      {
+        "tokenId": "25361361483673808538812566111303411087420631001314422503224863351499422204631",
+        "outcome": "No",
+        "ticker": "will-trump-say-putin-during-diwali-celebration-events-on-october-21no"
+      }
+    ]
+  },
+  {
+    "question": "Trump margin of victory in New Hampshire Primary >15%",
+    "conditionId": "0x830fe8eb8ab09693af821fba6d1d2c5369a696715c029b978e06df41cc614390",
+    "slug": "trump-margin-of-victory-in-new-hampshire-primary-15",
+    "volume": 997617.26,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/22/2024 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "79044640158034091299262760108813957417246768673122071583111344168798410046359",
+        "outcome": "Yes",
+        "ticker": "trump-margin-of-victory-in-new-hampshire-primary-15yes"
+      },
+      {
+        "tokenId": "36675510470072774744443533757655464497337222280198476290210465654199705729371",
+        "outcome": "No",
+        "ticker": "trump-margin-of-victory-in-new-hampshire-primary-15no"
+      }
+    ]
+  },
+  {
+    "question": "Morocco snap election called by December 31?",
+    "conditionId": "0xee9e56d6d5449f4cdba80d01fea4c00899d8c86d5de6c7c874f64e78490f9b9a",
+    "slug": "morocco-snap-election-called-by-december-31",
+    "volume": 9972.452924,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/31/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "31501596955509254482019409403140744670999202138890047024357977051889419469050",
+        "outcome": "Yes",
+        "ticker": "morocco-snap-election-called-by-december-31yes"
+      },
+      {
+        "tokenId": "72073947618902713623446296714779710016170377723902213530042302581571127218321",
+        "outcome": "No",
+        "ticker": "morocco-snap-election-called-by-december-31no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Million\" or \"Billion\" or \"Trillion\" 7+ times during events with South African President on May 21?",
+    "conditionId": "0xd31b42ce21ee95bfabfe65eee466726665198e4c02194c13799c893617a298ac",
+    "slug": "will-trump-say-million-or-billion-or-trillion-7-times-during-events-with-south-african-president-on-may-21",
+    "volume": 9969.542872,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "5/21/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "25124391462794279651733040244995814800475774718512608534913944180670349283507",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-million-or-billion-or-trillion-7-times-during-events-with-south-african-president-on-may-21yes"
+      },
+      {
+        "tokenId": "2219139509339745753498299026651070952217226839084357944420985126065721784634",
+        "outcome": "No",
+        "ticker": "will-trump-say-million-or-billion-or-trillion-7-times-during-events-with-south-african-president-on-may-21no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Soros\" during ANTIFA Roundtable on October 8?",
+    "conditionId": "0xa51d4fa7145ce31974def3c9d4af352486f5e1e3df76b75e54b14a2103eaefe9",
+    "slug": "will-trump-say-soros-during-antifa-roundtable-on-october-8",
+    "volume": 996.781653,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": null,
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "19854158689868374520578146296044535262009769666106409706234292936952675632334",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-soros-during-antifa-roundtable-on-october-8yes"
+      },
+      {
+        "tokenId": "91904154299987990100114305867493964225182481405829657192319942862836843833481",
+        "outcome": "No",
+        "ticker": "will-trump-say-soros-during-antifa-roundtable-on-october-8no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump’s approval rating be between 41.0 and 41.4 on November 21 2025?",
+    "conditionId": "0x15e486ecfd27d6b93303ade8628268d97a0db158179fdeb7c213097067af5057",
+    "slug": "will-trumps-approval-rating-be-between-41pt0-and-41pt4-on-november-21-2025",
+    "volume": 9965.313474,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/21/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "68342732708048951332052768463550514461834484320289257242695022267152494870055",
+        "outcome": "Yes",
+        "ticker": "will-trumps-approval-rating-be-between-41pt0-and-41pt4-on-november-21-2025yes"
+      },
+      {
+        "tokenId": "70003802692496656627800021324807693361398106407128854860078767007497242557393",
+        "outcome": "No",
+        "ticker": "will-trumps-approval-rating-be-between-41pt0-and-41pt4-on-november-21-2025no"
+      }
+    ]
+  },
+  {
+    "question": "Trump x Modi talk by September 5?",
+    "conditionId": "0xbc7129de7fdff39b9a3c7507bdb6006af4eeec4250ba4c04085a7dbf6bb8a7f1",
+    "slug": "trump-x-modi-talk-by-september-5",
+    "volume": 9964.806986,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/5/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "66477572545242111784203592947077829064304986725511247022631591242209125092313",
+        "outcome": "Yes",
+        "ticker": "trump-x-modi-talk-by-september-5yes"
+      },
+      {
+        "tokenId": "27355308041154738867943201619645304520839605727331337644842179009430330133886",
+        "outcome": "No",
+        "ticker": "trump-x-modi-talk-by-september-5no"
+      }
+    ]
+  },
+  {
+    "question": "Will Putin remain President of Russia through March?",
+    "conditionId": "0x874624e0fd5ba512f78c49988274509bc572fccfcf1c24ed1036cd649419155b",
+    "slug": "will-putin-remain-president-of-russia-through-march",
+    "volume": 99623.58,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/31/2024 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "100335511331128114647631113641314655666058003791588571848453966145546948985509",
+        "outcome": "Yes",
+        "ticker": "will-putin-remain-president-of-russia-through-marchyes"
+      },
+      {
+        "tokenId": "85685367236976095152558719177036097625890250326131012838894953162459979367083",
+        "outcome": "No",
+        "ticker": "will-putin-remain-president-of-russia-through-marchno"
+      }
+    ]
+  },
+  {
+    "question": "Will Kim Moon-soo win less than 20% of the vote in the South Korea election?",
+    "conditionId": "0x5860dd75d4944835e9e872f87a9bd33783d183e464c3e0251a6474a04fc1acf3",
+    "slug": "will-kim-moon-soo-win-less-than-20-of-the-vote-in-the-south-korea-election",
+    "volume": 99619.05964,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/3/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "91550816557293572224436572089901120882894714204769232297694654150457464836294",
+        "outcome": "Yes",
+        "ticker": "will-kim-moon-soo-win-less-than-20-of-the-vote-in-the-south-korea-electionyes"
+      },
+      {
+        "tokenId": "15143157576345229698794247291595588090606049631282655225271266105907597497262",
+        "outcome": "No",
+        "ticker": "will-kim-moon-soo-win-less-than-20-of-the-vote-in-the-south-korea-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will ENS win the most seats in the French election?",
+    "conditionId": "0x7bf82abf3881cb54659acec1246f9d0d004e0ba206e1f5f1fd2dc0f93da319b3",
+    "slug": "will-ens-win-the-most-seats-in-the-french-election",
+    "volume": 99587.59,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/7/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "55430113627096729397149809609059498022600758704173793777568198578947703460809",
+        "outcome": "Yes",
+        "ticker": "will-ens-win-the-most-seats-in-the-french-electionyes"
+      },
+      {
+        "tokenId": "48077192437502616637302072596938969581872048613448043662133985968089784350299",
+        "outcome": "No",
+        "ticker": "will-ens-win-the-most-seats-in-the-french-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump post \"President DJT\" on Truth Social this week? (March 8)",
+    "conditionId": "0x504808d65de363b015e5f0b127375861778af7d48e92dbd19928314a85cbfa49",
+    "slug": "will-trump-post-president-djt-on-truth-social-this-week-march-8",
+    "volume": 9957.508953,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/8/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "115255732459600256234717106031027727380700685624974125768017586712764251369579",
+        "outcome": "Yes",
+        "ticker": "will-trump-post-president-djt-on-truth-social-this-week-march-8yes"
+      },
+      {
+        "tokenId": "112746835228177239316165407712489447545522873129605152917815008557225576877155",
+        "outcome": "No",
+        "ticker": "will-trump-post-president-djt-on-truth-social-this-week-march-8no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Venezuela\" or \"Machado\" during meetings with Slovak Prime Minister?",
+    "conditionId": "0x1bcad2fa11bd25ab94c1a923296f491b43ccdec7687a57c278966203d8fa65ab",
+    "slug": "will-trump-say-venezuela-or-machado-during-meetings-with-slovak-prime-minister",
+    "volume": 9956.147338,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/17/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "83042104250908378277620666971807965739251760985584301453181717598110030297032",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-venezuela-or-machado-during-meetings-with-slovak-prime-ministeryes"
+      },
+      {
+        "tokenId": "82319051072086429283351426220239729861740846993934599765565693540490173118644",
+        "outcome": "No",
+        "ticker": "will-trump-say-venezuela-or-machado-during-meetings-with-slovak-prime-ministerno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Paper tiger\" this week? (October 7 - 12)",
+    "conditionId": "0x6dba2a775b57e9378791d3213bd0678bc4c9727952a3a45f0b96087b3c54d54e",
+    "slug": "will-trump-say-paper-tiger-this-week-october-7-12",
+    "volume": 995.59976,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/12/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "99893271793112780453993324984457750061786174444978193823349293643968582471725",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-paper-tiger-this-week-october-7-12yes"
+      },
+      {
+        "tokenId": "15140363246261200437004258343281129570261668959223951825500181166928293575413",
+        "outcome": "No",
+        "ticker": "will-trump-say-paper-tiger-this-week-october-7-12no"
+      }
+    ]
+  },
+  {
+    "question": "Will Donald Trump say \"France\" during Pennsylvania rally?",
+    "conditionId": "0x8b3d0ee7e75eba029136ac13502681ec1cb7c0edae4f3e22f8ea1161059ea138",
+    "slug": "will-donald-trump-say-france-during-pennsylvania-rally",
+    "volume": 9952.5,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/30/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "106375479213832650338447151988530948494778082169944550225849172338226227437766",
+        "outcome": "Yes",
+        "ticker": "will-donald-trump-say-france-during-pennsylvania-rallyyes"
+      },
+      {
+        "tokenId": "70389461165069708568731290565306555790268173269145147553558911149284655845705",
+        "outcome": "No",
+        "ticker": "will-donald-trump-say-france-during-pennsylvania-rallyno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump's approval rating be between 46.0% and 46.4% on April 11?",
+    "conditionId": "0x5beb7d111e5d6b09e711ba9b134a6a527b8cb0182f4cf4fd70e75d2bb84d2986",
+    "slug": "will-trumps-approval-rating-be-between-46pt0-and-46pt4-on-april-11",
+    "volume": 9950.641959,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/11/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "104462749617295280121696296293951170515703591742224443465743208463874033465296",
+        "outcome": "Yes",
+        "ticker": "will-trumps-approval-rating-be-between-46pt0-and-46pt4-on-april-11yes"
+      },
+      {
+        "tokenId": "75155458884680815138285456302204299676828608325430514821115709242802106461990",
+        "outcome": "No",
+        "ticker": "will-trumps-approval-rating-be-between-46pt0-and-46pt4-on-april-11no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"TikTok\" this week? (February 8)",
+    "conditionId": "0xa32e83ecdb0234164515f205650a529ab4cc793db338c71bb6d061a53912eac7",
+    "slug": "will-trump-say-tiktok-this-week-february-8",
+    "volume": 9947.611896,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/8/2026 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "77961236326114371968799496033019262936097022155096958565028950131253028797897",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-tiktok-this-week-february-8yes"
+      },
+      {
+        "tokenId": "56363076850945730078823875108193788162070583590847012683062269773703758427946",
+        "outcome": "No",
+        "ticker": "will-trump-say-tiktok-this-week-february-8no"
+      }
+    ]
+  },
+  {
+    "question": "Will Marcel Ciolacu win the 2024 Romanian Presidential election?",
+    "conditionId": "0xa2f0eb0b70c25a2f4c5c0493b593a36c35d3fe964e51f306ec0ad1f76be2da85",
+    "slug": "will-marcel-ciolacu-win-the-2024-romanian-presidential-election",
+    "volume": 9941723.513819,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/8/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "101243577543146361469715980639478898839570365093058773290885218727522893652216",
+        "outcome": "Yes",
+        "ticker": "will-marcel-ciolacu-win-the-2024-romanian-presidential-electionyes"
+      },
+      {
+        "tokenId": "4678999283928149996457868949943201647591094778808332620831957083270291221105",
+        "outcome": "No",
+        "ticker": "will-marcel-ciolacu-win-the-2024-romanian-presidential-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"gun\" 5 or more times during Pittsburgh rally on Nov 4?",
+    "conditionId": "0x22bb4b6fa5b0ef9120e94ac7b4406ef97c8759e06339571476215f7f79929a0a",
+    "slug": "will-trump-say-gun-5-or-more-times-during-pittsburgh-rally-on-nov-4",
+    "volume": 9941.020221,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/4/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "60049043236738337393355801573162741557266219830951109070561278900397980060109",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-gun-5-or-more-times-during-pittsburgh-rally-on-nov-4yes"
+      },
+      {
+        "tokenId": "66175738826225382321213366442009873759057577584178917677139247515813546633359",
+        "outcome": "No",
+        "ticker": "will-trump-say-gun-5-or-more-times-during-pittsburgh-rally-on-nov-4no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump pardon Eric Adams in his first 100 days?",
+    "conditionId": "0x7c753b012d53e4a70167ad6a41e0b909f269874c0297c6d383b1f1f3be505b51",
+    "slug": "will-trump-pardon-eric-adams-in-his-first-100-days",
+    "volume": 993621.049551,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/29/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "99962710417886882023355368447701034798778236421809247417236393271776953183887",
+        "outcome": "Yes",
+        "ticker": "will-trump-pardon-eric-adams-in-his-first-100-daysyes"
+      },
+      {
+        "tokenId": "96975100491765825130790297684844645207502435573314569875702319156837077741948",
+        "outcome": "No",
+        "ticker": "will-trump-pardon-eric-adams-in-his-first-100-daysno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Kosovo\" this week?",
+    "conditionId": "0xc51d48b32a405793f0e7807edcc3027b69d3a34c116466ff081ad5402fb34f72",
+    "slug": "will-trump-say-kosovo-this-week",
+    "volume": 9934.19468,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/10/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "112142365632620874099902108159314452646845633130713757971661405438437448052012",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-kosovo-this-weekyes"
+      },
+      {
+        "tokenId": "3607076690463233428070442371960395740533756607032194079557998902169768099496",
+        "outcome": "No",
+        "ticker": "will-trump-say-kosovo-this-weekno"
+      }
+    ]
+  },
+  {
+    "question": "Will President Biden visit Ukraine by June 1, 2022?",
+    "conditionId": "0x09376733cf7560d5f0d0ec8b03d3878f5fb4db604389605fa4a4e735645b03d2",
+    "slug": "will-president-biden-visit-ukraine-by-june-1-2022",
+    "volume": 9933.56,
+    "volume24h": 0.0,
+    "category": "Ukraine & Russia",
+    "endDate": "6/1/2022 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "50740592986301807374986144521568692295322194450182032886917690125995620123707",
+        "outcome": "Yes",
+        "ticker": "will-president-biden-visit-ukraine-by-june-1-2022yes"
+      },
+      {
+        "tokenId": "112131797041164809055657099929742688517965689321101115462962103231687148752050",
+        "outcome": "No",
+        "ticker": "will-president-biden-visit-ukraine-by-june-1-2022no"
+      }
+    ]
+  },
+  {
+    "question": "Will Jón Gnarr win the Iceland Presidential Election?",
+    "conditionId": "0x29e365ffea12327edc0892d635948841610eb250d93fd080af10d1104dfa2892",
+    "slug": "will-jon-gnarr-win-the-iceland-presidential-election",
+    "volume": 9931.01,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/1/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "93110542426893047418273592695798315714515412346082746923065480005407390058800",
+        "outcome": "Yes",
+        "ticker": "will-jon-gnarr-win-the-iceland-presidential-electionyes"
+      },
+      {
+        "tokenId": "84264191441409703194997094854409795232545704515654928000341762105520967662944",
+        "outcome": "No",
+        "ticker": "will-jon-gnarr-win-the-iceland-presidential-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Ahsha Safai win the San Francisco Mayoral Election?",
+    "conditionId": "0x03ae1b62fa4eea75c286e9d461afa30d943be864f61dcc1f86f6764c4ec099c6",
+    "slug": "will-ahsha-safai-win-the-san-francisco-mayoral-election",
+    "volume": 992452.22775,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/5/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "78307614038486164602702977878913847541694839339683632846666802069985891395088",
+        "outcome": "Yes",
+        "ticker": "will-ahsha-safai-win-the-san-francisco-mayoral-electionyes"
+      },
+      {
+        "tokenId": "15759865917264586012306521514689102559100793643207836511539044307603827391295",
+        "outcome": "No",
+        "ticker": "will-ahsha-safai-win-the-san-francisco-mayoral-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Million\" 10+ times during today's Education Event?",
+    "conditionId": "0xa321b6d977216ad733a8e51e4c41211173e7615b02a50778d0ff70bfa89c2ae5",
+    "slug": "will-trump-say-million-10-times-during-todays-education-event",
+    "volume": 99.191917,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/20/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "86418449770770459536560064028281641136596690549292460294796237465938990459691",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-million-10-times-during-todays-education-eventyes"
+      },
+      {
+        "tokenId": "52919938337502052738345359636703557819123338453456218746907963778521658073479",
+        "outcome": "No",
+        "ticker": "will-trump-say-million-10-times-during-todays-education-eventno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump release the Epstein files by November 30?",
+    "conditionId": "0x581ea2e0e1b796f217f7d72e8517592c2f02de25139bb75b83c4580ffed339e7",
+    "slug": "will-trump-release-the-epstein-files-by-november-30",
+    "volume": 991674.02096,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": null,
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "10140294754334295812883636430852874207041625887079511684262977351428880248568",
+        "outcome": "Yes",
+        "ticker": "will-trump-release-the-epstein-files-by-november-30yes"
+      },
+      {
+        "tokenId": "50218526944056079570845990374922792664874570178782199902514813785256856589212",
+        "outcome": "No",
+        "ticker": "will-trump-release-the-epstein-files-by-november-30no"
+      }
+    ]
+  },
+  {
+    "question": "Will the PPC win 3 seats in the next Canadian Election?",
+    "conditionId": "0x756f3978771032e5bff72303ed01315499e9fdb05c0a291a2a8dfb435b109fd0",
+    "slug": "will-the-ppc-win-3-seats-in-the-next-canadian-election",
+    "volume": 991364.43239,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/28/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "112931772738001967483733520945719499176812368854573963047580525935926181706627",
+        "outcome": "Yes",
+        "ticker": "will-the-ppc-win-3-seats-in-the-next-canadian-electionyes"
+      },
+      {
+        "tokenId": "90544645079491307421727264134157132473934026806253986577411692338411884402815",
+        "outcome": "No",
+        "ticker": "will-the-ppc-win-3-seats-in-the-next-canadian-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump nominate Nicole Shanahan for FDA Commissioner?",
+    "conditionId": "0x984d1ee788ff724a30af27cd77ef74455b49bf6382460aceabbec94f01961a35",
+    "slug": "will-trump-nominate-nicole-shanahan-for-fda-commissioner",
+    "volume": 9912.997777,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/30/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "66352439522562171916598626895374860870136460524960127438726637768239339209438",
+        "outcome": "Yes",
+        "ticker": "will-trump-nominate-nicole-shanahan-for-fda-commissioneryes"
+      },
+      {
+        "tokenId": "49897096144099838298807345975239957972804348506912801586944139827168067641377",
+        "outcome": "No",
+        "ticker": "will-trump-nominate-nicole-shanahan-for-fda-commissionerno"
+      }
+    ]
+  },
+  {
+    "question": "Trump-Vance Republican ticket on election day?",
+    "conditionId": "0xdcca092aa2cc55f8053437e3f71ee853aa89f28582ac98231b0625a8609df32d",
+    "slug": "will-trump-vance-be-gop-ticket-on-election-day",
+    "volume": 991254.327765,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/4/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "80332381014310762500462611104535522261876774738159045302005346353021349772614",
+        "outcome": "Yes",
+        "ticker": "will-trump-vance-be-gop-ticket-on-election-dayyes"
+      },
+      {
+        "tokenId": "11854011057464762682817557582202824760201041132396559911429753922780169499516",
+        "outcome": "No",
+        "ticker": "will-trump-vance-be-gop-ticket-on-election-dayno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump reduce majority of tariffs before July?",
+    "conditionId": "0xf1cd536d805a98563a4c7221fd088dabdebdba500f32505b646a440c0a044e77",
+    "slug": "will-trump-reduce-majority-of-tariffs-before-july",
+    "volume": 99122.123756,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/30/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "42683146560417010511630695445520024429293924859936943884250415736432421523975",
+        "outcome": "Yes",
+        "ticker": "will-trump-reduce-majority-of-tariffs-before-julyyes"
+      },
+      {
+        "tokenId": "90067295665201444947249848338663438551822520399370356587123889298617118474506",
+        "outcome": "No",
+        "ticker": "will-trump-reduce-majority-of-tariffs-before-julyno"
+      }
+    ]
+  },
+  {
+    "question": "Panama Presidential Election: Will Martin Torrijos win?",
+    "conditionId": "0xcb4aad964b5f65c525d2a62c2e3e7f458579e3e6d8306a5756eaa7e9077a0c3e",
+    "slug": "panama-presidential-election-will-martin-torrijos-win",
+    "volume": 9909.37,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "5/5/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "109440183847596167213042940517102169077065038953336966383462792833484814880255",
+        "outcome": "Yes",
+        "ticker": "panama-presidential-election-will-martin-torrijos-winyes"
+      },
+      {
+        "tokenId": "64335307968017918895393825280732172862663234312601899849470393750178998882834",
+        "outcome": "No",
+        "ticker": "panama-presidential-election-will-martin-torrijos-winno"
+      }
+    ]
+  },
+  {
+    "question": "Will a Republican win California Presidential Election?",
+    "conditionId": "0x6964df311eba3add433112c9ab13ef529c8e2e07e7c115b9cc548de035f5b25f",
+    "slug": "will-a-republican-win-california-in-the-2024-us-presidential-election",
+    "volume": 990768.222498,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/5/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "99830846713807084277950392215452568080477500108350730334986898631459175275385",
+        "outcome": "Yes",
+        "ticker": "will-a-republican-win-california-in-the-2024-us-presidential-electionyes"
+      },
+      {
+        "tokenId": "21807180570093497082701729328728463060487969746244884053847428204189555032238",
+        "outcome": "No",
+        "ticker": "will-a-republican-win-california-in-the-2024-us-presidential-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Andrónico Rodríguez win the most votes in the first round of the 2025 Bolivia presidential election?",
+    "conditionId": "0xed4615db4766881d064c19a6ca9ea6f3f3bc4d55c41fac513d1ca7a2f4dc96e4",
+    "slug": "will-andrnico-rodrguez-win-the-most-votes-in-the-first-round-of-the-2025-bolivia-presidential-election",
+    "volume": 990326.123506,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/17/2025 12:00:00AM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "101440307117479003135622952343564417356383687164108969606891289022765788993223",
+        "outcome": "Yes",
+        "ticker": "will-andrnico-rodrguez-win-the-most-votes-in-the-first-round-of-the-2025-bolivia-presidential-electionyes"
+      },
+      {
+        "tokenId": "64596894704283417931043793895816384874636567630194378805432301241626406529835",
+        "outcome": "No",
+        "ticker": "will-andrnico-rodrguez-win-the-most-votes-in-the-first-round-of-the-2025-bolivia-presidential-electionno"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Qatar\" between April 7 and April 11?",
+    "conditionId": "0x41fac9df4f9313f1ff9ec6a52c08f1b17231fa96d4a7e8ac5a354d1052ebe3f9",
+    "slug": "will-trump-say-qatar-between-april-7-and-april-11",
+    "volume": 99.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/11/2025 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "44359162913068633005461478147898142117819739079408344073614342907474167003815",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-qatar-between-april-7-and-april-11yes"
+      },
+      {
+        "tokenId": "28393304626380006826788068118315881064934613022631546329898243571355155907066",
+        "outcome": "No",
+        "ticker": "will-trump-say-qatar-between-april-7-and-april-11no"
+      }
+    ]
+  },
+  {
+    "question": "Will Vooruit win the most seats in the Belgian federal elections?",
+    "conditionId": "0xd2e8813b65f3a8c88493dd2c1ca6f1ad1f269eeda21104f24e47072bc127ad65",
+    "slug": "will-vooruit-win-the-most-seats-in-the-belgian-federal-elections",
+    "volume": 98960.33,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/9/2024 12:00:00PM",
+    "marketType": "Politics (Control)",
+    "tokens": [
+      {
+        "tokenId": "31918554293583617639271170556750664652336691202555025578408678518041863157092",
+        "outcome": "Yes",
+        "ticker": "will-vooruit-win-the-most-seats-in-the-belgian-federal-electionsyes"
+      },
+      {
+        "tokenId": "5527531963796263225929451640014168225645823180095589282066093504068338975837",
+        "outcome": "No",
+        "ticker": "will-vooruit-win-the-most-seats-in-the-belgian-federal-electionsno"
+      }
+    ]
+  }
+]

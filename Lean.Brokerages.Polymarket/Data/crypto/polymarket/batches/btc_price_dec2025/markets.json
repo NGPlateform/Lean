@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "Bitcoin Up or Down - December 28, 10:30AM-10:45AM ET",
+    "conditionId": "0x8bba2f1733857731c020eb8dc3d3792fb62855194d3e95f8264c7301d15a6a23",
+    "slug": "btc-updown-15m-1766935800",
+    "volume": 99984.248338,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/28/2025 3:45:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "15007355001783182245218792566165152469484382634995466404482744595900782268392",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766935800up"
+      },
+      {
+        "tokenId": "86384699448540407325827373480073496962939792590306007614413742809750448518679",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766935800down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $88,000 and $90,000 on December 3?",
+    "conditionId": "0xa976888c58e5306a79ba4c639b7ec087edd9d8e6b0d9bd4b8ab1fbe332658692",
+    "slug": "will-the-price-of-bitcoin-be-between-88000-90000-on-december-3",
+    "volume": 99934.429417,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/3/2025 5:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "78447062835889436228541429519646736019785909001702168405759992476536821443122",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-88000-90000-on-december-3yes"
+      },
+      {
+        "tokenId": "18677142670852811818281360021787444938938615987914838653654338644340445847400",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-88000-90000-on-december-3no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 31, 1:30AM-1:45AM ET",
+    "conditionId": "0xae050064e64926d4a9634184b519351959dab45f8d83c1d412b734bb404466d5",
+    "slug": "btc-updown-15m-1767162600",
+    "volume": 9991.091649,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/31/2025 6:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "54950562052039731924192900346813376137705503843113609804364550973406502094176",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1767162600up"
+      },
+      {
+        "tokenId": "94980789441368536843563914565188920773556844944121142854604312049564300058706",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1767162600down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 15, 12AM ET",
+    "conditionId": "0x19bf3cfee2d32930a9a93cfde5db7e135488baae14c0e4c64777530064e7e550",
+    "slug": "bitcoin-up-or-down-december-15-12am-et",
+    "volume": 99900.85389,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/15/2025 6:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "49397165724745014418359523859498766507406397780027146526610211239539264607778",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-15-12am-etup"
+      },
+      {
+        "tokenId": "36055088650370138484252494236123801671418988402440099321136555052682937880584",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-15-12am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 25, 5:00PM-5:15PM ET",
+    "conditionId": "0x1f396836ade04e9574f7315ff71641bd7fa6d1a364e6a4fa8cbdef388d07ea55",
+    "slug": "btc-updown-15m-1766700000",
+    "volume": 99878.534309,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/25/2025 10:15:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "33528693729903616866539203895987367269691517872334436794425259973311326661280",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766700000up"
+      },
+      {
+        "tokenId": "115715378874253837441311302909180141699096365803001131745328329114431494588720",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766700000down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 6, 8AM ET",
+    "conditionId": "0x8889cbc83dc33b3b19fbd93b42643c26b243b7dd98a9df3b576ee7c3f3799bfb",
+    "slug": "bitcoin-up-or-down-december-6-8am-et",
+    "volume": 99835.006447,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/6/2025 2:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "44432135644761466321120013914399205209981540258274514248445971249920181871543",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-6-8am-etup"
+      },
+      {
+        "tokenId": "94227646242086601652137992155974720542726727083636796897203009503765332099864",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-6-8am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 27, 10:15PM-10:30PM ET",
+    "conditionId": "0x67ac4fb4017c9a2a26aacd8bf285c783ba6e4720c882481ffac3c940ef388fa6",
+    "slug": "btc-updown-15m-1766891700",
+    "volume": 99833.274514,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/28/2025 3:30:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "84143223644582631455617833688491655893280584331421535217118123241164546362554",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766891700up"
+      },
+      {
+        "tokenId": "51072203661324777565399576490913315196204945993991514609107639673372216407996",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766891700down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 5, 11:45PM-12:00AM ET",
+    "conditionId": "0x11c7e6df14db19b74bb5daf594da837eaafb4a07edd1845d533a9820ec7ac750",
+    "slug": "btc-updown-15m-1764996300",
+    "volume": 99756.117171,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/6/2025 5:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "11364624090678132639320824839771062850244268966626735054882852359330312889660",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764996300up"
+      },
+      {
+        "tokenId": "796979330496646632324009759639975566342774152729808303766924546099958207059",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764996300down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 12, 3:15PM-3:30PM ET",
+    "conditionId": "0x044b08c7212dd4d3309a9220a6015da5c2d829077df7391411d226e8f5040c1c",
+    "slug": "btc-updown-15m-1765570500",
+    "volume": 9973.64114,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/12/2025 8:30:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "85189184005758409011495317743419943182255570047910078006971751409857702970544",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1765570500up"
+      },
+      {
+        "tokenId": "87535521944068696507419735670449614158946858156792738890777064344664336463572",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1765570500down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 25, 5:00AM-5:15AM ET",
+    "conditionId": "0xbcba31155876fca1255fc7ca9e6663827b33416f9084ca549a26fa2d7fc57c28",
+    "slug": "btc-updown-15m-1764064800",
+    "volume": 99671.02607,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/25/2025 10:15:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "48777330920961728087369920505378080219218821184066024626358975299609861785887",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764064800up"
+      },
+      {
+        "tokenId": "63291015058842501863207241649521940046079681050471570853950199914230357794029",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764064800down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be above $82,000 on December 8?",
+    "conditionId": "0xfa1324f99b76101823e00e5bfb008e7304e052a433de597b553b51f40e4935a2",
+    "slug": "bitcoin-above-82k-on-december-8",
+    "volume": 99593.286579,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/8/2025 5:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "44930406613463268130880147652235505901377265054266866578540986202514676586992",
+        "outcome": "Yes",
+        "ticker": "bitcoin-above-82k-on-december-8yes"
+      },
+      {
+        "tokenId": "43800512694812249400428599091696073913702428945190238414725485613929880747025",
+        "outcome": "No",
+        "ticker": "bitcoin-above-82k-on-december-8no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 5, 6:30AM-6:45AM ET",
+    "conditionId": "0x7f5fcd1a3680fef894edaf8e1177c76b6baaf87c9d959fc0a8cff125d82f39d4",
+    "slug": "btc-updown-15m-1764934200",
+    "volume": 99588.365924,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/5/2025 11:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "82456530593135501136337077438034312614583129768398222531995199491014746293775",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764934200up"
+      },
+      {
+        "tokenId": "100540880027338434301155922800949893140647169012769602465870227622333539848032",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764934200down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 27, 1:15AM-1:30AM ET",
+    "conditionId": "0xe6087b121764f54e532521352f86209480d724b01999bcabb41dcc62ef952aff",
+    "slug": "btc-updown-15m-1764224100",
+    "volume": 99537.34176,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/27/2025 6:30:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "69386173220650221421973023253536546795390990252053228149267001645805465421721",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764224100up"
+      },
+      {
+        "tokenId": "39727813245867397380338388451837326929649444049145992122679029327934528282478",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764224100down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 20, 5:45AM-6:00AM ET",
+    "conditionId": "0xdd6dbabcdddaf0084b5884db4c71b7255e14b6096409d7f4a96437712e486d18",
+    "slug": "btc-updown-15m-1763635500",
+    "volume": 99524.758715,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/20/2025 11:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "33013013551377008525487333033863129575986940710368549544489994494485746115788",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1763635500up"
+      },
+      {
+        "tokenId": "70188430789834087218893188630322495776851780452741082850362891795625559907746",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1763635500down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 29, 3AM ET",
+    "conditionId": "0x0ef707a7e675dd33acbb383dd2d5cdf37503b66d6bcf36d83ff73fa0efd33c41",
+    "slug": "bitcoin-up-or-down-november-29-3am-et",
+    "volume": 99459.076356,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/29/2025 9:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "114327200183607377275686155869747153056886464480339956167354772184726313807555",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-november-29-3am-etup"
+      },
+      {
+        "tokenId": "113022776414305388442921123592787730599835714892634209717761486808865672466527",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-november-29-3am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 25, 6:30AM-6:45AM ET",
+    "conditionId": "0xfe01a99531331e414e6c0311539e4c20fc62e00224d58ba3375c0000f8474605",
+    "slug": "btc-updown-15m-1764070200",
+    "volume": 99422.800194,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/25/2025 11:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "65682915532905393596123788346551199651559531378944495502534671914298486187754",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764070200up"
+      },
+      {
+        "tokenId": "40796972873913478198735647986140105865975705121757220966395538352200657871346",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764070200down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 3, 9:00AM-9:15AM ET",
+    "conditionId": "0xe85145fd7268548d20a818be5eebdb3bd50d5dcba03e8ff95add1ada258323ce",
+    "slug": "btc-updown-15m-1764770400",
+    "volume": 99412.739148,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/3/2025 2:15:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "44269760024932416284562197697409711130056893239074969110906836842511465214226",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764770400up"
+      },
+      {
+        "tokenId": "55351843751016550406427196156534654365889115792641153783374890532638063649847",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764770400down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 11, 7PM ET",
+    "conditionId": "0xbdb7c7bdda043812f99b792551600a3f0c9c965371bb6a034b222d5138bf27e0",
+    "slug": "bitcoin-up-or-down-december-11-7pm-et",
+    "volume": 99395.240614,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/12/2025 1:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "48860331503342856035099011230066350636001035907015104273423782813964635399931",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-11-7pm-etup"
+      },
+      {
+        "tokenId": "104379979211350201882428118106201313782194047884758646783009386048300774116234",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-11-7pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 15, 5:15AM-5:30AM ET",
+    "conditionId": "0xc9ee27950afb4a11cf208c4ab84c7a997033cdfac95d06ea2ae5c6f5821985fb",
+    "slug": "btc-updown-15m-1763201700",
+    "volume": 99382.76275,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/15/2025 10:30:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "15659338357881418367906689663258921529098098619157731777093283993950946586383",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1763201700up"
+      },
+      {
+        "tokenId": "31576895988427566870242578564100122626441525666464642189637886373550120639992",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1763201700down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 30, 4:00AM-8:00AM ET",
+    "conditionId": "0xc7faeb018a4ca2930ba54e63469cffd9afa95576c6c11a3ef7cbbcc2c4320270",
+    "slug": "btc-updown-4h-1767085200",
+    "volume": 9937.528348,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/30/2025 1:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "23615557685856828827810333811111761381795081471077120020262879865184752796080",
+        "outcome": "Up",
+        "ticker": "btc-updown-4h-1767085200up"
+      },
+      {
+        "tokenId": "38622876818717845047482266657346815516394128416812856941188457912617491530248",
+        "outcome": "Down",
+        "ticker": "btc-updown-4h-1767085200down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 29, 10PM ET",
+    "conditionId": "0xeb3e3eb06cd984b18fc3534dd6cdf248fa5c885db700575df233848fded65fef",
+    "slug": "bitcoin-up-or-down-november-29-10pm-et",
+    "volume": 99370.066906,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/30/2025 4:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "45799586726284650556950065061415687132687677659991347388440892452829520593192",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-november-29-10pm-etup"
+      },
+      {
+        "tokenId": "67794797657736469443123796466959925357929078863300160321028884726571832761856",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-november-29-10pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 5, 1PM ET",
+    "conditionId": "0xccf160e128269fdc05724adc519454d5f36522d1d7e82d453b58d9df42ddf14e",
+    "slug": "bitcoin-up-or-down-december-5-1pm-et",
+    "volume": 99324.142966,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/5/2025 7:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "75482133653286180507257861566802877018683617058486414174687139837770842359980",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-5-1pm-etup"
+      },
+      {
+        "tokenId": "59403011032713697091984865061897641692781832005887819714809806600118450972426",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-5-1pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 15, 7:00PM-7:15PM ET",
+    "conditionId": "0x2ad1b4e950588fcd0e49e5cb0cbf4dd0cc4751ac179fef97a2aef9c1570bb4cf",
+    "slug": "btc-updown-15m-1765843200",
+    "volume": 99319.420765,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/16/2025 12:15:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "57517965563577382315264791793821460246344294490980546774292243827132342060654",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1765843200up"
+      },
+      {
+        "tokenId": "58468131219667899828394576417889708545682748371737860863012663350732277143571",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1765843200down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 15, 2:00AM-2:15AM ET",
+    "conditionId": "0xb2cfef26791d9f5cc7134a451a94523c579066c38b25a39d94b2a4a0ff5b2bfa",
+    "slug": "btc-updown-15m-1765782000",
+    "volume": 99312.671775,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/15/2025 7:15:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "53488737943365740075803900597782151527060693918959060037273503954048272414873",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1765782000up"
+      },
+      {
+        "tokenId": "56868003999732847190218866057866615734163325973078763021174736158048773912503",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1765782000down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 3, 7:30PM-7:45PM ET",
+    "conditionId": "0x9b81a119f10705f0a2a0a4f2084456036babee9700e5b593e07c870a3ca9df00",
+    "slug": "btc-updown-15m-1764808200",
+    "volume": 99307.558746,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/4/2025 12:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "98452793680304941988988528358321378810104082134520308646692332496312635613611",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764808200up"
+      },
+      {
+        "tokenId": "99334961699179262147621795997849984062323656062255254144845209104064902986944",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764808200down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 30, 9:45PM-10:00PM ET",
+    "conditionId": "0x9b952fc58deeefd593d1e5d210a46d3bb3ba279d5ed0d6f31e519849f955cd57",
+    "slug": "btc-updown-15m-1764557100",
+    "volume": 99295.974799,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/1/2025 3:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "15498574100846753523078463052354454979425053251026754590911240710114396840893",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764557100up"
+      },
+      {
+        "tokenId": "72915331053072320811663856692538491444596682137674436250307547893407074258391",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764557100down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 18, 5AM ET",
+    "conditionId": "0xe78b324188b9f8be3d5ceef5197aa3c845e952c21734e28b00c0323bf6510d8c",
+    "slug": "bitcoin-up-or-down-december-18-5am-et",
+    "volume": 99275.65224,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/18/2025 11:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "72552610444448905402755575565034348753752879059877727300517486255136836951361",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-18-5am-etup"
+      },
+      {
+        "tokenId": "73013688857067304331709816802728254148128427866936613313199576347379908598276",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-18-5am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 27, 3PM ET",
+    "conditionId": "0xdf59f1771af00274676997daaf1a426a89ab52903cf5320f4b30ab75bc7d1f21",
+    "slug": "bitcoin-up-or-down-november-27-3pm-et",
+    "volume": 99254.97943,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/27/2025 9:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "55146770499940683149325349918626715348488978284821310328975083403436684414680",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-november-27-3pm-etup"
+      },
+      {
+        "tokenId": "33673249223821435770590088168471596473027575937002810893673890841962172784166",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-november-27-3pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 7, 8AM ET",
+    "conditionId": "0xd67ca37f3f51574e0f7304b93610e9e602f98e6a5cffbeb1e99c94c3f4a9ab16",
+    "slug": "bitcoin-up-or-down-december-7-8am-et",
+    "volume": 99249.137498,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/7/2025 2:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "34488768568661631418862549705358412397038718424824336796412318862556938988081",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-7-8am-etup"
+      },
+      {
+        "tokenId": "81013882754343014720104446222716204991296995016760984145012018980353718043161",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-7-8am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 24, 5:30AM-5:45AM ET",
+    "conditionId": "0xebb3831c6411992f11009cbc698ed6eb85cf21c5d5245bef57a30094388e2c81",
+    "slug": "btc-updown-15m-1763980200",
+    "volume": 99248.064531,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/24/2025 10:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "110456647439570642404030135808932001968831038545162326283813212424489246051787",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1763980200up"
+      },
+      {
+        "tokenId": "26307928651511899038464196848208211608008693112764157562426482581942986614375",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1763980200down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 17, 8:15PM-8:30PM ET",
+    "conditionId": "0xc76b5e010516359269e62b43ba0b2cb2e3a297f0aebb03056abad7d05679452a",
+    "slug": "btc-updown-15m-1766020500",
+    "volume": 99239.798518,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/18/2025 1:30:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "82337977007314273190343877249454750798464339540778295392283937632075240570269",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766020500up"
+      },
+      {
+        "tokenId": "90073157114163515296273312161539202875738328747222950493631610923250637471484",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766020500down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be less than $80,000 on December 18?",
+    "conditionId": "0x6855c39ac7bd302711eb7276f74e73facaa7e34dcb62398a1923b8903a86af3f",
+    "slug": "will-the-price-of-bitcoin-be-less-than-80000-on-december-18",
+    "volume": 99225.372191,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/18/2025 5:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "115201276650955483444822639337092171032132232108556372733530876100552755781432",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-less-than-80000-on-december-18yes"
+      },
+      {
+        "tokenId": "77627496850303360441559181025373098302986148178890194270799659603433777685156",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-less-than-80000-on-december-18no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 17, 8AM ET",
+    "conditionId": "0xf73f920b5dbad747d0517723e83970799cffbf45a45fe4235569c5f162253f0b",
+    "slug": "bitcoin-up-or-down-november-17-8am-et",
+    "volume": 99216.715367,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/17/2025 2:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "54339692662102342726410362429352218256479383546119795603628449551311146852966",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-november-17-8am-etup"
+      },
+      {
+        "tokenId": "93011454425783576671829243002359522158748133062729764898487651948293016672791",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-november-17-8am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 27, 10AM ET",
+    "conditionId": "0x6e15f474ebab7f961961e83366e1d9803479688c1f39e6389ebb687e7f3a555f",
+    "slug": "bitcoin-up-or-down-november-27-10am-et",
+    "volume": 99189.241174,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/27/2025 4:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "68409597595311338290969796970242842301904617534109626816801973901692249693429",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-november-27-10am-etup"
+      },
+      {
+        "tokenId": "71485240152744074016227461042750322725734968109600840179288770905798135600141",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-november-27-10am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 11, 11PM ET",
+    "conditionId": "0x4c80ca335104101f96a32cc48f48cf874266a20af0d9195bd12ddafcd91f05ee",
+    "slug": "bitcoin-up-or-down-december-11-11pm-et",
+    "volume": 99164.851375,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/12/2025 5:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "31306514010922742534509776821692747648899323371578188590498796997561834687718",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-11-11pm-etup"
+      },
+      {
+        "tokenId": "40699466854793256823018188282540139349986361107740833943314593084223970579440",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-11-11pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 25, 11:30PM-11:45PM ET",
+    "conditionId": "0x7fd51e7187d68e197ced8efcfd5dba4b2b387a4f98ac3516e9a02f981c3eada7",
+    "slug": "btc-updown-15m-1764131400",
+    "volume": 99161.858747,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/26/2025 4:45:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "57507815035893601022888149099931963134227589222084120280043501328127225595651",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764131400up"
+      },
+      {
+        "tokenId": "92920424580309182121080845314040815917484503238736539521654788782965208336505",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764131400down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 2, 6AM ET",
+    "conditionId": "0x8382a486adfc172e536b6964323e98b703b92202b6a015a0f0161ca3968ebdfd",
+    "slug": "bitcoin-up-or-down-december-2-6am-et",
+    "volume": 99145.922071,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/2/2025 12:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "93112352275733357504457290021982021480866622354810277646150528349141553232408",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-2-6am-etup"
+      },
+      {
+        "tokenId": "39060494206042868383535781473850729656621257474411822294086364483534704062732",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-2-6am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 2, 4:00AM-4:15AM ET",
+    "conditionId": "0x2bad008c7cd11992dd0d11c78a510bddf1f1643b7e331a09b012c585d1417aa5",
+    "slug": "btc-updown-15m-1764666000",
+    "volume": 99119.401887,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/2/2025 9:15:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "82130457813602101775391905668982131754015372745154021905328495506981455466469",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764666000up"
+      },
+      {
+        "tokenId": "34501099609125927462467917541241148801535132025926574050543515768222728246168",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764666000down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 24, 1PM ET",
+    "conditionId": "0x935a795ff98a9687c52a593c12d6f1f587444b8e2e6a43abe09d3191a5c64e43",
+    "slug": "bitcoin-up-or-down-november-24-1pm-et",
+    "volume": 99075.92653,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/24/2025 7:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "93377531177849552726790139544694492517252921916877880361146053852854673310777",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-november-24-1pm-etup"
+      },
+      {
+        "tokenId": "73857908881375979508259650653155248679977630938109526612333599515884491675316",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-november-24-1pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $100,000 and $102,000 on December 16?",
+    "conditionId": "0xf0fc61a782e14418df2f8d02426d37e3a39163bb2965c1c1e2c54ef10b3d9b29",
+    "slug": "will-the-price-of-bitcoin-be-between-100000-102000-on-december-16",
+    "volume": 9907.477466,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/16/2025 5:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "78915316023413752286180200086223377998412734388371364578718943866745997117689",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-100000-102000-on-december-16yes"
+      },
+      {
+        "tokenId": "47606017606226315842960847173767685406782824610635925067599298479669242643607",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-100000-102000-on-december-16no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 13, 11:45PM-12:00AM ET",
+    "conditionId": "0x5011fecd7c742204cafec61c51fe9fdc740d2defd400b002c08947be87cbd8de",
+    "slug": "btc-updown-15m-1765687500",
+    "volume": 99046.992184,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/14/2025 5:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "13898608466815899746934713535372146264283251681440018311867593088954199922072",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1765687500up"
+      },
+      {
+        "tokenId": "105568061496373272706131280365178148018370623937654842667499353704721098882157",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1765687500down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - November 26, 10:15PM-10:30PM ET",
+    "conditionId": "0xfd64a7004beffdde582676560633b28b5b9ee11c73a41dc5f1943e2ff7b3f92a",
+    "slug": "btc-updown-15m-1764213300",
+    "volume": 99034.515918,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/27/2025 3:30:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "8764240744215152992838266726422747245413833048392117221997304368694937472800",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1764213300up"
+      },
+      {
+        "tokenId": "69355502792986593110336786261990078257975343102437531903292745188342599480752",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1764213300down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 25, 4:15PM-4:30PM ET",
+    "conditionId": "0x55ec384d693b8b1104420450e044b42c3d4ce4799395c5732cde4402fc010016",
+    "slug": "btc-updown-15m-1766697300",
+    "volume": 99029.617094,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/25/2025 9:30:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "66564078748919115613181976371627703647460128531957650739759885798722827073358",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766697300up"
+      },
+      {
+        "tokenId": "113520371549111938864449560038003333626560251470093323021458074030624253173515",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766697300down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Bitcoin be between $92,000 and $94,000 on December 2?",
+    "conditionId": "0xdf06aec5ca1303ac8c5028c89e646aff551cf1434eef73f46289217e2b650122",
+    "slug": "will-the-price-of-bitcoin-be-between-92000-94000-on-december-2",
+    "volume": 99019.912646,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/2/2025 5:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "13710846715297756887921185251987008920089916028453192059656101238915031532965",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-bitcoin-be-between-92000-94000-on-december-2yes"
+      },
+      {
+        "tokenId": "94816050848735548166756047398306117470734675155856335045205100304028144931968",
+        "outcome": "No",
+        "ticker": "will-the-price-of-bitcoin-be-between-92000-94000-on-december-2no"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 13, 6AM ET",
+    "conditionId": "0x6f3d29b3eac891161d44a488465490d650056fdbcfa7dbdc1d9d53e1113e1c93",
+    "slug": "bitcoin-up-or-down-december-13-6am-et",
+    "volume": 98987.842357,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/13/2025 12:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "20558812190226390417168824686191130484288509176335040212471972456605487210585",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-13-6am-etup"
+      },
+      {
+        "tokenId": "9394257176788494638070976955222774815508988086392427011569891103306761941131",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-13-6am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 23, 10:15AM-10:30AM ET",
+    "conditionId": "0x89c174c35ba8c93b5011acd032db05c55d224429957acdde0ec38adfa67b47c0",
+    "slug": "btc-updown-15m-1766502900",
+    "volume": 98987.787247,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/23/2025 3:30:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "25486886244428658586397139299990679137878405358339105191980528158925885310187",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766502900up"
+      },
+      {
+        "tokenId": "16491133065702087792121553301419296094076897552044620215263381414523151723639",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766502900down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 15, 5:45AM-6:00AM ET",
+    "conditionId": "0x855d54742dd68065861c7d43a917bfab7731c33f6a230674fa18ef56ba389066",
+    "slug": "btc-updown-15m-1765795500",
+    "volume": 98970.125389,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/15/2025 11:00:00AM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "104400638872883243266665217897712745514374219645295798093165035590332359500864",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1765795500up"
+      },
+      {
+        "tokenId": "14594774006499657256691644289152388282769613447229152764891641846465468797622",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1765795500down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 24, 5:00PM-5:15PM ET",
+    "conditionId": "0x624f2138ed3f3533ee125706accf9c996d11b31a93e85de649f76d1fb4cef357",
+    "slug": "btc-updown-15m-1766613600",
+    "volume": 98958.5887,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/24/2025 10:15:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "24054276575154719324614603670823282087656563436312221171284136207867107152181",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766613600up"
+      },
+      {
+        "tokenId": "104299859903721549039131367077715723770035365029446591632104934464740593704474",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766613600down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 20, 1:15PM-1:30PM ET",
+    "conditionId": "0x2b1afec8bd59d839d5246d708c6fead3207974137058cb6f7349c748804bef70",
+    "slug": "btc-updown-15m-1766254500",
+    "volume": 98891.556371,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/20/2025 6:30:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "58817808353562496017824636746239693394878794305238724852771574124957046546175",
+        "outcome": "Up",
+        "ticker": "btc-updown-15m-1766254500up"
+      },
+      {
+        "tokenId": "54936782861374057905082232856272091457770019418098306151214984250534477963224",
+        "outcome": "Down",
+        "ticker": "btc-updown-15m-1766254500down"
+      }
+    ]
+  },
+  {
+    "question": "Bitcoin Up or Down - December 11, 7AM ET",
+    "conditionId": "0xb2afd4cb691a78299a8adb742a94da046de242104a7bdf3927ed0d1b1e9e73da",
+    "slug": "bitcoin-up-or-down-december-11-7am-et",
+    "volume": 98891.149705,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/11/2025 1:00:00PM",
+    "marketType": "BTC Price",
+    "tokens": [
+      {
+        "tokenId": "100644247163088705124319274922432858572061891692914633726340843754087693299706",
+        "outcome": "Up",
+        "ticker": "bitcoin-up-or-down-december-11-7am-etup"
+      },
+      {
+        "tokenId": "57901885893120877970236804396058915800302234237976961250294162892818711150662",
+        "outcome": "Down",
+        "ticker": "bitcoin-up-or-down-december-11-7am-etdown"
+      }
+    ]
+  }
+]

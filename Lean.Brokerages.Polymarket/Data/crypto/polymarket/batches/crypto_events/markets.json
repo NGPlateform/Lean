@@ -1,0 +1,376 @@
+[
+  {
+    "question": "Will “A House of Dynamite” be the top global Netflix movie this week? (November 4 2025)",
+    "conditionId": "0x7fae3110a4dbfe96bf9a825048688cb4ace6757627bf52d61bf291af85e0108f",
+    "slug": "will-a-house-of-dynamite-be-the-top-global-netflix-movie-this-week-november-4-2025",
+    "volume": 9956.450803,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/4/2025 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "19339010388451343242028352392449678664689195555733676994790462692502299680273",
+        "outcome": "Yes",
+        "ticker": "will-a-house-of-dynamite-be-the-top-global-netflix-movie-this-week-november-4-2025yes"
+      },
+      {
+        "tokenId": "26189927212996095611612859315469813771444545839641339493529945767250086513964",
+        "outcome": "No",
+        "ticker": "will-a-house-of-dynamite-be-the-top-global-netflix-movie-this-week-november-4-2025no"
+      }
+    ]
+  },
+  {
+    "question": "Will \"One Last Adventure: The Making of Stranger Things 5\" be the top US Netflix movie this week? (January 20, 2026)",
+    "conditionId": "0xa5057c520b161779c52887de521fa75ab4b0261492d5382bd52c0bbf91113b76",
+    "slug": "will-one-last-adventure-the-making-of-stranger-things-5-be-the-top-us-netflix-movie-this-week-january-20-2026",
+    "volume": 9956.114542,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/20/2026 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "90047256790693525228774155967635338612073546999311535409852972340861010905105",
+        "outcome": "Yes",
+        "ticker": "will-one-last-adventure-the-making-of-stranger-things-5-be-the-top-us-netflix-movie-this-week-january-20-2026yes"
+      },
+      {
+        "tokenId": "62277823698356297542632140941245109055983242467582839810805199880087706608364",
+        "outcome": "No",
+        "ticker": "will-one-last-adventure-the-making-of-stranger-things-5-be-the-top-us-netflix-movie-this-week-january-20-2026no"
+      }
+    ]
+  },
+  {
+    "question": "Will UST (Terra USD) fall below 88 cents by July 30, 2022?",
+    "conditionId": "0x3216df4c36ab0bc5f083b7145bab1d811c023faa5182baceeb550e9ffbe127eb",
+    "slug": "will-ust-terra-usd-fall-below-88-cents-by-july-30-2022",
+    "volume": 995.55,
+    "volume24h": 0.0,
+    "category": "Crypto",
+    "endDate": "7/31/2022 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "80131993123948125704071470405657994199183736096199837542382193389254596128047",
+        "outcome": "Yes",
+        "ticker": "will-ust-terra-usd-fall-below-88-cents-by-july-30-2022yes"
+      },
+      {
+        "tokenId": "105915218563706855156803163415128950079318067259221916726156753312915790091134",
+        "outcome": "No",
+        "ticker": "will-ust-terra-usd-fall-below-88-cents-by-july-30-2022no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"crypto\" or \"Bitcoin\" during Georgia rally on October 28?",
+    "conditionId": "0x0fe57a7f1c2b11b9cc962c6572ddb8709f9877db4e9169c3698c4c82076ca2c1",
+    "slug": "will-trump-say-crypto-or-bitcoin-during-georgia-rally-on-october-28",
+    "volume": 99440.169966,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/28/2024 12:00:00PM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "104844524352339316610207701899642359108839146095807993790865281397823898498423",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-crypto-or-bitcoin-during-georgia-rally-on-october-28yes"
+      },
+      {
+        "tokenId": "81851644914416015147449187177476047338218999113425413939660695796866897680865",
+        "outcome": "No",
+        "ticker": "will-trump-say-crypto-or-bitcoin-during-georgia-rally-on-october-28no"
+      }
+    ]
+  },
+  {
+    "question": "Will Bitcoin or Ethereum perform better in January 2022?",
+    "conditionId": "0xae10511b957b575859e3e0fab51115a1fee7d6c529958a4885cb50f906c1a4af",
+    "slug": "will-bitcoin-or-ethereum-perform-better-in-january-2022",
+    "volume": 993.97,
+    "volume24h": 0.0,
+    "category": "Crypto",
+    "endDate": "2/1/2022 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "40116439758551158429912801044614949187844696235030687787012659807427092377962",
+        "outcome": "Bitcoin",
+        "ticker": "will-bitcoin-or-ethereum-perform-better-in-january-2022bitcoin"
+      },
+      {
+        "tokenId": "110362051792408355512643901093335775963817630699297030834591460881787255380240",
+        "outcome": "Ethereum",
+        "ticker": "will-bitcoin-or-ethereum-perform-better-in-january-2022ethereum"
+      }
+    ]
+  },
+  {
+    "question": "Will Netflix dip to $101.50 in November?",
+    "conditionId": "0x4fab1a1f60567253b2b617fa00a66af868f7bf4ba005fa3e64cf32cc93f691be",
+    "slug": "will-netflix-dip-to-101pt50-in-november-178-485-341",
+    "volume": 9936.253084,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/1/2025 4:59:59AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "90266742094170195320596767325732992370379775153697229959217775805896164669893",
+        "outcome": "Yes",
+        "ticker": "will-netflix-dip-to-101pt50-in-november-178-485-341yes"
+      },
+      {
+        "tokenId": "49943762083382693204546428866340126758447610819042599546734657543518489149814",
+        "outcome": "No",
+        "ticker": "will-netflix-dip-to-101pt50-in-november-178-485-341no"
+      }
+    ]
+  },
+  {
+    "question": "Will Volodymyr Zelenskyy say \"Crypto\" or \"Bitcoin\" during his Business Roundtable appearance?",
+    "conditionId": "0x2d91f1054afd4fe013b4b6647cb07c6a45bff2e7f11741652f1b49ab3861cadd",
+    "slug": "will-volodymyr-zelenskyy-say-crypto-or-bitcoin-during-his-business-roundtable-appearance",
+    "volume": 9930.013239,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/11/2025 12:00:00PM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "32562208723647240389320789492000944966386215451515021221996313711048242533974",
+        "outcome": "Yes",
+        "ticker": "will-volodymyr-zelenskyy-say-crypto-or-bitcoin-during-his-business-roundtable-appearanceyes"
+      },
+      {
+        "tokenId": "28490201569931348362484561643899353916019168344347983069753066163985782449041",
+        "outcome": "No",
+        "ticker": "will-volodymyr-zelenskyy-say-crypto-or-bitcoin-during-his-business-roundtable-appearanceno"
+      }
+    ]
+  },
+  {
+    "question": "Will \"Tyler Perry's Joe's College Road Trip\" be the #2 global Netflix movie this week?",
+    "conditionId": "0xc3d0d3bb8fdc7d4f84e7501738e752c7928f6e821946694807c32b8a4839c45e",
+    "slug": "will-tyler-perrys-joes-college-road-trip-be-the-2-global-netflix-movie-this-week-975",
+    "volume": 989.0013,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/3/2026 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "74780100950673906312698797360464439557701761847129655450592927966394051209546",
+        "outcome": "Yes",
+        "ticker": "will-tyler-perrys-joes-college-road-trip-be-the-2-global-netflix-movie-this-week-975yes"
+      },
+      {
+        "tokenId": "66609781883634385298142378115935462789189319803436241413035127683832644606429",
+        "outcome": "No",
+        "ticker": "will-tyler-perrys-joes-college-road-trip-be-the-2-global-netflix-movie-this-week-975no"
+      }
+    ]
+  },
+  {
+    "question": "Solana ETF approved in 2024?",
+    "conditionId": "0xc8f2b2277aa63627071a3f0db8dd70e7fc490219b28f9486bf0bc0c0434f7b77",
+    "slug": "solana-etf-approved-in-2024",
+    "volume": 984737.607266017,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/30/2024 12:00:00PM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "52746170271820774840519802746947834002886242183349067490976543818869701977964",
+        "outcome": "Yes",
+        "ticker": "solana-etf-approved-in-2024yes"
+      },
+      {
+        "tokenId": "51228383093526514250727022090153940301359845403650334179636022736709627209264",
+        "outcome": "No",
+        "ticker": "solana-etf-approved-in-2024no"
+      }
+    ]
+  },
+  {
+    "question": "Will “Other” be the top global Netflix show this week? (October 21)",
+    "conditionId": "0x6ba7592e65787744e497116ab7f600d4d1a283fd8d99101e440632304d37ac35",
+    "slug": "will-other-be-the-top-global-netflix-show-this-week-october-21-682",
+    "volume": 982.714191,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/21/2025 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "103651934019177675719033563827078687017186468200916289636085947772593402182231",
+        "outcome": "Yes",
+        "ticker": "will-other-be-the-top-global-netflix-show-this-week-october-21-682yes"
+      },
+      {
+        "tokenId": "81378815005909241540565067967550195456215353917078666125148944299724603312482",
+        "outcome": "No",
+        "ticker": "will-other-be-the-top-global-netflix-show-this-week-october-21-682no"
+      }
+    ]
+  },
+  {
+    "question": "Will Trump say \"Bitcoin\" or \"Crypto\" by April 4?",
+    "conditionId": "0xc089443c0598b7e46ca6526f75c9fbdbefa13c46fd6a875e4633c018d094dd1f",
+    "slug": "will-trump-say-bitcoin-or-crypto-by-april-4",
+    "volume": 9791.538259,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "4/4/2025 12:00:00PM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "9349589995488234314562620173709736235361509432900097293455776888939818140105",
+        "outcome": "Yes",
+        "ticker": "will-trump-say-bitcoin-or-crypto-by-april-4yes"
+      },
+      {
+        "tokenId": "111233000750373707294164164294267865905553359101081857687520421763193117962031",
+        "outcome": "No",
+        "ticker": "will-trump-say-bitcoin-or-crypto-by-april-4no"
+      }
+    ]
+  },
+  {
+    "question": "Will Bored Ape Yacht Club (BAYC) flip CryptoPunks by January 10, 2022?",
+    "conditionId": "0x8c85ffcb38376e89b62ffd277c6596a255a332d12938705dcf6cf8722b977957",
+    "slug": "nft-will-bored-ape-yacht-club-flip-cryptopunks-by-january-10-2022",
+    "volume": 97866.54,
+    "volume24h": 0.0,
+    "category": "NFTs",
+    "endDate": "1/10/2022 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "40601634973979082269499911847433226190303572776579393122669689272578440222942",
+        "outcome": "Yes",
+        "ticker": "nft-will-bored-ape-yacht-club-flip-cryptopunks-by-january-10-2022yes"
+      },
+      {
+        "tokenId": "10966020323605482614206505199642734624032002728795714786275343772852253094631",
+        "outcome": "No",
+        "ticker": "nft-will-bored-ape-yacht-club-flip-cryptopunks-by-january-10-2022no"
+      }
+    ]
+  },
+  {
+    "question": "Which cryptocurrency will have higher market cap on November 4th: $DOGE or $SHIB?",
+    "conditionId": "0xf5a5830c3898b496319321fa047c7635773039442f41e471d269db9244748107",
+    "slug": "which-cryptocurrency-will-have-higher-market-cap-on-november-4th-doge-or-shib",
+    "volume": 97779.33,
+    "volume24h": 0.0,
+    "category": "Crypto",
+    "endDate": "11/4/2021 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "51421744253604584490531191917275150366507137745735019497526061229174049862916",
+        "outcome": "Dogecoin",
+        "ticker": "which-cryptocurrency-will-have-higher-market-cap-on-november-4th-doge-or-shibdogecoin"
+      },
+      {
+        "tokenId": "86625294519435942373641856059572421747884233851770427852059762055150681837636",
+        "outcome": "Shiba Inu",
+        "ticker": "which-cryptocurrency-will-have-higher-market-cap-on-november-4th-doge-or-shibshibainu"
+      }
+    ]
+  },
+  {
+    "question": "Will “The Diplomat” be the top global Netflix show this week? (October 28)",
+    "conditionId": "0x6fc4205d0dc5424c55ae2a946ac988f38c174a8b74c98d3d2af9e96d4c65cc2c",
+    "slug": "will-the-diplomat-be-the-top-global-netflix-show-this-week-october-28",
+    "volume": 9776.119999,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/28/2025 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "56036524887338334222913668146637781467619803623940099884641016659621338557321",
+        "outcome": "Yes",
+        "ticker": "will-the-diplomat-be-the-top-global-netflix-show-this-week-october-28yes"
+      },
+      {
+        "tokenId": "15462316326894375244777619191384456805534897803788625016478418566538106399918",
+        "outcome": "No",
+        "ticker": "will-the-diplomat-be-the-top-global-netflix-show-this-week-october-28no"
+      }
+    ]
+  },
+  {
+    "question": "Will $ETH be above $3,000 on April 20, 2022?",
+    "conditionId": "0x230f7f02c22f52ee47118bcc9b727ff3a5f25ae63e13b3e8f942957596853084",
+    "slug": "will-eth-be-above-3000-on-april-20-2022",
+    "volume": 974114.26,
+    "volume24h": 0.0,
+    "category": "Crypto",
+    "endDate": "4/20/2022 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "8327178800727704153348543618773452867753789529788200741171138968426629497179",
+        "outcome": "Yes",
+        "ticker": "will-eth-be-above-3000-on-april-20-2022yes"
+      },
+      {
+        "tokenId": "70373485722521106428019540363650992064875318591954521137073234782516874562046",
+        "outcome": "No",
+        "ticker": "will-eth-be-above-3000-on-april-20-2022no"
+      }
+    ]
+  },
+  {
+    "question": "Will \"How to Train Your Dragon\" be the #2 global Netflix movie this week?",
+    "conditionId": "0x019f32e59000d57b437b39d4703ef8c26d8e76f1e0fa238fbc43f2ace3e97536",
+    "slug": "will-how-to-train-your-dragon-be-the-2-global-netflix-movie-this-week-944",
+    "volume": 972.957489,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/24/2026 12:00:00AM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "28282994532465694043516182372417933821968515477110943261979354575855310452134",
+        "outcome": "Yes",
+        "ticker": "will-how-to-train-your-dragon-be-the-2-global-netflix-movie-this-week-944yes"
+      },
+      {
+        "tokenId": "70343877697862891947351796570013260941510434367273786654567157026538616833739",
+        "outcome": "No",
+        "ticker": "will-how-to-train-your-dragon-be-the-2-global-netflix-movie-this-week-944no"
+      }
+    ]
+  },
+  {
+    "question": "Ethereum spot ETF approved by June 30?",
+    "conditionId": "0xa8f7783a2e3cf762fa33580584f345dcc04b7a3c376fe085665f55f5748c504b",
+    "slug": "ethereum-spot-etf-approved-by-june-30",
+    "volume": 971400.98,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "6/29/2024 12:00:00PM",
+    "marketType": "Crypto Events",
+    "tokens": [
+      {
+        "tokenId": "113212491738074103137411162866182287702065548715333643275302480213069719915798",
+        "outcome": "Yes",
+        "ticker": "ethereum-spot-etf-approved-by-june-30yes"
+      },
+      {
+        "tokenId": "108752334370073614730070278759944878732523807878300363095929963402559188166413",
+        "outcome": "No",
+        "ticker": "ethereum-spot-etf-approved-by-june-30no"
+      }
+    ]
+  }
+]

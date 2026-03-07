@@ -22,6 +22,9 @@ using QuantConnect.Brokerages.Polymarket.Dashboard.Strategies;
 var downloadMode = args.Contains("--download-data");
 var downloadBtcMode = args.Contains("--download-btc");
 var backtestMode = args.Contains("--backtest");
+var downloadExpandedMode = args.Contains("--download-expanded");
+var backtestExpandedMode = args.Contains("--backtest-expanded");
+var validationReportMode = args.Contains("--validation-report");
 var days = 30;
 for (int i = 0; i < args.Length - 1; i++)
 {
@@ -92,6 +95,82 @@ if (backtestMode)
 
     Console.WriteLine();
     PrintBacktestResults(result);
+    return;
+}
+
+if (downloadExpandedMode)
+{
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<DataDownloadService>();
+
+    Console.WriteLine("=== Expanded Data Download (6 batches) ===");
+    Console.WriteLine();
+
+    using var expService = new ExpandedDataDownloadService(logger);
+    var results = await expService.DownloadAllBatchesAsync();
+
+    Console.WriteLine();
+    Console.WriteLine("=== Download Summary ===");
+    foreach (var kvp in results)
+    {
+        var r = kvp.Value;
+        Console.WriteLine($"  {kvp.Key,-25} Markets: {r.MarketsFound,3}  Tokens: {r.TokensWithData,3}/{r.TokensProcessed,3}  Bars: {r.TotalBars,6}  Errors: {r.Errors}  ({r.ElapsedSeconds}s)");
+    }
+
+    return;
+}
+
+if (backtestExpandedMode)
+{
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<BacktestRunner>();
+
+    Console.WriteLine("=== Expanded Batch Backtest ===");
+    Console.WriteLine();
+
+    using var expService = new ExpandedDataDownloadService(logger);
+    var batchNames = expService.GetDownloadedBatchNames();
+
+    if (batchNames.Count == 0)
+    {
+        Console.WriteLine("No downloaded batches found. Run --download-expanded first.");
+        return;
+    }
+
+    var runner = new BacktestRunner(logger);
+    var results = runner.RunBatchComparison(batchNames);
+
+    Console.WriteLine();
+    foreach (var kvp in results)
+    {
+        Console.WriteLine($"\n=== Batch: {kvp.Key} ===");
+        PrintBacktestResults(kvp.Value);
+    }
+
+    return;
+}
+
+if (validationReportMode)
+{
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<BacktestRunner>();
+
+    Console.WriteLine("=== Generating Validation Report ===");
+    Console.WriteLine();
+
+    var generator = new ValidationReportGenerator(logger);
+    var outputPath = generator.GenerateReport();
+
+    if (outputPath != null)
+    {
+        Console.WriteLine();
+        Console.WriteLine($"Report saved to: {outputPath}");
+    }
+    else
+    {
+        Console.WriteLine("Failed to generate report. Run --download-expanded first.");
+    }
+
     return;
 }
 

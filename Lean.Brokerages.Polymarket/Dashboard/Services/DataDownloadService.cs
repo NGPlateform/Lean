@@ -194,7 +194,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         /// Fetches price history from CLOB API prices-history endpoint.
         /// Returns per-token price snapshots at ~10 minute intervals.
         /// </summary>
-        private async Task<List<PricePoint>> FetchPriceHistoryAsync(string tokenId, DateTime start, DateTime end)
+        internal async Task<List<PricePoint>> FetchPriceHistoryAsync(string tokenId, DateTime start, DateTime end)
         {
             var url = $"{ClobApi}/prices-history?market={tokenId}&interval=max&fidelity=1";
             var startEpoch = new DateTimeOffset(start).ToUnixTimeSeconds();
@@ -238,7 +238,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
         /// Aggregates price snapshots into 10-minute OHLCV bars.
         /// prices-history returns ~1 point per 10 minutes, so we group by 10-minute windows.
         /// </summary>
-        private static List<OhlcvBar> AggregateToBars(List<PricePoint> points)
+        internal static List<OhlcvBar> AggregateToBars(List<PricePoint> points)
         {
             var period = TimeSpan.FromMinutes(10);
 
@@ -350,6 +350,88 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             }
 
             _logger.LogInformation("Wrote {Bars} BTC 10-min bars ({Days} days)", totalBars, days);
+            return totalBars;
+        }
+
+        /// <summary>
+        /// Downloads BTC/USDT klines for a specific date range.
+        /// </summary>
+        public async Task<int> DownloadBtcKlinesAsync(DateTime startDate, DateTime endDate)
+        {
+            _logger.LogInformation("Downloading BTC/USDT klines from Binance ({Start:yyyy-MM-dd} to {End:yyyy-MM-dd})...",
+                startDate, endDate);
+
+            var allKlines = new List<BinanceKline>();
+            var cursor = new DateTimeOffset(startDate).ToUnixTimeMilliseconds();
+            var endMs = new DateTimeOffset(endDate).ToUnixTimeMilliseconds();
+
+            while (cursor < endMs)
+            {
+                var url = $"{BinanceApi}/api/v3/klines?symbol=BTCUSDT&interval=5m&startTime={cursor}&endTime={endMs}&limit=1000";
+                try
+                {
+                    var json = await _http.GetStringAsync(url);
+                    var arr = JArray.Parse(json);
+                    if (arr.Count == 0) break;
+
+                    foreach (var item in arr)
+                    {
+                        allKlines.Add(new BinanceKline
+                        {
+                            OpenTime = DateTimeOffset.FromUnixTimeMilliseconds(item[0].Value<long>()).UtcDateTime,
+                            Open = decimal.Parse(item[1].ToString(), CultureInfo.InvariantCulture),
+                            High = decimal.Parse(item[2].ToString(), CultureInfo.InvariantCulture),
+                            Low = decimal.Parse(item[3].ToString(), CultureInfo.InvariantCulture),
+                            Close = decimal.Parse(item[4].ToString(), CultureInfo.InvariantCulture),
+                            Volume = decimal.Parse(item[5].ToString(), CultureInfo.InvariantCulture)
+                        });
+                    }
+
+                    var lastOpenMs = arr.Last[0].Value<long>();
+                    cursor = lastOpenMs + 5 * 60 * 1000;
+
+                    _logger.LogInformation("  Fetched {Count} klines (up to {Time:yyyy-MM-dd HH:mm})",
+                        arr.Count, DateTimeOffset.FromUnixTimeMilliseconds(lastOpenMs).UtcDateTime);
+
+                    await Task.Delay(200);
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogWarning(ex, "Error fetching BTC klines at cursor={Cursor}", cursor);
+                    break;
+                }
+            }
+
+            if (allKlines.Count == 0)
+            {
+                _logger.LogWarning("No BTC klines downloaded");
+                return 0;
+            }
+
+            var bars = AggregateBtcKlinesToBars(allKlines);
+            var totalBars = 0;
+
+            foreach (var dateGroup in bars.GroupBy(b => b.Time.Date))
+            {
+                var date = dateGroup.Key;
+                var outputDir = Path.Combine(_dataRoot, "reference", "btc-usd");
+                Directory.CreateDirectory(outputDir);
+
+                var outputFile = Path.Combine(outputDir, $"{date:yyyyMMdd}_trade.csv");
+                using var writer = new StreamWriter(outputFile);
+
+                foreach (var bar in dateGroup.OrderBy(b => b.Time))
+                {
+                    var msFromMidnight = (long)(bar.Time - bar.Time.Date).TotalMilliseconds;
+                    writer.WriteLine(string.Format(CultureInfo.InvariantCulture,
+                        "{0},{1},{2},{3},{4},{5}",
+                        msFromMidnight, bar.Open, bar.High, bar.Low, bar.Close, bar.Volume));
+                    totalBars++;
+                }
+            }
+
+            _logger.LogInformation("Wrote {Bars} BTC 10-min bars ({Start:yyyy-MM-dd} to {End:yyyy-MM-dd})",
+                totalBars, startDate, endDate);
             return totalBars;
         }
 
@@ -578,13 +660,13 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
 
         // ====== Models ======
 
-        private class PricePoint
+        internal class PricePoint
         {
             public DateTime Time { get; set; }
             public decimal Price { get; set; }
         }
 
-        private class OhlcvBar
+        internal class OhlcvBar
         {
             public DateTime Time { get; set; }
             public decimal Open { get; set; }
@@ -594,13 +676,13 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             public decimal Volume { get; set; }
         }
 
-        private class BookLevel
+        internal class BookLevel
         {
             public decimal Price { get; set; }
             public decimal Size { get; set; }
         }
 
-        private class BinanceKline
+        internal class BinanceKline
         {
             public DateTime OpenTime { get; set; }
             public decimal Open { get; set; }
@@ -630,6 +712,12 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
 
         [JsonProperty("category")]
         public string Category { get; set; }
+
+        [JsonProperty("endDate")]
+        public string EndDate { get; set; }
+
+        [JsonProperty("marketType")]
+        public string MarketType { get; set; }
 
         [JsonProperty("tokens")]
         public List<CryptoTokenInfo> Tokens { get; set; }

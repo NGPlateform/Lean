@@ -29,6 +29,7 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
 
     public class BacktestComparisonResult
     {
+        public string BatchName { get; set; }
         public DateTime RunDate { get; set; }
         public DateTime DataStartDate { get; set; }
         public DateTime DataEndDate { get; set; }

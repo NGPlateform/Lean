@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
@@ -134,6 +135,115 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
                 Results = results,
                 TotalElapsedMs = totalSw.Elapsed.TotalMilliseconds
             };
+        }
+
+        /// <summary>
+        /// Runs all 4 strategies × 3 parameter sets for each batch, returning per-batch results.
+        /// </summary>
+        public Dictionary<string, BacktestComparisonResult> RunBatchComparison(
+            List<string> batchNames, decimal initialBalance = 10000m, string dataRoot = null)
+        {
+            var results = new Dictionary<string, BacktestComparisonResult>();
+
+            foreach (var batchName in batchNames)
+            {
+                _logger.LogInformation("=== Running backtest for batch: {Batch} ===", batchName);
+
+                var loader = new HistoricalDataLoader(dataRoot, batchName);
+                var markets = loader.LoadMarketMetadata();
+
+                if (markets.Count == 0)
+                {
+                    _logger.LogWarning("No market data found for batch '{Batch}'. Skipping.", batchName);
+                    continue;
+                }
+
+                var tokenTickerMap = HistoricalDataLoader.BuildTokenTickerMap(markets);
+                var dashboardMarkets = HistoricalDataLoader.ConvertToDashboardMarkets(markets);
+
+                // Infer date range from available data by scanning for CSV files
+                var batchDataRoot = dataRoot ?? Path.Combine(AppContext.BaseDirectory, "..", "..", "..", "..", "Data");
+                if (!Directory.Exists(Path.Combine(batchDataRoot, "crypto")))
+                    batchDataRoot = Path.Combine(Directory.GetCurrentDirectory(), "Data");
+
+                var batchMinuteDir = Path.Combine(batchDataRoot, "crypto", "polymarket", "batches", batchName, "minute");
+                DateTime dataStart, dataEnd;
+
+                if (Directory.Exists(batchMinuteDir))
+                {
+                    var csvFiles = Directory.GetFiles(batchMinuteDir, "*_trade.csv", SearchOption.AllDirectories);
+                    var dates = csvFiles
+                        .Select(f => Path.GetFileNameWithoutExtension(f).Replace("_trade", ""))
+                        .Where(s => s.Length == 8)
+                        .Select(s => DateTime.TryParseExact(s, "yyyyMMdd", null, System.Globalization.DateTimeStyles.None, out var d) ? d : (DateTime?)null)
+                        .Where(d => d.HasValue)
+                        .Select(d => d.Value)
+                        .ToList();
+
+                    dataStart = dates.Count > 0 ? dates.Min() : DateTime.UtcNow.AddDays(-30);
+                    dataEnd = dates.Count > 0 ? dates.Max().AddDays(1) : DateTime.UtcNow;
+                }
+                else
+                {
+                    dataStart = DateTime.UtcNow.AddDays(-30);
+                    dataEnd = DateTime.UtcNow;
+                }
+
+                _logger.LogInformation("Batch '{Batch}': {Tokens} tokens, data range {Start:yyyy-MM-dd} to {End:yyyy-MM-dd}",
+                    batchName, tokenTickerMap.Count, dataStart, dataEnd);
+
+                var timeline = loader.BuildTimeline(tokenTickerMap, dataStart, dataEnd);
+
+                // BTC bars from shared reference directory
+                var btcLoader = new HistoricalDataLoader(dataRoot);
+                var btcBars = btcLoader.LoadBtcBars(dataStart, dataEnd);
+
+                var totalBars = timeline.Sum(t => t.TokenBars.Count);
+                var actualStart = timeline.Count > 0 ? timeline.First().Time : dataStart;
+                var actualEnd = timeline.Count > 0 ? timeline.Last().Time : dataEnd;
+
+                _logger.LogInformation("Timeline: {Ticks} ticks, {Bars} total bars, BTC: {BtcBars} bars",
+                    timeline.Count, totalBars, btcBars.Count);
+
+                var batchResults = new List<BacktestResult>();
+                var totalSw = Stopwatch.StartNew();
+
+                foreach (var strategyName in ParameterGrids.Keys)
+                {
+                    var paramSets = ParameterGrids[strategyName];
+                    foreach (var paramSet in paramSets)
+                    {
+                        try
+                        {
+                            var result = RunSingle(strategyName, paramSet, timeline, dashboardMarkets,
+                                btcBars, initialBalance);
+                            result.Parameters = paramSet;
+                            batchResults.Add(result);
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, "Failed to run {Strategy} for batch '{Batch}'",
+                                strategyName, batchName);
+                        }
+                    }
+                }
+
+                totalSw.Stop();
+
+                results[batchName] = new BacktestComparisonResult
+                {
+                    BatchName = batchName,
+                    RunDate = DateTime.UtcNow,
+                    DataStartDate = actualStart,
+                    DataEndDate = actualEnd,
+                    TotalTokens = tokenTickerMap.Count,
+                    TotalBars = totalBars,
+                    Results = batchResults,
+                    TotalElapsedMs = totalSw.Elapsed.TotalMilliseconds
+                };
+            }
+
+            return results;
         }
 
         /// <summary>

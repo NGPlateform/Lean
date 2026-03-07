@@ -1,0 +1,1102 @@
+[
+  {
+    "question": "Will the price of Solana be above $242 on September 16 at 8PM ET?",
+    "conditionId": "0xc0675f372e4e2ee76636c68c127e826ab4957928c05096c571b9632539cd02a9",
+    "slug": "sol-multistrike-4h-1758067200-242",
+    "volume": 99.999,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/17/2025 12:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "46555162505483953626568092562155547516194211437229637018904686379119370116301",
+        "outcome": "Yes",
+        "ticker": "sol-multistrike-4h-1758067200-242yes"
+      },
+      {
+        "tokenId": "112586183094734186206698679106576042830065907843773635198502500895655158271382",
+        "outcome": "No",
+        "ticker": "sol-multistrike-4h-1758067200-242no"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - January 23, 3:15AM-3:30AM ET",
+    "conditionId": "0x955a7ba1c465dc078426129525899f204c3277f89f4691774d6555cf8ab797ad",
+    "slug": "sol-updown-15m-1769156100",
+    "volume": 9999.839342,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/23/2026 8:30:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "35408086269531303092508331724264354925936827460453845181580299993185565521620",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1769156100up"
+      },
+      {
+        "tokenId": "59408039179578906593378872743591466793459760469156411306833633152664296459672",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1769156100down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - March 1, 4:25AM-4:30AM ET",
+    "conditionId": "0xaa1251b27b7384f55af3835cc9af29ec2d76022859c9ef4d24e766af955f54a5",
+    "slug": "xrp-updown-5m-1772357100",
+    "volume": 999.967406,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/1/2026 9:30:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "22155196298706700770838614180922679775044158941464448849435084244808510881936",
+        "outcome": "Up",
+        "ticker": "xrp-updown-5m-1772357100up"
+      },
+      {
+        "tokenId": "30585010641825817807565281967573673236207543791754401015551925951482466892332",
+        "outcome": "Down",
+        "ticker": "xrp-updown-5m-1772357100down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - July 3, 9PM ET",
+    "conditionId": "0x74cab9d244a18eba7e7ba696ef5d25fb3b17b563e18eae4810db1f9e4f37926b",
+    "slug": "solana-up-or-down-july-3-9pm-et",
+    "volume": 999.947032,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/4/2025 2:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "10583605317349191273247755211230805459096364368141004185729411461223917939360",
+        "outcome": "Up",
+        "ticker": "solana-up-or-down-july-3-9pm-etup"
+      },
+      {
+        "tokenId": "45374196050464011775731118694005301541697353483840639409426102866797226985914",
+        "outcome": "Down",
+        "ticker": "solana-up-or-down-july-3-9pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - November 13, 8:00PM-12:00AM ET",
+    "conditionId": "0x43bf256a304df0c077dc60c90521c73769b2a5725d2811e4f4a88d94fcd3a2d7",
+    "slug": "sol-updown-4h-1763082000",
+    "volume": 99.982856,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/14/2025 5:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "12717015675636543445554652348418048023918632685180107983297452485977128703787",
+        "outcome": "Up",
+        "ticker": "sol-updown-4h-1763082000up"
+      },
+      {
+        "tokenId": "24277415973342534752180057355629198350597978337310205785594140099054006242651",
+        "outcome": "Down",
+        "ticker": "sol-updown-4h-1763082000down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 31, 2:45AM-3:00AM ET",
+    "conditionId": "0x4171783f14836d9977a0c88a5877599bcdd4dea2120e26def9577262e26e4049",
+    "slug": "xrp-updown-15m-1769845500",
+    "volume": 9997.89389,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/31/2026 8:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "32918682760564363032226993009054634499505011559119352401431964103038491529096",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1769845500up"
+      },
+      {
+        "tokenId": "30020924187822077593444888402794648842924271180031645777795533129651011639958",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1769845500down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 14, 11:45AM-12:00PM ET",
+    "conditionId": "0x3806188884f62e2e8d9d60a58cb2231328712c570db7395590c85393e4b0f231",
+    "slug": "xrp-updown-15m-1768409100",
+    "volume": 9997.058796,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/14/2026 5:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "69591201250875465392954038609905916992433379981982621319808520669580050599045",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1768409100up"
+      },
+      {
+        "tokenId": "93605450071316170319156711261518904230873195760952129380488583118628687540544",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1768409100down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - October 31, 1:00AM-1:15AM ET",
+    "conditionId": "0x17df5d0bc5c26ca0d1270a33849fdcda2dba27b84750d9e4d081ffdd1f3517c1",
+    "slug": "xrp-updown-15m-1761886800",
+    "volume": 999.686328,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/31/2025 5:15:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "112015881169993780413965564999081604112181447112891862285254801388322606901182",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1761886800up"
+      },
+      {
+        "tokenId": "62640409775704188798160922292644601563856436302868667746784790786834151033411",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1761886800down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - February 13, 3:00AM-3:15AM ET",
+    "conditionId": "0x0383387933e9ac6d37701bc5e4c429e271ebb6bab6842000447bad733117c391",
+    "slug": "xrp-updown-15m-1770969600",
+    "volume": 9996.818976,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/13/2026 8:15:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "75147659842787846471031839623089160468997806297736377152983577625044499940200",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1770969600up"
+      },
+      {
+        "tokenId": "85509599352816152533663501919387972282092318727631942216367088101685992429618",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1770969600down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - December 7, 7:00PM-7:15PM ET",
+    "conditionId": "0x9e9f5f5cdd4a5b2f331f130e4c8f839baf45cab7f26013bab95ed01a54b2e6dc",
+    "slug": "xrp-updown-15m-1765152000",
+    "volume": 999.616341,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/8/2025 12:15:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "97689473003199034167500572812960625498247756426764919885847532855860553546881",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1765152000up"
+      },
+      {
+        "tokenId": "86405365027364051758898036593217985182669500996182563717112923460540120156493",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1765152000down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - March 3, 8:20PM-8:25PM ET",
+    "conditionId": "0xe2b943e9598574ecd583775bb37d54ef55bc1fb8b6c0edb5893c7862a5f622c3",
+    "slug": "sol-updown-5m-1772587200",
+    "volume": 9995.910134,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/4/2026 1:25:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "101542605985864510246639831901816836497500965811385538372102341907401172318925",
+        "outcome": "Up",
+        "ticker": "sol-updown-5m-1772587200up"
+      },
+      {
+        "tokenId": "103834894890015239786710290275577622561813309469177929149253128506477629079462",
+        "outcome": "Down",
+        "ticker": "sol-updown-5m-1772587200down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - November 5, 8:30AM-8:45AM ET",
+    "conditionId": "0x1b5d8a3bd925886089b6ac11c7bc85cf9989dbb90e6db8c31c453504ab25d838",
+    "slug": "xrp-updown-15m-1762349400",
+    "volume": 999.546707,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/5/2025 1:45:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "46178530995950720916845966442803730220402336117828380815424071114769022947200",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1762349400up"
+      },
+      {
+        "tokenId": "48467885731479200645964957182078602414042500531066588988212037472463673292032",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1762349400down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - August 3, 12AM ET",
+    "conditionId": "0x3122ef9385148ab5ed0817c92665281ab2ab0f2b63b722fd8769c950b1025158",
+    "slug": "solana-up-or-down-august-3-12am-et",
+    "volume": 9995.415356,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/3/2025 5:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "33116466109866362296933126476820105384781306695586403079402271649088564964046",
+        "outcome": "Up",
+        "ticker": "solana-up-or-down-august-3-12am-etup"
+      },
+      {
+        "tokenId": "35127142218235579323958888023551718160767859180388917425045891364585229889742",
+        "outcome": "Down",
+        "ticker": "solana-up-or-down-august-3-12am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 15, 7:45PM-8:00PM ET",
+    "conditionId": "0xa8e9b1d65b5d9bfb0920cfe2b2f150667f0addabc10e379a3f6a5a7ccc3b517d",
+    "slug": "xrp-updown-15m-1768524300",
+    "volume": 9995.35559,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/16/2026 1:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "14643306637840364375605672152265491403481881297667959768054079936246618033940",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1768524300up"
+      },
+      {
+        "tokenId": "50214829652321274098963307503991372645015645089955894399338247769042254255867",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1768524300down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - February 27, 2:00PM-2:15PM ET",
+    "conditionId": "0xa84c5a991c957e100fcba048a6094dd734655a23d4cb654cc1e34904510144c8",
+    "slug": "sol-updown-15m-1772218800",
+    "volume": 9995.051442,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/27/2026 7:15:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "110836898087008855696961164477980768325587875549474362557462360349894485590759",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1772218800up"
+      },
+      {
+        "tokenId": "66854744558205972334055653310887937053661980703867935083336141069025110616796",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1772218800down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - July 20, 4PM ET",
+    "conditionId": "0xe3cd9cc6a1c9ae5abe79dcd3aadf8a9acadfd2f0f86fde0287e30da672367d2c",
+    "slug": "xrp-up-or-down-july-20-4pm-et",
+    "volume": 9994.572208,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/20/2025 9:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "98709835417947497079429517419721905352934089539678061224487884829004923861255",
+        "outcome": "Up",
+        "ticker": "xrp-up-or-down-july-20-4pm-etup"
+      },
+      {
+        "tokenId": "103604089883012501106893736606516170978406492080870905505081319316364425782859",
+        "outcome": "Down",
+        "ticker": "xrp-up-or-down-july-20-4pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - February 1, 2:00PM-2:15PM ET",
+    "conditionId": "0x2a18ee7f52547a93d9536f627a78a61da10d4419e2b7d114e5ba78b35a95ce49",
+    "slug": "xrp-updown-15m-1769972400",
+    "volume": 9993.970954,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/1/2026 7:15:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "106882129106256951939118927964917377087529498992361137547233490138852893280444",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1769972400up"
+      },
+      {
+        "tokenId": "14347676940751221078707316752255845122997155002393271734024750561623913623534",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1769972400down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - December 9, 9:45AM-10:00AM ET",
+    "conditionId": "0x91412cd5ba76b304de654fddb73dc7c44ec4afbcf38e283c36241d422ab63a63",
+    "slug": "xrp-updown-15m-1765291500",
+    "volume": 9993.315204,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/9/2025 3:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "24822493114772803384245696381484518100732083451407317342815364191909682893696",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1765291500up"
+      },
+      {
+        "tokenId": "69380754366403588713359053211057005814352304415698874464680407033999082012113",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1765291500down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - November 19, 1:45PM-2:00PM ET",
+    "conditionId": "0x73f94830d7ef304792e19916fc3fd373e2091f88719db226781fffcee8c18bd4",
+    "slug": "xrp-updown-15m-1763577900",
+    "volume": 999.318937,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/19/2025 7:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "94505048244498916502756543335986323860131169814685099049764135047260100919898",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1763577900up"
+      },
+      {
+        "tokenId": "111111740879517176609560174160862434126140607501560589885140894397593843631642",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1763577900down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - March 2, 2:15AM-2:20AM ET",
+    "conditionId": "0x196380237a8c5167f8cfac42bae73ef910bdd6d3f96273465940d448c383a9a4",
+    "slug": "xrp-updown-5m-1772435700",
+    "volume": 999.274803,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "3/2/2026 7:20:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "85802810275396241278078606559782093338640665986095142275483511677801325554487",
+        "outcome": "Up",
+        "ticker": "xrp-updown-5m-1772435700up"
+      },
+      {
+        "tokenId": "85715420350522724273075865195106738243675468814529940993064862079317968718760",
+        "outcome": "Down",
+        "ticker": "xrp-updown-5m-1772435700down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - September 22, 5AM ET",
+    "conditionId": "0x2ee07ea120410206c2cc50753b63b7136af84afb0356c23b4b0ca1be8c9fe06d",
+    "slug": "xrp-up-or-down-september-22-5am-et",
+    "volume": 9991.868255,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/22/2025 10:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "111851784636207162136295758170830587813898159990119681954942014375396300738545",
+        "outcome": "Up",
+        "ticker": "xrp-up-or-down-september-22-5am-etup"
+      },
+      {
+        "tokenId": "106305782145085989513339276336344317918869577995316146087008034916675205631345",
+        "outcome": "Down",
+        "ticker": "xrp-up-or-down-september-22-5am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 10, 3:00AM-3:15AM ET",
+    "conditionId": "0xec8605268cdfaf8a3baa86d62b5dc9b6e2eea1a13e12d2c2413db550d356a811",
+    "slug": "xrp-updown-15m-1768032000",
+    "volume": 9991.650322,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/10/2026 8:15:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "41934206431906272658780109213372899073105757537912014917442452022521334259547",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1768032000up"
+      },
+      {
+        "tokenId": "41035872843909905398310179597676361284840193799649008053299733561745365487432",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1768032000down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - November 14, 5:45AM-6:00AM ET",
+    "conditionId": "0x82d81465f6e86b331189711ca7480e1f73f90656a842925e428aa0ce37b5fb7e",
+    "slug": "xrp-updown-15m-1763117100",
+    "volume": 999.16309,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/14/2025 11:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "63878234500373987005157049299519726317389964833372362799040865290954659305160",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1763117100up"
+      },
+      {
+        "tokenId": "70346486564510275748712578467216741496163955000285760722408071278513480007515",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1763117100down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - October 26, 12PM ET",
+    "conditionId": "0x04ac49c3fae5d4a60d917a032061f5caa28e9e3944d629797ab3b080096ace34",
+    "slug": "xrp-up-or-down-october-26-12pm-et",
+    "volume": 9991.218705,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/26/2025 5:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "36161210192036696099817390927065134712461099695639493311838083967387047465012",
+        "outcome": "Up",
+        "ticker": "xrp-up-or-down-october-26-12pm-etup"
+      },
+      {
+        "tokenId": "65542017074407437375235852984196364450317251138755812115367673641446619854453",
+        "outcome": "Down",
+        "ticker": "xrp-up-or-down-october-26-12pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - November 19, 12:00PM-4:00PM ET",
+    "conditionId": "0x52acdec42776042b412c0d988fc12a7492b9a1c8683e072803e08e000b252275",
+    "slug": "sol-updown-4h-1763571600",
+    "volume": 999.105986,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/19/2025 9:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "81535438780831296124033169266676513970354912793031855463334316474839301309298",
+        "outcome": "Up",
+        "ticker": "sol-updown-4h-1763571600up"
+      },
+      {
+        "tokenId": "79042525711145964177334267870592291114746590929033288146286868885245813474703",
+        "outcome": "Down",
+        "ticker": "sol-updown-4h-1763571600down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of XRP be above $2.85 on September 8 at 4PM ET?",
+    "conditionId": "0xe30c212b056364e241b7be8df69b1573b4f97f5507ca2fc6be88eb29b86544ab",
+    "slug": "xrp-multistrike-4h-1757361600-2pt85",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "14767966411513710081819938093376109703190962289265513464871901659446935704910",
+        "outcome": "Yes",
+        "ticker": "xrp-multistrike-4h-1757361600-2pt85yes"
+      },
+      {
+        "tokenId": "76836345722082308631452824864758330065896491680089253933215011299466009154923",
+        "outcome": "No",
+        "ticker": "xrp-multistrike-4h-1757361600-2pt85no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of XRP be above $2.91 on September 8 at 4PM ET?",
+    "conditionId": "0xbd03647cd02e29be227dc30da68aaf19eb02acdbaf3bf4668c71d59f6478fb70",
+    "slug": "xrp-multistrike-4h-1757361600-2pt91",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "15111522050150686447505195891237534051454007931332342595527260749799573403584",
+        "outcome": "Yes",
+        "ticker": "xrp-multistrike-4h-1757361600-2pt91yes"
+      },
+      {
+        "tokenId": "8926464638828198365582852506887744310721425518063680435124769645614404998642",
+        "outcome": "No",
+        "ticker": "xrp-multistrike-4h-1757361600-2pt91no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Solana be above $210 on September 8 at 4PM ET?",
+    "conditionId": "0xe4037fd70966064c37a95942c1481b4fc509ec742407b3d6120ecccd6e0b9ed5",
+    "slug": "sol-multistrike-4h-1757361600-210",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "51304876957365260640812703167335488286252948349069353108844829543973373835963",
+        "outcome": "Yes",
+        "ticker": "sol-multistrike-4h-1757361600-210yes"
+      },
+      {
+        "tokenId": "97132434472668049385640538694762719649354037327030972222592884367376222802827",
+        "outcome": "No",
+        "ticker": "sol-multistrike-4h-1757361600-210no"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of XRP be above $2.88 on September 8 at 4PM ET?",
+    "conditionId": "0x741ace5302a0d2492ac2fc0cc6ea6c69b05cf6ebde33cff8235923f9f5f125e6",
+    "slug": "xrp-multistrike-4h-1757361600-2pt88",
+    "volume": 999.0,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/8/2025 8:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "98717299430393267817900202445614824297119611859527005765834149938425607855985",
+        "outcome": "Yes",
+        "ticker": "xrp-multistrike-4h-1757361600-2pt88yes"
+      },
+      {
+        "tokenId": "60465319026039871410209430446769875589689522563760883420542870943146492709757",
+        "outcome": "No",
+        "ticker": "xrp-multistrike-4h-1757361600-2pt88no"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - November 8, 7PM ET",
+    "conditionId": "0xe7aa8a5d0ac21831276b4ba7c96514b7ec568696d33b400c51c7fff982786f9a",
+    "slug": "solana-up-or-down-november-8-7pm-et",
+    "volume": 9989.71987,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "11/9/2025 1:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "79118192204545772517827368957469829247195604309059559947761249848602672449591",
+        "outcome": "Up",
+        "ticker": "solana-up-or-down-november-8-7pm-etup"
+      },
+      {
+        "tokenId": "77338391817365106956750410900375113504301617009263320669507589374122771139913",
+        "outcome": "Down",
+        "ticker": "solana-up-or-down-november-8-7pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Solana be between $180 and $190 on October 8?",
+    "conditionId": "0x745486b4d081607c1ff5e755e9ef1549dd60297d3cae27dc28c234508d31f684",
+    "slug": "will-the-price-of-solana-be-between-180-190-on-october-8",
+    "volume": 998961.612626,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "10/8/2025 4:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "76023193735415801575927090797669229908888581203160624326956265274977785398323",
+        "outcome": "Yes",
+        "ticker": "will-the-price-of-solana-be-between-180-190-on-october-8yes"
+      },
+      {
+        "tokenId": "32951241923054491581419806644675401278939676155204736794883686574737555016402",
+        "outcome": "No",
+        "ticker": "will-the-price-of-solana-be-between-180-190-on-october-8no"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - December 10, 12:45AM-1:00AM ET",
+    "conditionId": "0xa03082eb64f4a1b37b5daa7b1d2c12d5cbf630cf7170bb08eda821e1aa0fbfbd",
+    "slug": "sol-updown-15m-1765345500",
+    "volume": 998.957041,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/10/2025 6:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "101115899416017817592551360343705886319305855425404211388012515739057049561041",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1765345500up"
+      },
+      {
+        "tokenId": "87086391285400220700099750443585089463127486592135943784063641237795633125974",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1765345500down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 19, 5:00AM-5:15AM ET",
+    "conditionId": "0x38b12bc8b0b228610ad4247d7ed001aacee7578f40b985d245c7ae734af2b061",
+    "slug": "xrp-updown-15m-1768816800",
+    "volume": 9988.98899,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/19/2026 10:15:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "21885692656583655078320917265184776739881768187835639210276476434439621276831",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1768816800up"
+      },
+      {
+        "tokenId": "59586326241852519980182583613460787288011993127025037226855836754842840104808",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1768816800down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - February 20, 11:35PM-11:40PM ET",
+    "conditionId": "0xa561382ca6d3657e940d233f97300e1ba303a9031acfb60e2fd3a9a28b65afa2",
+    "slug": "sol-updown-5m-1771648500",
+    "volume": 998.860041,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/21/2026 4:40:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "2224172775465635852417546247966377569192680271981709098342126121195393425306",
+        "outcome": "Up",
+        "ticker": "sol-updown-5m-1771648500up"
+      },
+      {
+        "tokenId": "76668154307880851323259134667115900754626680056236823588712668960321901427535",
+        "outcome": "Down",
+        "ticker": "sol-updown-5m-1771648500down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 21, 4:15AM-4:30AM ET",
+    "conditionId": "0x023ee32ba4f6474793fdc492bf792e5123eb1e73f5ddddd7170118c4c82e790c",
+    "slug": "xrp-updown-15m-1768986900",
+    "volume": 9988.407676,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/21/2026 9:30:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "54114262713142195194134011321170293932248365811756105098565115224621131025238",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1768986900up"
+      },
+      {
+        "tokenId": "104324371612703241193859567171338005581483186381210659464570414638879562147877",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1768986900down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - December 20, 7:15PM-7:30PM ET",
+    "conditionId": "0xd2a37e9369bbf7bb03e5233c3476334c640fd18498affb4d5558219b803e58c7",
+    "slug": "sol-updown-15m-1766276100",
+    "volume": 9988.286133,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/21/2025 12:30:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "12368855591136260133400012876231152916373202495674319009510488591714576114653",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1766276100up"
+      },
+      {
+        "tokenId": "38883611633560814476136360341799312900739016390697408704525185129959164523282",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1766276100down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - August 15, 8AM ET",
+    "conditionId": "0xc3543b7e25a187145bc57c4330f062773900f68a66fc4ab80021772ba2d94a2c",
+    "slug": "xrp-up-or-down-august-15-8am-et",
+    "volume": 9987.875446,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "8/15/2025 1:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "33082407632658573244347819678042110619711678868771454000785076560531727677147",
+        "outcome": "Up",
+        "ticker": "xrp-up-or-down-august-15-8am-etup"
+      },
+      {
+        "tokenId": "3784313165796101003538217073560537417158089457438157195191539477615201829921",
+        "outcome": "Down",
+        "ticker": "xrp-up-or-down-august-15-8am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - February 20, 3:45AM-4:00AM ET",
+    "conditionId": "0xfe0a496bb72ccf685c6c17fe398fceb215c006ecb68a5aa430320f673da51ce7",
+    "slug": "sol-updown-15m-1771577100",
+    "volume": 9987.287281,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/20/2026 9:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "58686690352103229796460185647268934717779353788036047023070032521527915747899",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1771577100up"
+      },
+      {
+        "tokenId": "31901788150062381697449098799133324676803148288112622699317461802115828205592",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1771577100down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of Solana be above $246 on September 14 at 12AM ET?",
+    "conditionId": "0x217e2999be69f49a96e8e08900ffa56e75b5c1c989260def664bd95ce9ae96b6",
+    "slug": "sol-multistrike-4h-1757822400-246",
+    "volume": 998.714284,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/14/2025 4:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "79302221653983914608012847513213027069990319445088018869472257781472045112258",
+        "outcome": "Yes",
+        "ticker": "sol-multistrike-4h-1757822400-246yes"
+      },
+      {
+        "tokenId": "110049651198709675020063912309142801232269368554224417837824492455327635428736",
+        "outcome": "No",
+        "ticker": "sol-multistrike-4h-1757822400-246no"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - December 20, 7:15AM-7:30AM ET",
+    "conditionId": "0x633eec11d947c68068546cd4717a330346ac2c8581a32cd18fa027f17182ae49",
+    "slug": "xrp-updown-15m-1766232900",
+    "volume": 9986.957919,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/20/2025 12:30:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "1260978666054423698905808634952871486744726580530884297786274671524803840420",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1766232900up"
+      },
+      {
+        "tokenId": "66176436623100952628829490918983535567619304955952792937836959213535591019156",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1766232900down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - January 7, 6:45PM-7:00PM ET",
+    "conditionId": "0x25da6fef444ba177fbc3e597535878a1145503112c160529b6e72f7cbc845111",
+    "slug": "sol-updown-15m-1767829500",
+    "volume": 9986.866188,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/8/2026 12:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "67259345034291794174975508805799737126429152149705958026979792778872469248328",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1767829500up"
+      },
+      {
+        "tokenId": "6837242169009625750438961015839747021018237201191476073174197384301964319720",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1767829500down"
+      }
+    ]
+  },
+  {
+    "question": "Will the price of XRP be above $2.30 on January 29?",
+    "conditionId": "0x40bc87d7b712a190cde8baf735168b3cbea4c0ae2a95fc8af787737e7e2937f0",
+    "slug": "xrp-above-2pt3-on-january-29",
+    "volume": 9985.949033,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/29/2026 5:00:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "37625451096588370399760371659407288030317059311237949457298437741700229273049",
+        "outcome": "Yes",
+        "ticker": "xrp-above-2pt3-on-january-29yes"
+      },
+      {
+        "tokenId": "23923201716173431922947827343477812744506954719990709814774304202714224597343",
+        "outcome": "No",
+        "ticker": "xrp-above-2pt3-on-january-29no"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - January 23, 4:00PM-4:15PM ET",
+    "conditionId": "0x6b498fd3c26bb32f4767b9c145b7d4885fe5fad8b2d38352faacc0afd74a02a3",
+    "slug": "xrp-updown-15m-1769202000",
+    "volume": 9985.79387,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "1/23/2026 9:15:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "107047671639000421574101257471190551707365611355363410468586103821482728930650",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1769202000up"
+      },
+      {
+        "tokenId": "15459346239576983764594835828109243903281952166868053206280190238010224474992",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1769202000down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - February 27, 8:30AM-8:45AM ET",
+    "conditionId": "0x4ba58aae9a7fc6297fab3c53bd97c34ec92a4ae3f86b985c57b03797bec18393",
+    "slug": "sol-updown-15m-1772199000",
+    "volume": 9985.526809,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "2/27/2026 1:45:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "52906627151900421388214693645620833475161419024947557405270505010994537581980",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1772199000up"
+      },
+      {
+        "tokenId": "112095262099942959403983867837900744166133729690910588326927111886209039131459",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1772199000down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - December 7, 10:00AM-10:15AM ET",
+    "conditionId": "0x21ab95e04adbb163250a436ab9eec7ddb874fb51d19f8ab29effe2378a14ac0e",
+    "slug": "xrp-updown-15m-1765119600",
+    "volume": 998.477754,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/7/2025 3:15:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "80664573446046517326227450442597517620119868874999554970126126561616454311259",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1765119600up"
+      },
+      {
+        "tokenId": "18640400291362012744861118904762113476585021534777245802273595375600207042061",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1765119600down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - December 19, 11:15AM-11:30AM ET",
+    "conditionId": "0x242ddbc7520095aaf6fc81c653930040cd32644334db072eab0aa219a80a389d",
+    "slug": "sol-updown-15m-1766160900",
+    "volume": 9984.284016,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/19/2025 4:30:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "57602971516528966080192362165712832326160294127010742009661343164174822386229",
+        "outcome": "Up",
+        "ticker": "sol-updown-15m-1766160900up"
+      },
+      {
+        "tokenId": "107470764010461307809516911445670240957904471160891470967977728333959486393718",
+        "outcome": "Down",
+        "ticker": "sol-updown-15m-1766160900down"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - December 4, 4:30PM-4:45PM ET",
+    "conditionId": "0xfb78af8471acf60831e3e771fd13c3f33771d1641dc3bda41c9ca14c7e1ff4c0",
+    "slug": "xrp-updown-15m-1764883800",
+    "volume": 9984.015459,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/4/2025 9:45:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "8934853028359723504530059936845939985660938445190149841987955991344678865580",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1764883800up"
+      },
+      {
+        "tokenId": "67407955642511397318665717974081804360618696228944776150691289779570816711557",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1764883800down"
+      }
+    ]
+  },
+  {
+    "question": "Solana Up or Down - July 23, 6AM ET",
+    "conditionId": "0x850f46e71b1bf13d6946aa95b69dae697baef721dbe29c9de54ca952e78907dd",
+    "slug": "solana-up-or-down-july-23-6am-et",
+    "volume": 9983.55922,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "7/23/2025 11:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "23529504101175030327442324221786647782965655811391854359108093206960613389283",
+        "outcome": "Up",
+        "ticker": "solana-up-or-down-july-23-6am-etup"
+      },
+      {
+        "tokenId": "5641692822814765892853902508446660205251201527144151030900562532589514031792",
+        "outcome": "Down",
+        "ticker": "solana-up-or-down-july-23-6am-etdown"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - September 19, 10PM ET",
+    "conditionId": "0xd9f95af5c1cee6c080d431fdca68c9e5b997e65c6eb471ff580905635a9de3df",
+    "slug": "xrp-up-or-down-september-19-10pm-et",
+    "volume": 9983.099266,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "9/20/2025 3:00:00AM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "65036984887890509364865744368113163604389455445885880476888320223388916290784",
+        "outcome": "Up",
+        "ticker": "xrp-up-or-down-september-19-10pm-etup"
+      },
+      {
+        "tokenId": "2365207531833173158968660157135369726647246752982674044025818245802260467723",
+        "outcome": "Down",
+        "ticker": "xrp-up-or-down-september-19-10pm-etdown"
+      }
+    ]
+  },
+  {
+    "question": "XRP Up or Down - December 18, 6:15PM-6:30PM ET",
+    "conditionId": "0x8d46eba0cd1336a879757a7b89e85ba05b942e57672c525849475a1e1b38f0c4",
+    "slug": "xrp-updown-15m-1766099700",
+    "volume": 9982.764854,
+    "volume24h": 0.0,
+    "category": "",
+    "endDate": "12/18/2025 11:30:00PM",
+    "marketType": "Altcoin Price",
+    "tokens": [
+      {
+        "tokenId": "84676983589270758918326664684313533788723179119477914684231795566092007356631",
+        "outcome": "Up",
+        "ticker": "xrp-updown-15m-1766099700up"
+      },
+      {
+        "tokenId": "294673590571519347255470879284398992797144263270244048789175376694705899845",
+        "outcome": "Down",
+        "ticker": "xrp-updown-15m-1766099700down"
+      }
+    ]
+  }
+]
