@@ -352,7 +352,7 @@ signalStrength = btcMomentum × correlation × deltaMultiplier
 | btc_price_sep2025 | BTC 价格阈值 | 0/100 | — | — | — | — | — | **无数据 (API限制)** |
 | eth_price_recent | ETH 方向型 (5m/15m) | 24/100 | -0.005 | -0.009 | 3 | 0.65 | 0.0% | **无相关性** |
 | altcoin_price | SOL/XRP 方向型 | 16/100 | -0.002 | -0.001 | 0 | 0.90 | 0.0% | **无相关性** |
-| crypto_events | 非价格事件 | 4/34 | -0.016 | 0.003 | 6 | 1.96 | 0.0% | **无相关性** |
+| crypto_events | 非价格事件 | 18/100 | 0.003 | -0.004 | 6 | 0.87 | 0.0% | **无相关性** |
 | politics_control | 政治市场 (负对照) | 6/100 | -0.004 | 0.013 | 6 | 2.28 | 0.0% | **无相关性** |
 
 #### ETH 方向型市场 (eth_price_recent)
@@ -395,16 +395,30 @@ signalStrength = btcMomentum × correlation × deltaMultiplier
 
 #### 非价格事件市场 (crypto_events)
 
-数据范围：2026-02-18 ~ 2026-03-03，仅 4/34 个 token 有价格数据。实际内容为电影票房预测（匹配了 "crypto" 关键词的误报）。
+数据范围：2026-02-09 ~ 2026-03-06，18/100 个 token 有价格数据。涵盖电影票房、加密货币表现排名、NFLX 价格预测、犯罪调查纪录片等多种事件型市场。
 
 | Token | Lag-0 | Lag-1 | 最佳滞后 | 样本数 |
 |-------|-------|-------|---------|--------|
-| tyler-perry-college-road-trip (Yes) | 0.027 | 0.068 | 6 | 822 |
+| tyler-perry-college-road-trip (Yes) | 0.025 | 0.062 | 6 | 948 |
+| nflx-dip-to-70-in-february (Yes) | -0.027 | -0.055 | 2 | 2582 |
 | how-to-train-your-dragon #2 global (Yes) | -0.024 | -0.054 | 2 | 1002 |
+| nflx-dip-to-70-in-february (No) | 0.050 | 0.051 | 2 | 2680 |
+| tyler-perry-college-road-trip (No, #2) | 0.007 | -0.047 | 6 | 992 |
+| lucy-letby-investigation (Yes) | -0.013 | -0.042 | 1 | 1003 |
+| chainlink-top-performing-crypto (Yes) | -0.035 | -0.037 | 3 | 543 |
+| reality-check-americas-next-top-model (Yes) | 0.042 | -0.030 | 6 | 906 |
+| tyler-perry-college-road-trip (Yes, #2) | -0.028 | 0.030 | 4 | 959 |
+| chainlink-top-performing-crypto (No) | 0.054 | 0.030 | 0 | 535 |
+| reality-check-americas-next-top-model (No) | 0.050 | -0.027 | 0 | 867 |
+| xrp-top-performing-crypto (Yes) | 0.039 | 0.021 | 6 | 547 |
+| lucy-letby-investigation (No) | -0.017 | 0.015 | 2 | 1003 |
+| tyler-perry-college-road-trip (No, #3) | -0.001 | 0.013 | 2 | 993 |
+| xrp-top-performing-crypto (No) | 0.005 | -0.011 | 6 | 550 |
+| tyler-perry-college-road-trip (Yes, #3) | -0.006 | 0.011 | 2 | 968 |
 | how-to-train-your-dragon #2 global (No) | -0.066 | -0.009 | 6 | 1001 |
-| tyler-perry-college-road-trip (No) | -0.002 | 0.007 | 6 | 860 |
+| tyler-perry-college-road-trip (No, #4) | -0.001 | 0.006 | 6 | 993 |
 
-最高 |lag-1| 仅 0.068。完全不相关，符合预期——事件型市场由各自事件结果驱动，与 BTC 无关。
+最高 |lag-1| 仅 0.062，0% 超过阈值。18 个 token 的扩大样本量进一步强化结论：即便是加密货币相关的事件型市场（如 "Chainlink 是否为本月表现最佳加密货币"、"XRP 是否为表现最佳"），其 BTC 相关性也不超过 0.037——**事件型市场由各自独立的事件结果驱动，与 BTC 价格无关。**
 
 #### 政治市场负对照 (politics_control)
 
