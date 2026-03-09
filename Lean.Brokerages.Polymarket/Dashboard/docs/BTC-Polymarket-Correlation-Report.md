@@ -348,6 +348,8 @@ signalStrength = btcMomentum × correlation × deltaMultiplier
 | 批次 | 类型 | Tokens | 均值 Lag-0 | 均值 Lag-1 | 最佳滞后众数 | 不对称比率 | % > 0.3 | 结论 |
 |------|------|--------|-----------|-----------|------------|-----------|---------|------|
 | btc_price_janfeb2026 | BTC 价格阈值 | 34/100 | 0.001 | -0.056 | **1** | 1.09 | **64.7%** | **有效** |
+| btc_price_dec2025 | BTC 价格阈值 | 0/100 | — | — | — | — | — | **无数据 (API限制)** |
+| btc_price_sep2025 | BTC 价格阈值 | 0/100 | — | — | — | — | — | **无数据 (API限制)** |
 | eth_price_recent | ETH 方向型 (5m/15m) | 24/100 | -0.005 | -0.009 | 3 | 0.65 | 0.0% | **无相关性** |
 | altcoin_price | SOL/XRP 方向型 | 16/100 | -0.002 | -0.001 | 0 | 0.90 | 0.0% | **无相关性** |
 | crypto_events | 非价格事件 | 4/34 | -0.016 | 0.003 | 6 | 1.96 | 0.0% | **无相关性** |
@@ -419,6 +421,21 @@ signalStrength = btcMomentum × correlation × deltaMultiplier
 
 最高 |lag-1| 仅 0.043。**作为负对照组，验证了分析框架本身不会产生假阳性信号。**
 
+#### 历史 BTC 价格阈值市场 (btc_price_sep2025, btc_price_dec2025)
+
+这两个批次旨在验证 BTC 领先效应在更早时间段（2025 年 9-12 月）的稳定性。
+
+| 批次 | 发现市场数 | 有数据 Token | 状态 |
+|------|-----------|-------------|------|
+| btc_price_sep2025 | 50 | 0/100 | 无价格数据 |
+| btc_price_dec2025 | 50 | 0/100 | 无价格数据 |
+
+**根因：Polymarket CLOB API 数据保留期限制。** Gamma API 保留市场元数据（问题、行权价、条件 ID 等），但 CLOB `prices-history` 端点不保留已关闭市场的历史价格数据。Sep 2025 市场关闭约 6 个月、Dec 2025 市场关闭约 3 个月，均超出数据保留期。
+
+**对比：** btc_price_janfeb2026 批次（关闭 1-2 个月）成功获取了 34 个 token 的完整价格历史，说明 CLOB API 数据保留窗口约为 **1-2 个月**。
+
+**结论：** 跨越 3 个月以上的时间稳定性验证需要部署实时数据采集 pipeline，在市场活跃期间持续收集并本地存储价格数据。这是 API 层面的限制，非代码问题。
+
 ### 8.7 验证结论
 
 1. **BTC 10 分钟领先效应在 Jan-Feb 2026 数据中得到独立验证**：ATM 区域 lag-1 最高达 0.83，与原始 Mar 2026 发现 (0.73–0.86) 高度一致
@@ -455,4 +472,6 @@ signalStrength = btcMomentum × correlation × deltaMultiplier
 *报告生成时间：2026-03-09（更新）*
 *原始数据周期：2026-02-01 ~ 2026-03-03 (30 天)*
 *验证数据周期：2026-02-08 ~ 2026-02-26 (Jan-Feb 到期批次)*
+*跨类别验证：7 批次（btc_price×3, eth_price, altcoin_price, crypto_events, politics_control）*
+*有效数据批次：5/7（2 个历史 BTC 批次因 API 数据保留限制无价格数据）*
 *分析工具：Python (CCF, Granger), C# (.NET 7.0 回测框架)*
