@@ -72,6 +72,19 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services
             },
             new DownloadBatch
             {
+                Name = "btc_price_janfeb2026",
+                Keywords = new[] { "bitcoin", "btc" },
+                ExcludeKeywords = new[] { "dominance", "etf", "up or down", "updown" },
+                MarketType = "BTC Price",
+                IncludeClosed = true,
+                EndDateMin = new DateTime(2026, 1, 1, 0, 0, 0, DateTimeKind.Utc),
+                EndDateMax = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc),
+                DataStartDate = new DateTime(2025, 12, 15, 0, 0, 0, DateTimeKind.Utc),
+                DataEndDate = new DateTime(2026, 3, 1, 0, 0, 0, DateTimeKind.Utc),
+                MaxMarkets = 50
+            },
+            new DownloadBatch
+            {
                 Name = "eth_price_recent",
                 Keywords = new[] { "ethereum", "eth" },
                 ExcludeKeywords = new[] { "dominance", "etf", "merge" },

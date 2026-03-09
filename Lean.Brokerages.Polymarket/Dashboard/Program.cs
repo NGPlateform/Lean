@@ -26,10 +26,95 @@ var downloadExpandedMode = args.Contains("--download-expanded");
 var backtestExpandedMode = args.Contains("--backtest-expanded");
 var validationReportMode = args.Contains("--validation-report");
 var days = 30;
+string downloadBatchName = null;
+string correlateBatchName = null;
 for (int i = 0; i < args.Length - 1; i++)
 {
     if (args[i] == "--days" && int.TryParse(args[i + 1], out var d))
         days = d;
+    if (args[i] == "--download-batch")
+        downloadBatchName = args[i + 1];
+    if (args[i] == "--correlate-batch")
+        correlateBatchName = args[i + 1];
+}
+
+if (downloadBatchName != null)
+{
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<DataDownloadService>();
+
+    var batch = ExpandedDataDownloadService.PredefinedBatches
+        .FirstOrDefault(b => b.Name == downloadBatchName);
+    if (batch == null)
+    {
+        Console.WriteLine($"Unknown batch: {downloadBatchName}");
+        Console.WriteLine("Available batches:");
+        foreach (var b2 in ExpandedDataDownloadService.PredefinedBatches)
+            Console.WriteLine($"  {b2.Name}");
+        return;
+    }
+
+    Console.WriteLine($"=== Downloading batch: {batch.Name} ({batch.MarketType}) ===");
+    Console.WriteLine();
+
+    using var expService = new ExpandedDataDownloadService(logger);
+    var result = await expService.DownloadBatchAsync(batch);
+
+    Console.WriteLine();
+    Console.WriteLine($"=== Download Complete ===");
+    Console.WriteLine($"Markets found:      {result.MarketsFound}");
+    Console.WriteLine($"Tokens processed:   {result.TokensProcessed}");
+    Console.WriteLine($"Tokens with data:   {result.TokensWithData}");
+    Console.WriteLine($"Total minute bars:  {result.TotalBars}");
+    Console.WriteLine($"BTC ref bars:       {result.BtcBars}");
+    Console.WriteLine($"Errors:             {result.Errors}");
+    Console.WriteLine($"Elapsed:            {result.ElapsedSeconds}s");
+
+    return;
+}
+
+if (correlateBatchName != null)
+{
+    using var loggerFactory = LoggerFactory.Create(b => b.AddConsole().SetMinimumLevel(LogLevel.Information));
+    var logger = loggerFactory.CreateLogger<BacktestRunner>();
+
+    Console.WriteLine($"=== Correlation Analysis: {correlateBatchName} ===");
+    Console.WriteLine();
+
+    var analyzer = new CorrelationAnalyzer(logger);
+    var report = analyzer.AnalyzeBatch(correlateBatchName);
+
+    Console.WriteLine();
+    Console.WriteLine($"=== Summary ===");
+    Console.WriteLine($"Batch:              {report.BatchName}");
+    Console.WriteLine($"Market Type:        {report.MarketType}");
+    Console.WriteLine($"Period:             {report.DataStartDate:yyyy-MM-dd} to {report.DataEndDate:yyyy-MM-dd}");
+    Console.WriteLine($"Tokens:             {report.TokensWithData}/{report.TotalTokens} with data");
+    Console.WriteLine($"Mean lag-0 corr:    {report.MeanLag0Correlation:F4}");
+    Console.WriteLine($"Mean lag-1 corr:    {report.MeanLag1Correlation:F4}");
+    Console.WriteLine($"Best lag mode:      {report.BestLagMode}");
+    Console.WriteLine($"Asymmetry ratio:    {report.AsymmetryRatio:F4}");
+    Console.WriteLine($"% above threshold:  {report.PercentAboveThreshold:F1}%");
+
+    if (report.TokenResults?.Count > 0)
+    {
+        Console.WriteLine();
+        Console.WriteLine("{0,-45} | {1,8} | {2,8} | {3,8} | {4,7}",
+            "Token", "Lag-0", "Lag-1", "BestLag", "Samples");
+        Console.WriteLine(new string('-', 90));
+
+        foreach (var t in report.TokenResults.OrderByDescending(t => Math.Abs((double)t.Lag1Correlation)))
+        {
+            Console.WriteLine("{0,-45} | {1,8:F4} | {2,8:F4} | {3,8} | {4,7}",
+                t.Ticker.Length > 45 ? t.Ticker.Substring(0, 45) : t.Ticker,
+                t.Lag0Correlation,
+                t.Lag1Correlation,
+                t.BestLag,
+                t.SampleCount);
+        }
+    }
+
+    return;
 }
 
 if (downloadBtcMode && !downloadMode)

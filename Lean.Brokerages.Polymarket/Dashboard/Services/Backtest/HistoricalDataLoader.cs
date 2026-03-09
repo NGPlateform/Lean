@@ -154,6 +154,32 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
         }
 
         /// <summary>
+        /// Returns sorted list of dates for which CSV data files exist for a ticker.
+        /// </summary>
+        public List<DateTime> GetAvailableDates(string ticker)
+        {
+            string dir;
+            if (!string.IsNullOrEmpty(_batchName))
+                dir = Path.Combine(_dataRoot, "crypto", "polymarket", "batches", _batchName, "minute", ticker);
+            else
+                dir = Path.Combine(_dataRoot, "crypto", "polymarket", "minute", ticker);
+            if (!Directory.Exists(dir)) return new List<DateTime>();
+
+            return Directory.GetFiles(dir, "*_trade.csv")
+                .Select(f =>
+                {
+                    var name = Path.GetFileNameWithoutExtension(f); // e.g. "20260115_trade"
+                    var datePart = name.Split('_')[0];
+                    return DateTime.TryParseExact(datePart, "yyyyMMdd", CultureInfo.InvariantCulture,
+                        DateTimeStyles.None, out var d) ? (DateTime?)d : null;
+                })
+                .Where(d => d.HasValue)
+                .Select(d => d.Value)
+                .OrderBy(d => d)
+                .ToList();
+        }
+
+        /// <summary>
         /// Synthesizes a 2-level order book from a single OHLCV bar.
         /// </summary>
         public static PolymarketOrderBook SynthesizeOrderBook(HistoricalBar bar, string tokenId = null)

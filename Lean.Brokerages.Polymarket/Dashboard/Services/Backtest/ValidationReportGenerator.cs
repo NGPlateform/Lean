@@ -64,6 +64,31 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
             }
             Directory.CreateDirectory(outputDir);
             var outputPath = Path.Combine(outputDir, "Validation-Report.md");
+
+            // Preserve manual analysis sections (after "## 6.") if file already exists
+            string manualSections = null;
+            if (File.Exists(outputPath))
+            {
+                var existing = File.ReadAllText(outputPath);
+                var marker = "\n## 6.";
+                var idx = existing.IndexOf(marker);
+                if (idx >= 0)
+                {
+                    manualSections = existing.Substring(idx);
+                }
+            }
+
+            if (manualSections != null)
+            {
+                // Replace the auto-generated trailing line with manual sections
+                var autoTrailer = "---\n*Report generated automatically by ValidationReportGenerator*\n";
+                markdown = markdown.Replace(autoTrailer, "");
+                // Also try with \r\n
+                autoTrailer = "---\r\n*Report generated automatically by ValidationReportGenerator*\r\n";
+                markdown = markdown.Replace(autoTrailer, "");
+                markdown = markdown.TrimEnd() + "\n" + manualSections;
+            }
+
             File.WriteAllText(outputPath, markdown);
 
             _logger.LogInformation("Validation report saved to {Path}", outputPath);

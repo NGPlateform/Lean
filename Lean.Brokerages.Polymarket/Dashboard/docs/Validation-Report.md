@@ -1,7 +1,7 @@
 # Cross-Category Validation Report
 
-**Generated:** 2026-03-07 09:52 UTC
-**Batches analyzed:** 6
+**Generated:** 2026-03-08 01:15 UTC
+**Batches analyzed:** 7
 
 ## 1. Hypotheses Under Test
 
@@ -17,12 +17,13 @@
 
 | Batch | Type | Tokens | Lag-0 Corr | Lag-1 Corr | Best Lag | Asymmetry | % > 0.3 | Validates? |
 |-------|------|--------|-----------|-----------|---------|-----------|---------|-----------|
-| altcoin_price | Altcoin Price | 16/100 | -0.002 | -0.001 | 4 | 1.05 | 0.0% | FAIL |
+| altcoin_price | Altcoin Price | 16/100 | -0.002 | -0.001 | 0 | 0.90 | 0.0% | FAIL |
 | btc_price_dec2025 | BTC Price | 0/0 | 0.000 | 0.000 | 0 | 0.00 | 0.0% | NO DATA |
+| btc_price_janfeb2026 | BTC Price | 34/100 | 0.001 | -0.056 | 1 | 1.09 | 64.7% | FAIL |
 | btc_price_sep2025 | BTC Price | 0/0 | 0.000 | 0.000 | 0 | 0.00 | 0.0% | NO DATA |
-| crypto_events | Crypto Events | 4/34 | -0.017 | 0.001 | 6 | 2.04 | 0.0% | PASS |
-| eth_price_recent | ETH Price | 24/100 | -0.005 | -0.008 | 3 | 0.63 | 0.0% | FAIL |
-| politics_control | Politics (Control) | 6/100 | -0.003 | 0.014 | 3 | 2.35 | 0.0% | PASS |
+| crypto_events | Crypto Events | 4/34 | -0.016 | 0.003 | 6 | 1.96 | 0.0% | PASS |
+| eth_price_recent | ETH Price | 24/100 | -0.005 | -0.008 | 3 | 0.65 | 0.0% | FAIL |
+| politics_control | Politics (Control) | 6/100 | -0.004 | 0.013 | 6 | 2.28 | 0.0% | PASS |
 
 ## 3. Backtest Performance by Category
 
@@ -30,6 +31,7 @@
 |-------|--------------|--------|-----|--------|-------|---------|--------|
 | altcoin_price | MarketMaking | HA=0.015 OR=25 | +$0.00 | 0.00 | -$0.00 | 0.0% | 0 |
 | btc_price_dec2025 | MarketMaking | HA=0.015 OR=25 | +$0.00 | 0.00 | -$0.00 | 0.0% | 0 |
+| btc_price_janfeb2026 | MarketMaking | HA=0.035 OR=50 | +$9.70 | 1.71 | -$16.20 | 66.7% | 7 |
 | btc_price_sep2025 | MarketMaking | HA=0.015 OR=25 | +$0.00 | 0.00 | -$0.00 | 0.0% | 0 |
 | crypto_events | MeanReversion | SP=0.05 WI=30 | +$101.88 | 3.74 | -$158.67 | 78.0% | 233 |
 | eth_price_recent | MeanReversion | SP=0.03 WI=20 | +$0.92 | 0.47 | -$6.00 | 100.0% | 11 |
@@ -43,23 +45,38 @@
 |--------|-------|-------|---------|---------|-----------|---------|
 | sol-updown-15m-1772199000down | 0.196 | -0.108 | 0 | 0.297 | 0.085 | 143 |
 | sol-updown-15m-1772199000up | -0.196 | 0.108 | 0 | -0.297 | -0.084 | 143 |
-| sol-updown-5m-1772587200down | -0.066 | 0.057 | 5 | -0.003 | 0.000 | 135 |
-| sol-updown-5m-1772587200up | 0.063 | -0.057 | 5 | -0.001 | 0.000 | 143 |
 | xrp-updown-5m-1772357100down | 0.121 | 0.053 | 4 | 0.067 | 0.170 | 139 |
 | xrp-updown-5m-1772357100up | -0.120 | -0.052 | 4 | -0.067 | -0.170 | 140 |
 | xrp-updown-5m-1772435700up | -0.111 | 0.045 | 2 | -0.107 | 0.000 | 143 |
 | xrp-updown-5m-1772435700down | 0.111 | -0.045 | 2 | 0.107 | 0.000 | 143 |
 | xrp-updown-15m-1770969600up | 0.021 | 0.041 | 4 | -0.105 | 0.000 | 143 |
 | xrp-updown-15m-1770969600down | -0.021 | -0.041 | 4 | 0.105 | 0.000 | 143 |
+| sol-updown-15m-1771577100down | -0.158 | -0.039 | 0 | -0.125 | 0.084 | 143 |
+| sol-updown-15m-1772218800down | 0.000 | -0.031 | 2 | 0.000 | 0.109 | 144 |
+
+### btc_price_janfeb2026 (BTC Price)
+
+| Ticker | Lag-0 | Lag-1 | Best Lag | Up Corr | Down Corr | Samples |
+|--------|-------|-------|---------|---------|-----------|---------|
+| bitcoin-above-68k-on-february-18no | 0.035 | -0.827 | 1 | 0.083 | -0.072 | 1017 |
+| bitcoin-above-66k-on-february-20yes | -0.074 | 0.792 | 1 | -0.076 | -0.011 | 1017 |
+| bitcoin-above-70k-on-february-13no | 0.018 | -0.790 | 1 | 0.082 | -0.136 | 830 |
+| will-the-price-of-bitcoin-be-betwee... | 0.040 | -0.762 | 1 | 0.112 | -0.055 | 259 |
+| bitcoin-above-72k-on-february-13no | -0.013 | -0.713 | 1 | 0.064 | -0.171 | 830 |
+| bitcoin-above-66k-on-february-20no | 0.074 | -0.659 | 1 | 0.069 | 0.018 | 1017 |
+| will-the-price-of-bitcoin-be-betwee... | -0.071 | 0.618 | 1 | -0.106 | 0.087 | 259 |
+| will-the-price-of-bitcoin-be-betwee... | 0.112 | -0.595 | 1 | 0.082 | 0.044 | 402 |
+| will-the-price-of-bitcoin-be-betwee... | -0.007 | -0.593 | 1 | 0.045 | -0.143 | 692 |
+| bitcoin-above-66k-on-february-23no | 0.074 | -0.573 | 1 | 0.107 | -0.053 | 1017 |
 
 ### crypto_events (Crypto Events)
 
 | Ticker | Lag-0 | Lag-1 | Best Lag | Up Corr | Down Corr | Samples |
 |--------|-------|-------|---------|---------|-----------|---------|
-| will-tyler-perrys-joes-college-road... | 0.025 | 0.062 | 6 | 0.044 | 0.006 | 948 |
+| will-tyler-perrys-joes-college-road... | 0.027 | 0.068 | 6 | 0.047 | 0.007 | 822 |
 | will-how-to-train-your-dragon-be-th... | -0.024 | -0.054 | 2 | 0.003 | -0.005 | 1002 |
 | will-how-to-train-your-dragon-be-th... | -0.066 | -0.009 | 6 | 0.004 | -0.134 | 1001 |
-| will-tyler-perrys-joes-college-road... | -0.001 | 0.006 | 6 | -0.025 | 0.010 | 993 |
+| will-tyler-perrys-joes-college-road... | -0.001 | 0.006 | 6 | -0.025 | 0.010 | 860 |
 
 ### eth_price_recent (ETH Price)
 
@@ -83,21 +100,19 @@
 | will-trump-say-tiktok-this-week-feb... | 0.084 | 0.043 | 3 | 0.035 | -0.035 | 287 |
 | will-trump-and-jd-vance-handshake-l... | -0.017 | 0.030 | 5 | -0.018 | -0.034 | 954 |
 | will-trump-and-jd-vance-handshake-l... | -0.002 | 0.014 | 6 | -0.002 | 0.009 | 949 |
+| will-trump-post-president-djt-on-tr... | -0.030 | -0.011 | 3 | -0.031 | -0.069 | 436 |
+| will-trump-post-president-djt-on-tr... | 0.029 | 0.010 | 6 | 0.002 | 0.069 | 436 |
 | will-trump-say-tiktok-this-week-feb... | -0.090 | -0.008 | 0 | -0.041 | 0.079 | 287 |
-| will-trump-post-president-djt-on-tr... | 0.021 | 0.003 | 3 | -0.002 | 0.070 | 529 |
-| will-trump-post-president-djt-on-tr... | -0.016 | 0.001 | 3 | -0.026 | -0.067 | 529 |
 
-## 5. Conclusions (Auto-generated)
+## 5. Conclusions
 
 | Hypothesis | Result | Detail |
 |-----------|--------|--------|
-| H1: BTC lead is stable across time | **PARTIAL** | Mean lag-1 correlation across BTC batches: 0.000 |
+| H1: BTC lead is stable across time | **PARTIAL** | Mean lag-1 correlation across BTC batches: -0.019 |
 | H2: BTC correlation extends to ETH/altcoins | **FAIL** | ETH lag-1: -0.008, Alt lag-1: -0.001 |
-| H3: Non-price crypto markets have weak BTC correlation | **PASS** | crypto_events lag-1: 0.001 |
-| H4: Political markets have zero BTC correlation | **PASS** | politics_control lag-1: 0.014 |
-| H5: Downside asymmetry is persistent | **PARTIAL** | Mean asymmetry ratio across BTC batches: 0.00 |
-
----
+| H3: Non-price crypto markets have weak BTC correlation | **PASS** | crypto_events lag-1: 0.003 |
+| H4: Political markets have zero BTC correlation | **PASS** | politics_control lag-1: 0.013 |
+| H5: Downside asymmetry is persistent | **PARTIAL** | Mean asymmetry ratio across BTC batches: 0.36 |
 
 ## 6. Detailed Analysis
 

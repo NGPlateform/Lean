@@ -65,15 +65,15 @@ namespace QuantConnect.Brokerages.Polymarket.Dashboard.Services.Backtest
             var tokenTickerMap = HistoricalDataLoader.BuildTokenTickerMap(markets);
             var marketType = markets.FirstOrDefault()?.MarketType ?? "Unknown";
 
-            // Determine date range from data
+            // Determine date range by scanning CSV filenames (avoids iterating millions of days)
             var allDates = new List<DateTime>();
             foreach (var kvp in tokenTickerMap)
             {
-                var bars = loader.LoadPriceBars(kvp.Value, DateTime.MinValue.AddYears(1), DateTime.MaxValue.AddYears(-1));
-                if (bars.Count > 0)
+                var dates = loader.GetAvailableDates(kvp.Value);
+                if (dates.Count > 0)
                 {
-                    allDates.Add(bars.First().Time);
-                    allDates.Add(bars.Last().Time);
+                    allDates.Add(dates.First());
+                    allDates.Add(dates.Last());
                 }
             }
 
